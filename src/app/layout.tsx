@@ -13,21 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Futurist Law Lab | Future-Proofing Legal Frameworks",
+  title: "Futurist Law Lab | Future-Proofing Legal Frameworks",
   description: "A student initiative based in Amsterdam engaging youth to shape the future of law in the age of technological advancement.",
-  keywords: ["law", "AI", "future law", "legal innovation", "legal tech", "youth engagement", "Amsterdam", "student initiative", "EU law"],
-  authors: [{ name: "AI Futurist Law Lab" }],
+  keywords: ["law", "future law", "legal innovation", "legal tech", "youth engagement", "Amsterdam", "student initiative", "EU law"],
+  authors: [{ name: "Futurist Law Lab" }],
   openGraph: {
-    title: "AI Futurist Law Lab | Future-Proofing Legal Frameworks",
+    title: "Futurist Law Lab | Future-Proofing Legal Frameworks",
     description: "A student initiative based in Amsterdam engaging youth to shape the future of law in the age of technological advancement.",
-    url: "https://futuristlawlab.vercel.app",
-    siteName: "AI Futurist Law Lab",
+    url: "https://futuristlawlab.com",
+    siteName: "Futurist Law Lab",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Futurist Law Lab",
+    title: "Futurist Law Lab",
     description: "A student initiative based in Amsterdam engaging youth to shape the future of law in the age of technological advancement.",
   },
 };

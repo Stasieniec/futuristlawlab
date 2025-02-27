@@ -1,6 +1,6 @@
-# AI Futurist Law Lab
+# Futurist Law Lab
 
-Official website for AI Futurist Law Lab, a student initiative based in Amsterdam that engages youth to shape the future of law in the age of technological advancement.
+Official website for Futurist Law Lab, a student initiative based in Amsterdam that engages youth to shape the future of law in the age of technological advancement.
 
 ## Our Mission
 
@@ -55,7 +55,7 @@ This project is configured for seamless deployment on Vercel.
 
 ## Contact
 
-For more information about AI Futurist Law Lab, please contact us through our website or social media channels.
+For more information about Futurist Law Lab, please contact us through our website or social media channels.
 
 ## License
 
