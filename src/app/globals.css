@@ -7,18 +7,69 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1e293b;
+  --primary: #1e40af;
+  --primary-dark: #1e3a8a;
+  --primary-light: #e0f2fe;
+  --secondary: #334155;
+  --accent: #334155;
+  --neutral-light: #f8fafc;
+  --neutral: #e2e8f0;
+  --neutral-dark: #94a3b8;
+  --highlight: #fb923c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --primary-light: #1e3a8a;
+    --secondary: #94a3b8;
+    --accent: #cbd5e1;
+    --neutral-light: #1e293b;
+    --neutral: #334155;
+    --neutral-dark: #64748b;
+    --highlight: #f97316;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Modern button styles */
+.btn-primary {
+  @apply bg-blue-700 text-white rounded-md px-6 py-3 font-medium transition duration-300 shadow-md hover:shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600;
+}
+
+.btn-secondary {
+  @apply border border-blue-700 text-blue-700 rounded-md px-6 py-3 font-medium transition duration-300 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Card styling */
+.card {
+  @apply bg-white rounded-lg shadow-sm transition duration-300 hover:shadow-md p-6;
 }

@@ -6,11 +6,13 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'Futurist Law Lab - Future-Proofing Legal Frameworks',
@@ -54,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Futurist Law Lab",
     description: "A student initiative based in Amsterdam engaging youth to shape the future of law in the age of technological advancement.",
-    images: ['/twitter-image.jpg'],
+    images: ['/images/twitter-image.svg'],
     creator: "@futuristlawlab",
   },
   verification: {
@@ -69,12 +71,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="canonical" href="https://futuristlawlab.com" />
+        <meta name="theme-color" content="#0d9488" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         {children}
@@ -89,7 +93,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "Futurist Law Lab",
               "url": "https://futuristlawlab.com",
-              "logo": "https://futuristlawlab.com/logo.png",
+              "logo": "https://futuristlawlab.com/images/logo.jpg",
               "description": "A student initiative based in Amsterdam engaging youth to shape the future of law in the age of technological advancement.",
               "address": {
                 "@type": "PostalAddress",
@@ -115,7 +119,7 @@ export default function RootLayout({
               "@type": "NGO",
               "name": "Futurist Law Lab",
               "url": "https://futuristlawlab.com",
-              "logo": "https://futuristlawlab.com/logo.png",
+              "logo": "https://futuristlawlab.com/images/logo.jpg",
               "description": "A student initiative based in Amsterdam engaging youth to shape the future of law in the age of technological advancement.",
               "address": {
                 "@type": "PostalAddress",
@@ -129,6 +133,30 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* Mobile Menu JavaScript */}
+        <Script id="mobile-menu-script" strategy="afterInteractive">
+          {`
+            document.addEventListener('DOMContentLoaded', function() {
+              const btn = document.querySelector('.mobile-menu-button');
+              const menu = document.querySelector('.mobile-menu');
+              
+              if (btn && menu) {
+                btn.addEventListener('click', () => {
+                  menu.classList.toggle('hidden');
+                });
+                
+                // Close menu when clicking on a link
+                const links = menu.querySelectorAll('a');
+                links.forEach(link => {
+                  link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                  });
+                });
+              }
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
