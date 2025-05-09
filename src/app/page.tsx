@@ -323,7 +323,7 @@ export default function Home() {
           <article className="mt-12 card border-t-4 border-blue-700 relative overflow-hidden">
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-slate-900 opacity-5 rounded-full transform translate-x-16 translate-y-16"></div>
             <h3 className="text-2xl font-bold mb-4 text-slate-900">How We Achieve Our Aims</h3>
-            <p className="text-slate-700 mb-6">
+            <p className="text-slate-800 mb-6">
               We promote smart lawmaking, inclusive legislative processes, and aim to be the voice of youth in legal discussions surrounding emerging technologies.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
@@ -332,13 +332,13 @@ export default function Home() {
                   <svg className="w-5 h-5 text-blue-700 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span>Organizing events at universities</span>
+                  <span className="text-slate-800">Organizing events at universities</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-blue-700 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span>Conducting workshops on law and technology</span>
+                  <span className="text-slate-800">Conducting workshops on law and technology</span>
                 </li>
               </ul>
               <ul className="space-y-3">
@@ -346,13 +346,13 @@ export default function Home() {
                   <svg className="w-5 h-5 text-blue-700 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span>Participating in events like the European Youth Event</span>
+                  <span className="text-slate-800">Participating in events like the European Youth Event</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-blue-700 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span>Creating resources for youth engagement</span>
+                  <span className="text-slate-800">Creating resources for youth engagement</span>
                 </li>
               </ul>
             </div>
@@ -563,6 +563,124 @@ export default function Home() {
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Team Section */}
+      <section id="team" aria-labelledby="team-heading" className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 id="team-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Meet Our Team
+            </h2>
+            <p className="text-lg text-slate-700 max-w-2xl mx-auto">
+              The passionate students behind Futurist Law Lab working to shape the future of legal frameworks.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Member Card 1 - Sarka Juklova */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-64 w-full">
+                <Image 
+                  src="/images/team/sarka.png" 
+                  alt="Sarka Juklova" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Sarka Juklova</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Law major at PPLE College (University of Amsterdam), graduating in 2025. Interested in the intersection of Law and Economics, market regulation, and technology governance including AI, blockchain, and gene editing. Works as a tutor in Mathematics and Economics, and enjoys spending time with her dog, playing rugby, and running.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 2 - Matthew Kelleher */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-64 w-full">
+                <Image 
+                  src="/images/team/matthew.jpeg" 
+                  alt="Matthew Kelleher" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Matthew Kelleher</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Second-year PPLE student at the University of Amsterdam, majoring in Law. Interested in Artificial Intelligence and emerging legal challenges, with research on how the European AI Act could impact Ireland&apos;s economy and how structural inequalities can be embedded in AI. In his free time, Matthew enjoys training Brazilian Jiu-Jitsu and playing tennis.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 3 - Clara Langenbach */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-64 w-full">
+                <Image 
+                  src="/images/team/clara.png" 
+                  alt="Clara Langenbach" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Clara Langenbach</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Half German and Brazilian PPLE student with electives in Law and Economics and Global AI. Particularly interested in the intersection between Law and Technology and its application in both Europe and Brazil. Values bringing together diverse perspectives to assess issues in today&apos;s globalized world. Enjoys drawing, photography, and art in general.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 4 - Tadeáš Krejčí */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-64 w-full">
+                <Image 
+                  src="/images/team/tadeas.jpeg" 
+                  alt="Tadeáš Krejčí" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Tadeáš Krejčí</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Third-year PPLE student, majoring in Law, at the University of Amsterdam. Has mooting experience in EU competition law and previously worked on a project to popularize EU politics in Czech high schools. Enjoys long hikes, reading British romantic literature, and exploring etymology. Career ambition is to work in EU institutions and contribute to shaping European policies.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 5 - Mauro Peirs */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-64 w-full">
+                <Image 
+                  src="/images/team/mauro.jpeg" 
+                  alt="Mauro Peirs" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Mauro Peirs</h3>
+                <p className="text-blue-700 font-medium mb-3">Social Media Manager</p>
+                <p className="text-slate-600">
+                  At 17, Mauro is the youngest member of Futurist Law Lab. He combines his passion for AI law with his artistic side, finding inspiration in both technology and creative expression. He manages social media, bridging the gap between complex legal discussions and engaging digital storytelling. Believes that the way we communicate ideas is just as important as the ideas themselves.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Instructions for when all members are displayed */}
+          <div className="mt-16 text-center">
+            <p className="text-slate-600 italic">
+              We are a team of dedicated students committed to exploring the intersection of law and technology.
+            </p>
           </div>
         </div>
       </section>
