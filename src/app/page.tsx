@@ -580,9 +580,28 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Member Card 1 - Sarka Juklova */}
+            {/* Member Card 1 - Laura Peirs */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
+                <Image 
+                  src="/images/team/laura.jpeg" 
+                  alt="Laura Peirs" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Laura Peirs</h3>
+                <p className="text-blue-700 font-medium mb-3">Founder, Legal Team</p>
+                <p className="text-slate-600">
+                  Half Belgian, half Polish PPLE student at the University of Amsterdam, majoring in law. Founder of Futurist Law Lab and Partnerships Manager at Computational Social Science. Passionate about interdisciplinary approaches to complex societal challenges, particularly at the intersection of law, technology, and governance. Enjoys mountain hiking, sailing, running, and reading in her free time.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 2 - Sarka Juklova */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
                 <Image 
                   src="/images/team/sarka.png" 
                   alt="Sarka Juklova" 
@@ -599,9 +618,9 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Member Card 2 - Matthew Kelleher */}
+            {/* Member Card 3 - Matthew Kelleher */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
                 <Image 
                   src="/images/team/matthew.jpeg" 
                   alt="Matthew Kelleher" 
@@ -618,28 +637,28 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Member Card 3 - Clara Langenbach */}
+            {/* Member Card 4 - Stanislaw Wasilewski */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
                 <Image 
-                  src="/images/team/clara.png" 
-                  alt="Clara Langenbach" 
+                  src="/images/team/stanislaw.jpeg" 
+                  alt="Stanislaw Wasilewski" 
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-slate-900 mb-1">Clara Langenbach</h3>
-                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Stanislaw Wasilewski</h3>
+                <p className="text-blue-700 font-medium mb-3">AI Team</p>
                 <p className="text-slate-600">
-                  Half German and Brazilian PPLE student with electives in Law and Economics and Global AI. Particularly interested in the intersection between Law and Technology and its application in both Europe and Brazil. Values bringing together diverse perspectives to assess issues in today&apos;s globalized world. Enjoys drawing, photography, and art in general.
+                  AI Developer with a BSc in Artificial Intelligence from Vrije Universiteit Amsterdam. Specializes in machine learning, natural language processing, and computer vision. Works as an AI Engineer at TasteRay implementing and fine-tuning Large Language Models. Previously served as a Teaching Assistant for Machine Learning and Python at VU Amsterdam and co-founded a web development company. Passionate about building intelligent systems that enhance human capabilities while exploring the ethical dimensions of technology.
                 </p>
               </div>
             </div>
             
-            {/* Member Card 4 - Tadeáš Krejčí */}
+            {/* Member Card 5 - Tadeáš Krejčí */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
                 <Image 
                   src="/images/team/tadeas.jpeg" 
                   alt="Tadeáš Krejčí" 
@@ -656,9 +675,47 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Member Card 5 - Mauro Peirs */}
+            {/* Member Card 6 - Clara Langenbach */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full">
+              <div className="relative h-80 w-full">
+                <Image 
+                  src="/images/team/clara.png" 
+                  alt="Clara Langenbach" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Clara Langenbach</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Half German and Brazilian PPLE student with electives in Law and Economics and Global AI. Particularly interested in the intersection between Law and Technology and its application in both Europe and Brazil. Values bringing together diverse perspectives to assess issues in today&apos;s globalized world. Enjoys drawing, photography, and art in general.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 7 - Krzysztof Nowak */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
+                <Image 
+                  src="/images/team/krzysztof.jpeg" 
+                  alt="Krzysztof Nowak" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Krzysztof Nowak</h3>
+                <p className="text-blue-700 font-medium mb-3">AI Team</p>
+                <p className="text-slate-600">
+                  Third-year Artificial Intelligence student at Vrije Universiteit Amsterdam, currently on exchange at the Hong Kong University of Science and Technology. Conducting thesis internship at the Institute for Cancer Research, developing ML models for cancer diagnosis. Previous experience includes AI projects for Novo Nordisk and leading development of an intelligent healthcare assistant at Ancora Health. Passionate about the intersections of AI, neuroscience, medicine, and business.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 8 - Mauro Peirs */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
                 <Image 
                   src="/images/team/mauro.jpeg" 
                   alt="Mauro Peirs" 
@@ -668,7 +725,7 @@ export default function Home() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-slate-900 mb-1">Mauro Peirs</h3>
-                <p className="text-blue-700 font-medium mb-3">Social Media Manager</p>
+                <p className="text-blue-700 font-medium mb-3">Social Media</p>
                 <p className="text-slate-600">
                   At 17, Mauro is the youngest member of Futurist Law Lab. He combines his passion for AI law with his artistic side, finding inspiration in both technology and creative expression. He manages social media, bridging the gap between complex legal discussions and engaging digital storytelling. Believes that the way we communicate ideas is just as important as the ideas themselves.
                 </p>
