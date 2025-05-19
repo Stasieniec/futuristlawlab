@@ -731,6 +731,25 @@ export default function Home() {
                 </p>
               </div>
             </div>
+            
+            {/* Member Card 9 - Julia Lirio */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
+                <Image 
+                  src="/images/team/julia.jpg" 
+                  alt="Julia Lirio" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Julia Lirio</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Brazilian/Italian PPLE student with a major in Law and a minor in Law and Economics. Recently joined the AI Act group. Interested in how Law should effectively regulate technology in our increasingly digitalized world and its relation to human rights and security. Analyzes how political groups lobby for or resist regulations like the EU AI Act. Enjoys playing volleyball, going to the movies, and reading in her free time.
+                </p>
+              </div>
+            </div>
           </div>
           
           {/* Instructions for when all members are displayed */}
