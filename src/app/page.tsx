@@ -32,9 +32,7 @@ export default function Home() {
             <div className="hidden md:flex space-x-8">
               <Link href="#about" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Learn about Futurist Law Lab">About</Link>
               <Link href="#mission" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Explore our mission">Our Mission</Link>
-              <Link href="#activities" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Discover our activities">Activities</Link>
-              <Link href="#join" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Join our initiative">Join Us</Link>
-              <Link href="#contact" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Contact us">Contact</Link>
+              <Link href="#activities" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Discover our events">Events</Link>
             </div>
             
             {/* Mobile Menu Button */}
@@ -53,97 +51,82 @@ export default function Home() {
             <div className="flex flex-col space-y-4 pt-4 pb-3 px-4">
               <Link href="#about" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Learn about Futurist Law Lab">About</Link>
               <Link href="#mission" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Explore our mission">Our Mission</Link>
-              <Link href="#activities" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Discover our activities">Activities</Link>
-              <Link href="#join" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Join our initiative">Join Us</Link>
-              <Link href="#contact" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Contact us">Contact</Link>
+              <Link href="#activities" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Discover our events">Events</Link>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section - Modern Redesign */}
-      <section aria-labelledby="hero-heading" className="relative py-12 md:py-16 lg:py-24 overflow-hidden">
+      {/* Hero Section - Mobile Optimized */}
+      <section aria-labelledby="hero-heading" className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden min-h-[80vh] sm:min-h-[70vh] md:min-h-[85vh] flex items-center">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-slate-50 -z-10"></div>
-        <div className="absolute right-0 top-1/4 w-1/2 h-1/2 bg-blue-700/5 -z-10 rounded-l-3xl hidden md:block"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full transform translate-x-1/3 -translate-y-1/3 blur-3xl -z-10 hidden md:block"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-900/5 rounded-full transform -translate-x-1/3 translate-y-1/3 blur-3xl -z-10 hidden md:block"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 -z-10"></div>
         
-        {/* Animated Network Background */}
-        <div className="absolute inset-0 -z-5">
+        {/* Desktop Background Elements - Hidden on Mobile */}
+        <div className="absolute right-0 top-1/4 w-1/2 h-1/2 bg-blue-700/5 -z-10 rounded-l-3xl hidden lg:block"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full transform translate-x-1/3 -translate-y-1/3 blur-3xl -z-10 hidden lg:block"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-900/5 rounded-full transform -translate-x-1/3 translate-y-1/3 blur-3xl -z-10 hidden lg:block"></div>
+        
+        {/* Subtle Mobile Background Elements */}
+        <div className="absolute top-10 right-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl -z-10 lg:hidden"></div>
+        <div className="absolute bottom-20 left-10 w-32 h-32 bg-slate-900/5 rounded-full blur-2xl -z-10 lg:hidden"></div>
+        
+        {/* Animated Network Background - Desktop Only */}
+        <div className="absolute inset-0 -z-5 hidden lg:block">
           {/* Network Nodes */}
           <div className="absolute h-3 w-3 bg-blue-700/40 rounded-full top-1/4 left-1/5 animate-pulse"></div>
           <div className="absolute h-2 w-2 bg-slate-700/30 rounded-full top-3/5 left-1/3 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
           <div className="absolute h-4 w-4 bg-blue-600/30 rounded-full top-2/5 left-2/3 animate-pulse" style={{ animationDelay: '0.7s' }}></div>
           <div className="absolute h-2 w-2 bg-blue-500/30 rounded-full top-1/6 left-1/2 animate-pulse" style={{ animationDelay: '1.2s' }}></div>
           <div className="absolute h-3 w-3 bg-slate-600/30 rounded-full top-3/4 left-3/4 animate-pulse" style={{ animationDelay: '0.3s' }}></div>
-          <div className="absolute h-2 w-2 bg-blue-700/30 rounded-full top-2/3 left-1/6 animate-pulse" style={{ animationDelay: '0.8s' }}></div>
-          <div className="absolute h-3 w-3 bg-slate-800/30 rounded-full top-1/3 left-4/5 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-          <div className="absolute h-4 w-4 bg-blue-800/30 rounded-full top-2/5 left-1/8 animate-pulse" style={{ animationDelay: '1.8s' }}></div>
-          <div className="absolute h-2 w-2 bg-blue-600/30 rounded-full top-4/5 left-2/5 animate-pulse" style={{ animationDelay: '2s' }}></div>
           
           {/* Network Lines */}
           <div className="absolute h-px bg-blue-700/20 w-1/4 top-1/4 left-1/5 transform rotate-12 animate-[pulse_3s_ease-in-out_infinite]"></div>
           <div className="absolute h-px bg-slate-700/20 w-1/3 top-3/5 left-1/3 transform -rotate-12 animate-[pulse_2.5s_ease-in-out_infinite]" style={{ animationDelay: '0.4s' }}></div>
           <div className="absolute h-px bg-blue-600/20 w-1/3 top-2/5 left-2/3 transform rotate-45 animate-[pulse_3.5s_ease-in-out_infinite]" style={{ animationDelay: '0.6s' }}></div>
-          <div className="absolute h-px bg-blue-500/20 w-1/4 top-1/6 left-1/2 transform -rotate-45 animate-[pulse_3s_ease-in-out_infinite]" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute h-px bg-slate-600/20 w-1/4 top-3/4 left-3/4 transform rotate-12 animate-[pulse_4s_ease-in-out_infinite]" style={{ animationDelay: '1.2s' }}></div>
-          <div className="absolute h-px bg-blue-700/20 w-1/3 top-2/3 left-1/6 transform -rotate-20 animate-[pulse_3.2s_ease-in-out_infinite]" style={{ animationDelay: '0.8s' }}></div>
-          <div className="absolute h-px bg-slate-800/20 w-1/4 top-1/3 left-4/5 transform rotate-30 animate-[pulse_3.8s_ease-in-out_infinite]" style={{ animationDelay: '1.4s' }}></div>
-          <div className="absolute h-px bg-blue-800/20 w-1/3 top-2/5 left-1/8 transform -rotate-15 animate-[pulse_2.8s_ease-in-out_infinite]" style={{ animationDelay: '1.7s' }}></div>
-          <div className="absolute h-px bg-blue-600/20 w-1/4 top-4/5 left-2/5 transform rotate-10 animate-[pulse_3.3s_ease-in-out_infinite]" style={{ animationDelay: '1.9s' }}></div>
         </div>
         
-        {/* Animated Dots (decorative) - hidden on small screens */}
-        <div className="absolute inset-0 -z-5 hidden md:block">
-          <div className="absolute top-20 right-[20%] w-2 h-2 bg-blue-700 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-[30%] w-3 h-3 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-60 right-[15%] w-2 h-2 bg-blue-600 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-          <div className="absolute bottom-20 left-[60%] w-2 h-2 bg-slate-700 rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
-          <div className="absolute bottom-40 left-[75%] w-3 h-3 bg-slate-600 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-        </div>
-        
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            {/* Left Content - Large Text and CTA */}
-            <div className="w-full md:w-5/12 lg:w-4/12 mb-8 md:mb-0 text-center md:text-left">
-              <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight mb-4 md:mb-6 tracking-tight animate-fade-in">
-                Future-Proofing <br className="hidden sm:block" />
-                <span className="text-blue-700 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start">
+            {/* Main Content - Full Width on Mobile */}
+            <div className="w-full lg:w-5/12 xl:w-4/12 text-center lg:text-left">
+              <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 leading-[1.1] mb-6 sm:mb-8 tracking-tight">
+                Future-Proofing{' '}
+                <br className="hidden sm:block" />
+                <span className="text-blue-700 relative inline-block">
                   Legal Frameworks
-                  <span className="absolute -bottom-2 left-0 right-0 h-1 bg-blue-700/30 rounded-full"></span>
+                  <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-blue-700/30 rounded-full"></span>
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-slate-700 mb-8 max-w-lg mx-auto md:mx-0 animate-fade-in animate-delay-200">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-700 mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 A student initiative engaging youth to shape the future of law in the age of technological advancement.
               </p>
               
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start animate-fade-in animate-delay-300">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link 
                   href="#mission" 
-                  className="btn-primary flex items-center bg-slate-900 hover:bg-slate-800"
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   aria-label="Learn about our mission"
                 >
                   <span>Our Mission</span>
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </Link>
                 <Link 
-                  href="#join" 
-                  className="btn-secondary border-slate-900 text-slate-900 hover:bg-slate-900/10"
-                  aria-label="Get involved with our initiative"
+                  href="#activities" 
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-slate-900 text-slate-900 font-medium rounded-lg hover:bg-slate-900 hover:text-white transition-all duration-200 transform hover:-translate-y-0.5"
+                  aria-label="View our events"
                 >
-                  Get Involved
+                  Events
                 </Link>
               </div>
             </div>
             
-            {/* Right side - Neural Network Visualization */}
-            <div className="w-full md:w-7/12 lg:w-8/12 md:mt-0 mt-8 flex justify-center items-center">
-              <div className="w-full h-[400px] md:h-[450px] lg:h-[500px] relative animate-fade-in animate-delay-300">
-                {/* 3D Neural Network Animation - No Container */}
+            {/* Neural Network Visualization - Desktop Only */}
+            <div className="hidden lg:flex w-7/12 xl:w-8/12 mt-0 justify-center items-center">
+              <div className="w-full h-[400px] xl:h-[500px] relative">
                 <div className="w-full h-full relative" style={{perspective: '1200px', transformStyle: 'preserve-3d'}}>
                   {/* Neural Network Nodes */}
                   <div className="absolute h-8 w-8 bg-blue-700/90 rounded-full top-1/4 left-1/4 animate-pulse shadow-lg shadow-blue-700/30" style={{transform: 'translateZ(30px)'}}></div>
@@ -250,50 +233,125 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" aria-labelledby="about-heading" className="container mx-auto px-4 py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
-              <div className="bg-blue-600/10 py-1.5 px-4 rounded-full text-blue-700 text-sm font-medium inline-block mb-4">
+      <section id="about" aria-labelledby="about-heading" className="bg-slate-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+          <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-16 items-center">
+            <div className="w-full lg:w-1/2 text-center lg:text-left">
+              <div className="bg-blue-600/10 py-2 px-4 rounded-full text-blue-700 text-sm font-medium inline-block mb-4 sm:mb-6">
                 Who We Are
               </div>
-              <h2 id="about-heading" className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">About Us</h2>
-              <div className="space-y-4">
-                <p className="text-lg text-slate-700">
+              <h2 id="about-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-slate-900">About Us</h2>
+              <div className="space-y-4 sm:space-y-6">
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
                   Futurist Law Lab is a student initiative based in Amsterdam that approaches the intersection of law and emerging technologies primarily from a legal perspective.
                 </p>
-                <p className="text-lg text-slate-700">
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
                   We bring together law students, tech enthusiasts, and policymakers to collaborate on forward-thinking approaches to legal challenges posed by technological advancement.
                 </p>
               </div>
             </div>
-            <div className="md:w-1/2 relative h-80 rounded-2xl overflow-hidden shadow-lg">
-              {/* This would be replaced with an actual image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-                <Image 
-                  src="/window.svg" 
-                  alt="Futurist Law Lab Team" 
-                  width={120}
-                  height={120}
-                  className="opacity-30"
-                />
-              </div>
+            <div className="w-full lg:w-1/2 relative h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-lg">
+              <Image 
+                src="/images/about_us.jpeg" 
+                alt="Futurist Law Lab Team" 
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
+        </div>
+        </div>
+      </section>
+
+      {/* Activities Section */}
+      <section id="activities" aria-labelledby="activities-heading" className="py-16 sm:py-20 lg:py-24 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="bg-blue-100 py-2 px-4 rounded-full text-blue-700 text-sm font-medium inline-block mb-4 sm:mb-6">
+            What We Do
+          </div>
+          <h2 id="activities-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-slate-900">Events</h2>
+          <p className="text-base sm:text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
+            Discover how we&apos;re making an impact through various initiatives and events.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group">
+            <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm">
+              <Image 
+                src="/images/eu_workshop.jpeg" 
+                alt="European Parliament Workshop" 
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute top-3 right-3 bg-blue-700 text-white px-2 py-1 rounded-full text-xs font-medium">
+                Upcoming
+              </div>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900">European Parliament Workshop</h3>
+            <p className="text-sm sm:text-base text-slate-700 mb-3 sm:mb-4 leading-relaxed">
+              Join us at the European Parliament in Strasbourg for an exclusive deep dive into the EU AI Act during the European Youth Event. Explore how this groundbreaking legislation will shape the future of artificial intelligence regulation.
+            </p>
+            <div className="flex items-center text-sm text-blue-700 font-medium">
+              <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              June 13-14, 2025
+            </div>
+          </article>
+          
+          <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group">
+            <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm">
+              <Image 
+                src="/images/uva_workshop.jpeg" 
+                alt="University of Amsterdam Workshop" 
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute top-3 right-3 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                Completed
+              </div>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900">University of Amsterdam Workshop</h3>
+            <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              What an incredible session we had at UvA! Students engaged passionately in dissecting the EU AI Act, exploring its implications for innovation and fundamental rights. The energy in the room was fantastic as we navigated through complex regulatory frameworks together.
+            </p>
+          </article>
+          
+          <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group md:col-span-2 lg:col-span-1">
+            <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm">
+              <Image 
+                src="/images/vu_workshop.jpeg" 
+                alt="Vrije Universiteit Amsterdam Workshop" 
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute top-3 right-3 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                Completed
+              </div>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900">Vrije Universiteit Workshop</h3>
+            <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              Our VU Amsterdam workshop was a huge success! Participants dove deep into the technical aspects of AI regulation, examining real-world case studies and their legal implications. The interactive discussions and collaborative problem-solving made it an unforgettable learning experience.
+            </p>
+          </article>
+        </div>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section id="mission" aria-labelledby="mission-heading" className="py-20 bg-slate-50 relative">
+      <section id="mission" aria-labelledby="mission-heading" className="py-16 sm:py-20 lg:py-24 bg-slate-50 relative">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-slate-900 to-transparent opacity-20"></div>
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-slate-900 to-transparent opacity-20"></div>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="bg-blue-100 py-1.5 px-4 rounded-full text-blue-700 text-sm font-medium inline-block mb-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="bg-blue-100 py-2 px-4 rounded-full text-blue-700 text-sm font-medium inline-block mb-4 sm:mb-6">
               Our Purpose
             </div>
-            <h2 id="mission-heading" className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">Our Mission</h2>
-            <p className="text-lg text-slate-700 max-w-3xl mx-auto">
+            <h2 id="mission-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-slate-900">Our Mission</h2>
+            <p className="text-base sm:text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
               We aim to bridge the gap between technological advancement and legal frameworks through youth engagement and innovation.
             </p>
           </div>
@@ -360,229 +418,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Activities Section */}
-      <section id="activities" aria-labelledby="activities-heading" className="container mx-auto px-4 py-20 relative">
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-slate-50 to-transparent"></div>
-        <div className="text-center mb-16">
-          <div className="bg-blue-100 py-1.5 px-4 rounded-full text-blue-700 text-sm font-medium inline-block mb-4">
-            What We Do
-          </div>
-          <h2 id="activities-heading" className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">Our Activities</h2>
-          <p className="text-lg text-slate-700 max-w-3xl mx-auto">
-            Discover how we&apos;re making an impact through various initiatives and events.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          <article className="card group">
-            <div className="rounded-xl overflow-hidden h-48 mb-6 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative border border-blue-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900/5 to-transparent"></div>
-              <Image 
-                src="/file.svg" 
-                alt="University Events" 
-                width={80}
-                height={80}
-                className="opacity-60 relative z-10"
-              />
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-slate-900">University Events</h3>
-            <p className="text-slate-700">
-              We organize lectures, panel discussions, and networking events at universities across Europe.
-            </p>
-          </article>
-          
-          <article className="card group">
-            <div className="rounded-xl overflow-hidden h-48 mb-6 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative border border-blue-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900/5 to-transparent"></div>
-              <Image 
-                src="/window.svg" 
-                alt="Workshops" 
-                width={80}
-                height={80}
-                className="opacity-60 relative z-10"
-              />
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-slate-900">Workshops</h3>
-            <p className="text-slate-700">
-              Our interactive workshops bring together diverse participants to tackle legal challenges posed by emerging technologies.
-            </p>
-          </article>
-          
-          <article className="card group">
-            <div className="rounded-xl overflow-hidden h-48 mb-6 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative border border-blue-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900/5 to-transparent"></div>
-              <Image 
-                src="/layout.svg" 
-                alt="Digital Resources" 
-                width={80}
-                height={80}
-                className="opacity-60 relative z-10"
-              />
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-slate-900">Digital Resources</h3>
-            <p className="text-slate-700">
-              We create and share accessible resources that explain complex legal-technological concepts to young people.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      {/* Join Us Section */}
-      <section id="join" aria-labelledby="join-heading" className="py-24 bg-gradient-to-br from-slate-900 to-blue-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900 opacity-40"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-700 opacity-10 rounded-full transform translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 id="join-heading" className="text-3xl md:text-4xl font-bold mb-8">Join Our Initiative</h2>
-            <p className="text-xl mb-10 text-blue-50">
-              We&apos;re looking for passionate young people who want to make a difference in the future of law and technology. If you&apos;re interested in joining us, we&apos;d love to hear from you.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a 
-                href="mailto:contact@futuristlawlab.com" 
-                className="bg-white text-slate-900 px-8 py-3 rounded-md font-medium hover:bg-blue-50 transition shadow-lg"
-                aria-label="Contact us via email"
-              >
-                Contact Us
-              </a>
-              <a 
-                href="#" 
-                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white/10 transition"
-                aria-label="Learn more about joining our initiative"
-              >
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" aria-labelledby="contact-heading" className="py-20 bg-white relative">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="bg-blue-100 py-1.5 px-4 rounded-full text-blue-700 text-sm font-medium inline-block mb-4">
-                Get In Touch
-              </div>
-              <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Contact Us</h2>
-              <p className="text-lg text-slate-700 max-w-2xl mx-auto">
-                Have questions or want to learn more about our initiative? We&apos;d love to hear from you.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-slate-50 p-8 rounded-xl shadow-sm relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-slate-900/5 rounded-full transform translate-x-16 -translate-y-16"></div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900">Contact Information</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-700 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                    <div>
-                      <p className="text-sm text-slate-600 mb-1">Email</p>
-                      <a href="mailto:contact@futuristlawlab.com" className="text-blue-700 hover:text-blue-800">contact@futuristlawlab.com</a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-700 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <div>
-                      <p className="text-sm text-slate-600 mb-1">Location</p>
-                      <p className="text-slate-800">Amsterdam, The Netherlands</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-700 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                    <div>
-                      <p className="text-sm text-slate-600 mb-1">Follow Us</p>
-                      <div className="flex space-x-3 mt-1">
-                        <a href="#" aria-label="Twitter" className="text-slate-700 hover:text-blue-700 transition">
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn" className="text-slate-700 hover:text-blue-700 transition">
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-                        </a>
-                        <a href="#" aria-label="Instagram" className="text-slate-700 hover:text-blue-700 transition">
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200 relative overflow-hidden">
-                <div className="absolute bottom-0 right-0 w-32 h-32 bg-slate-900/5 rounded-full transform translate-x-16 translate-y-16"></div>
-                <h3 className="text-xl font-bold mb-6 text-slate-900">Send Us a Message</h3>
-                <form className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Your Name</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Your Email</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Your Message</label>
-                    <textarea 
-                      id="message" 
-                      rows={4} 
-                      className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                      placeholder="How can we help you?"
-                    ></textarea>
-                  </div>
-                  
-                  <button 
-                    type="submit" 
-                    className="w-full bg-slate-900 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-800 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
-                  >
-                    Send Message
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       {/* Team Section */}
-      <section id="team" aria-labelledby="team-heading" className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 id="team-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+      <section id="team" aria-labelledby="team-heading" className="py-16 sm:py-20 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 id="team-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">
               Meet Our Team
             </h2>
-            <p className="text-lg text-slate-700 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
               The passionate students behind Futurist Law Lab working to shape the future of legal frameworks.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Member Card 1 - Laura Peirs */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-80 w-full">
+              <div className="relative h-64 sm:h-72 lg:h-80 w-full">
                 <Image 
                   src="/images/team/laura.jpeg" 
                   alt="Laura Peirs" 
@@ -590,10 +441,10 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-slate-900 mb-1">Laura Peirs</h3>
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-1">Laura Peirs</h3>
                 <p className="text-blue-700 font-medium mb-3">Founder, Legal Team</p>
-                <p className="text-slate-600">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                   Half Belgian, half Polish PPLE student at the University of Amsterdam, majoring in law. Founder of Futurist Law Lab and Partnerships Manager at Computational Social Science. Passionate about interdisciplinary approaches to complex societal challenges, particularly at the intersection of law, technology, and governance. Enjoys mountain hiking, sailing, running, and reading in her free time.
                 </p>
               </div>
@@ -801,9 +652,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li><a href="#about" className="text-slate-300 hover:text-white transition">About Us</a></li>
                 <li><a href="#mission" className="text-slate-300 hover:text-white transition">Our Mission</a></li>
-                <li><a href="#activities" className="text-slate-300 hover:text-white transition">Activities</a></li>
-                <li><a href="#join" className="text-slate-300 hover:text-white transition">Join Us</a></li>
-                <li><a href="#contact" className="text-slate-300 hover:text-white transition">Contact</a></li>
+                <li><a href="#activities" className="text-slate-300 hover:text-white transition">Events</a></li>
               </ul>
             </div>
             
