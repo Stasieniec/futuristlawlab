@@ -488,26 +488,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Member Card 4 - Stanislaw Wasilewski */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-80 w-full">
-                <Image 
-                  src="/images/team/stanislaw.jpeg" 
-                  alt="Stanislaw Wasilewski" 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-slate-900 mb-1">Stanislaw Wasilewski</h3>
-                <p className="text-blue-700 font-medium mb-3">AI Team</p>
-                <p className="text-slate-600">
-                  AI Developer with a BSc in Artificial Intelligence from Vrije Universiteit Amsterdam. Specializes in machine learning, natural language processing, and computer vision. Works as an AI Engineer at TasteRay implementing and fine-tuning Large Language Models. Previously served as a Teaching Assistant for Machine Learning and Python at VU Amsterdam and co-founded a web development company. Passionate about building intelligent systems that enhance human capabilities while exploring the ethical dimensions of technology.
-                </p>
-              </div>
-            </div>
-            
-            {/* Member Card 5 - Tadeáš Krejčí */}
+            {/* Member Card 4 - Tadeáš Krejčí */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
                 <Image 
@@ -522,6 +503,25 @@ export default function Home() {
                 <p className="text-blue-700 font-medium mb-3">Legal Team</p>
                 <p className="text-slate-600">
                   Third-year PPLE student, majoring in Law, at the University of Amsterdam. Has mooting experience in EU competition law and previously worked on a project to popularize EU politics in Czech high schools. Enjoys long hikes, reading British romantic literature, and exploring etymology. Career ambition is to work in EU institutions and contribute to shaping European policies.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 5 - Kate Owens */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-64 sm:h-72 lg:h-80 w-full">
+                <Image 
+                  src="/images/team/kate.jpeg" 
+                  alt="Kate Owens" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-1">Kate Owens</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Second-year PPLE student at the University of Amsterdam, majoring in law. Has a long-standing interest in STEM, which began through her participation in the BT Young Scientist Competition. It showed her the value of taking complex research and communicating it in a way that&apos;s accessible and engaging to the public, something she hopes to continue to do here at the Futurist Law Lab. Outside of academics, you can usually find her at the pool or exploring new cafés around Amsterdam.
                 </p>
               </div>
             </div>
@@ -545,7 +545,45 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Member Card 7 - Krzysztof Nowak */}
+            {/* Member Card 7 - Julia Lirio */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
+                <Image 
+                  src="/images/team/julia.jpg" 
+                  alt="Julia Lirio" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Julia Lirio</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Brazilian/Italian PPLE student with a major in Law and a minor in Law and Economics. Interested in how Law should effectively regulate technology in our increasingly digitalized world and its relation to human rights and security. Analyzes how political groups lobby for or resist regulations like the EU AI Act. Enjoys playing volleyball, going to the movies, and reading in her free time.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 8 - Stanislaw Wasilewski */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
+                <Image 
+                  src="/images/team/stanislaw.jpeg" 
+                  alt="Stanislaw Wasilewski" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Stanislaw Wasilewski</h3>
+                <p className="text-blue-700 font-medium mb-3">AI Team</p>
+                <p className="text-slate-600">
+                  AI Developer with a BSc in Artificial Intelligence from Vrije Universiteit Amsterdam. Specializes in machine learning, natural language processing, and computer vision. Works as an AI Engineer at TasteRay implementing and fine-tuning Large Language Models. Previously served as a Teaching Assistant for Machine Learning and Python at VU Amsterdam and co-founded a web development company. Passionate about building intelligent systems that enhance human capabilities while exploring the ethical dimensions of technology.
+                </p>
+              </div>
+            </div>
+            
+            {/* Member Card 9 - Krzysztof Nowak */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
                 <Image 
@@ -564,7 +602,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Member Card 8 - Mauro Peirs */}
+            {/* Member Card 10 - Mauro Peirs */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
                 <Image 
@@ -583,24 +621,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Member Card 9 - Julia Lirio */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-80 w-full">
-                <Image 
-                  src="/images/team/julia.jpg" 
-                  alt="Julia Lirio" 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-slate-900 mb-1">Julia Lirio</h3>
-                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
-                <p className="text-slate-600">
-                  Brazilian/Italian PPLE student with a major in Law and a minor in Law and Economics. Interested in how Law should effectively regulate technology in our increasingly digitalized world and its relation to human rights and security. Analyzes how political groups lobby for or resist regulations like the EU AI Act. Enjoys playing volleyball, going to the movies, and reading in her free time.
-                </p>
-              </div>
-            </div>
+
           </div>
           
           {/* Instructions for when all members are displayed */}
