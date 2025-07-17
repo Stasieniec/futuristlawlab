@@ -11,6 +11,16 @@ export const metadata: Metadata = {
 // This would typically come from a CMS or markdown files
 const blogPosts = [
   {
+    id: 'digital-rights-in-the-age-of-ai',
+    title: 'Digital Rights in the Age of AI: Protecting Privacy and Autonomy',
+    excerpt: 'As AI systems become more prevalent, how do we ensure fundamental digital rights are protected? Exploring the intersection of AI and human rights.',
+    date: '2024-01-20',
+    author: 'Laura Peirs',
+    image: '/images/blog/digital-rights-ai.jpg',
+    readTime: '7 min read',
+    category: 'Digital Rights'
+  },
+  {
     id: 'future-of-ai-regulation',
     title: 'The Future of AI Regulation: What the EU AI Act Means for Innovation',
     excerpt: 'Exploring how the EU AI Act will shape the future of artificial intelligence development and deployment across Europe.',

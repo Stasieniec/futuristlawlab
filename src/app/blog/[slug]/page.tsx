@@ -5,6 +5,65 @@ import { notFound } from 'next/navigation';
 
 // This would typically come from a CMS or markdown files
 const blogPosts = {
+  'digital-rights-in-the-age-of-ai': {
+    id: 'digital-rights-in-the-age-of-ai',
+    title: 'Digital Rights in the Age of AI: Protecting Privacy and Autonomy',
+    excerpt: 'As AI systems become more prevalent, how do we ensure fundamental digital rights are protected? Exploring the intersection of AI and human rights.',
+    date: '2024-01-20',
+    author: 'Laura Peirs',
+    image: '/images/blog/digital-rights-ai.jpg',
+    readTime: '7 min read',
+    category: 'Digital Rights',
+    content: `
+      <p>As artificial intelligence becomes increasingly integrated into our daily lives, the protection of fundamental digital rights has never been more critical. From algorithmic decision-making in hiring processes to AI-powered surveillance systems, the intersection of AI and human rights presents both unprecedented opportunities and significant challenges.</p>
+      
+      <h2>The Current Digital Rights Landscape</h2>
+      <p>Digital rights encompass a broad range of human rights as they apply to the digital sphere, including privacy, freedom of expression, access to information, and non-discrimination. These rights are not new concepts, but their application in the context of AI systems requires careful consideration and often new regulatory approaches.</p>
+      
+      <h3>Privacy in the Age of AI</h3>
+      <p>AI systems often require vast amounts of data to function effectively, creating tension between innovation and privacy protection. The challenge lies in developing AI systems that can deliver their promised benefits while respecting individual privacy rights and maintaining user control over personal data.</p>
+      
+      <h2>Key Challenges</h2>
+      
+      <h3>1. Algorithmic Transparency</h3>
+      <p>Many AI systems operate as "black boxes," making decisions through processes that are difficult or impossible to understand. This lack of transparency can undermine accountability and make it challenging for individuals to challenge automated decisions that affect them.</p>
+      
+      <h3>2. Bias and Discrimination</h3>
+      <p>AI systems can perpetuate or amplify existing biases present in their training data or design. This can lead to discriminatory outcomes in critical areas such as employment, lending, and criminal justice, potentially violating principles of equality and non-discrimination.</p>
+      
+      <h3>3. Consent and Control</h3>
+      <p>Traditional concepts of informed consent become complex in AI contexts. How can individuals meaningfully consent to data processing when they cannot fully understand how their data will be used in AI systems or what inferences might be drawn from it?</p>
+      
+      <h2>Regulatory Responses</h2>
+      
+      <h3>The EU AI Act Approach</h3>
+      <p>The European Union's AI Act represents a comprehensive attempt to address these challenges through a risk-based regulatory framework. It includes specific provisions for high-risk AI systems, prohibited practices, and transparency requirements that aim to protect fundamental rights while enabling innovation.</p>
+      
+      <h3>GDPR and AI</h3>
+      <p>The General Data Protection Regulation (GDPR) already provides some protection for individuals in AI contexts, including rights to explanation for automated decision-making and data portability. However, the application of GDPR to AI systems continues to evolve through case law and regulatory guidance.</p>
+      
+      <h2>The Role of Youth in Digital Rights Advocacy</h2>
+      <p>Young people, as digital natives, have a unique perspective on digital rights and AI governance. They understand intuitively how these systems work and can identify potential rights violations that might not be apparent to older generations. Their engagement is crucial for developing rights-protective AI governance frameworks.</p>
+      
+      <h3>Practical Steps for Protection</h3>
+      <ul>
+        <li><strong>Education and Awareness:</strong> Understanding your digital rights and how AI systems affect them</li>
+        <li><strong>Advocacy:</strong> Participating in policy discussions and supporting rights-protective legislation</li>
+        <li><strong>Technical Literacy:</strong> Developing understanding of how AI systems work and their potential impacts</li>
+        <li><strong>Community Engagement:</strong> Building coalitions to advocate for stronger digital rights protections</li>
+      </ul>
+      
+      <h2>Looking Forward</h2>
+      <p>The protection of digital rights in the age of AI requires ongoing vigilance and adaptation. As AI technologies continue to evolve, so too must our approaches to rights protection. This includes developing new legal frameworks, technical standards, and governance mechanisms that can keep pace with technological change.</p>
+      
+      <p>At Futurist Law Lab, we believe that engaging young people in these discussions is essential. The digital rights frameworks we develop today will shape the technological landscape that the next generation inherits. By ensuring that youth voices are heard in these critical conversations, we can build a future where AI serves humanity while respecting fundamental rights.</p>
+      
+      <h2>Conclusion</h2>
+      <p>The intersection of AI and digital rights presents both challenges and opportunities. While AI systems can potentially enhance human capabilities and improve quality of life, they must be developed and deployed in ways that respect fundamental rights and human dignity. This requires ongoing dialogue between technologists, policymakers, civil society, and especially young people who will be most affected by these technologies.</p>
+      
+      <p>The future of digital rights in the age of AI depends on our collective commitment to ensuring that technological progress serves human flourishing while protecting the values and rights that define our democratic societies.</p>
+    `
+  },
   'future-of-ai-regulation': {
     id: 'future-of-ai-regulation',
     title: 'The Future of AI Regulation: What the EU AI Act Means for Innovation',
