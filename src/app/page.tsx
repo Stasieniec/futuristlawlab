@@ -33,6 +33,7 @@ export default function Home() {
               <Link href="#about" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Learn about Futurist Law Lab">About</Link>
               <Link href="#mission" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Explore our mission">Our Mission</Link>
               <Link href="#activities" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Discover our events">Events</Link>
+              <Link href="/blog" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Read our blog">Blog</Link>
             </div>
             
             {/* Mobile Menu Button */}
@@ -52,6 +53,7 @@ export default function Home() {
               <Link href="#about" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Learn about Futurist Law Lab">About</Link>
               <Link href="#mission" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Explore our mission">Our Mission</Link>
               <Link href="#activities" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Discover our events">Events</Link>
+              <Link href="/blog" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Read our blog">Blog</Link>
             </div>
           </div>
         </div>
