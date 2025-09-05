@@ -530,7 +530,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
                 <Image 
-                  src="/images/team/clara.png" 
+                  src="/images/team/clara.jpeg" 
                   alt="Clara Langenbach" 
                   fill
                   className="object-cover"
@@ -549,7 +549,7 @@ export default function Home() {
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
                 <Image 
-                  src="/images/team/julia.jpg" 
+                  src="/images/team/julia.jpeg" 
                   alt="Julia Lirio" 
                   fill
                   className="object-cover"
