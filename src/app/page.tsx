@@ -34,6 +34,7 @@ export default function Home() {
               <Link href="#mission" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Explore our mission">Our Mission</Link>
               <Link href="#activities" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Discover our events">Events</Link>
               <Link href="/blog" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Read our blog articles">Blog</Link>
+              <Link href="/publications" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="View our academic publications">Publications</Link>
             </div>
             
             {/* Mobile Menu Button */}
@@ -54,6 +55,7 @@ export default function Home() {
               <Link href="#mission" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Explore our mission">Our Mission</Link>
               <Link href="#activities" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Discover our events">Events</Link>
               <Link href="/blog" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Read our blog articles">Blog</Link>
+              <Link href="/publications" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="View our academic publications">Publications</Link>
             </div>
           </div>
         </div>
@@ -690,10 +692,10 @@ export default function Home() {
                   </div>
                   
                   <Link 
-                    href="/blog/smart-contracts-legislation-impact"
+                    href="/publications/smart-contracts-legislation-impact"
                     className="inline-flex items-center text-blue-700 font-medium hover:text-blue-800 transition"
                   >
-                    Read full article
+                    Read full publication
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
@@ -709,10 +711,10 @@ export default function Home() {
                     </div>
                     <p className="text-slate-600 font-medium">Full PDF Available</p>
                     <Link 
-                      href="/blog"
+                      href="/publications"
                       className="inline-flex items-center text-blue-700 text-sm font-medium hover:text-blue-800 transition mt-3"
                     >
-                      View All Articles
+                      View All Publications
                       <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                       </svg>
@@ -767,6 +769,7 @@ export default function Home() {
                 <li><a href="#mission" className="text-slate-300 hover:text-white transition">Our Mission</a></li>
                 <li><a href="#activities" className="text-slate-300 hover:text-white transition">Events</a></li>
                 <li><Link href="/blog" className="text-slate-300 hover:text-white transition">Blog</Link></li>
+                <li><Link href="/publications" className="text-slate-300 hover:text-white transition">Publications</Link></li>
               </ul>
             </div>
             
