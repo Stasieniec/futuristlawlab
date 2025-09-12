@@ -103,13 +103,6 @@ export default function PublicationsPage() {
                       <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium capitalize">
                         {publication.category}
                       </span>
-                      <time className="text-slate-500 text-sm" dateTime={publication.publishedDate}>
-                        {new Date(publication.publishedDate).toLocaleDateString('en-US', { 
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric' 
-                        })}
-                      </time>
                     </div>
                     
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 leading-tight">
