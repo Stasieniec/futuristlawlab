@@ -26,6 +26,7 @@ export default function NotFound() {
               <Link href="/#mission" className="text-slate-800 font-medium hover:text-blue-700 transition">Our Mission</Link>
               <Link href="/#activities" className="text-slate-800 font-medium hover:text-blue-700 transition">Events</Link>
               <Link href="/blog" className="text-blue-700 font-medium hover:text-blue-800 transition">Blog</Link>
+              <Link href="/publications" className="text-slate-800 font-medium hover:text-blue-700 transition">Publications</Link>
             </div>
           </nav>
         </div>
@@ -38,13 +39,13 @@ export default function NotFound() {
             {/* 404 Icon */}
             <div className="w-32 h-32 mx-auto mb-8 bg-slate-100 rounded-full flex items-center justify-center">
               <svg className="w-16 h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
               </svg>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">Article Not Found</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">Blog Post Not Found</h1>
             <p className="text-lg text-slate-700 mb-8">
-              Sorry, we couldn&apos;t find the research article you&apos;re looking for. 
+              Sorry, we couldn&apos;t find the blog post you&apos;re looking for. 
               It might have been moved, renamed, or doesn&apos;t exist yet.
             </p>
             
@@ -54,9 +55,9 @@ export default function NotFound() {
                 className="inline-flex items-center justify-center px-6 py-3 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-md hover:shadow-lg"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                 </svg>
-                Browse All Articles
+                Browse All Posts
               </Link>
               <Link 
                 href="/"
@@ -66,15 +67,15 @@ export default function NotFound() {
               </Link>
             </div>
             
-            {/* Suggest Available Articles */}
+            {/* Suggest Available Posts */}
             <div className="mt-12 p-6 bg-slate-50 rounded-xl">
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Available Articles</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Available Posts</h3>
               <div className="space-y-3">
                 <Link 
-                  href="/blog/smart-contracts-legislation-impact"
+                  href="/blog/introducing-eu-ai-act-first-workshop"
                   className="block text-blue-700 hover:text-blue-800 font-medium transition"
                 >
-                  → Is Law the Solution? Examining Legislative Impact on Smart Contract Adoption
+                  → Introducing the EU AI Act: The First Futurist Law Lab is Here!
                 </Link>
               </div>
             </div>

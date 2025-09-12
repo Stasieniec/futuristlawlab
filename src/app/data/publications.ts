@@ -35,6 +35,24 @@ A great thank you goes to the thesis supervisor Karolina Hwija for her ongoing s
     category: 'thesis',
     tags: ['Smart Contracts', 'Blockchain', 'Legal Technology', 'UTAUT', 'Legislative Impact'],
     featured: true
+  },
+  {
+    id: '2',
+    slug: 'regulating-dark-patterns-eu-behavioural-case',
+    title: 'Regulating Dark Patterns in the EU: A Behavioural Case for Counter-Architecture',
+    author: 'Tadeáš',
+    authorBio: 'Tadeáš is a dedicated researcher focused on the intersection of technology, law, and human behavior. His work explores how digital interfaces influence user decision-making and the regulatory frameworks needed to protect consumer autonomy.',
+    authorPhoto: '/images/team/tadeas.jpeg',
+    description: `In this research, Tadeáš explored how manipulative interface designs known as dark patterns undermine user autonomy and distort online markets. By combining doctrinal legal analysis with insights from behavioural economics, the thesis examines how existing EU legislation (GDPR, UCPD, CRD, DSA) addresses these practices, and where it fails to do so effectively.
+
+While current frameworks rely heavily on transparency and consent, the findings show that this approach overlooks how digital interfaces shape user behaviour in practice. To move beyond this, the thesis introduces the concept of counter-architecture: a regulatory strategy focused on the structure of digital choice environments.
+
+The proposals include fairness-by-design obligations, choice symmetry, and concrete design requirements for digital interfaces, all feeding into current debates around the proposed Digital Fairness Act.`,
+    pdfUrl: '/articles/thesis_dark_patterns_in_eu.pdf',
+    publishedDate: '2024-07-15',
+    category: 'thesis',
+    tags: ['Dark Patterns', 'EU Regulation', 'Behavioural Economics', 'Digital Fairness', 'Consumer Protection'],
+    featured: false
   }
   // Future publications can be added here
 ];

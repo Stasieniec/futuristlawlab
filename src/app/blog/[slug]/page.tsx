@@ -2,54 +2,55 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getArticleBySlug, articles } from '../../data/articles';
-import ArticleActions from './ArticleActions';
+import { getBlogPostBySlug, blogPosts } from '../../data/blog';
+import BlogActions from './BlogActions';
 
 type Params = Promise<{ slug: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const post = getBlogPostBySlug(slug);
 
-  if (!article) {
+  if (!post) {
     return {
-      title: 'Article Not Found | Futurist Law Lab',
-      description: 'The requested article could not be found.',
+      title: 'Blog Post Not Found | Futurist Law Lab',
+      description: 'The requested blog post could not be found.',
     };
   }
 
   return {
-    title: `${article.title} | Futurist Law Lab`,
-    description: article.description.split('\n')[0].substring(0, 160) + '...',
-    keywords: article.tags,
-    authors: [{ name: article.author }],
+    title: `${post.title} | Futurist Law Lab Blog`,
+    description: post.excerpt,
+    keywords: post.tags,
+    authors: [{ name: post.author }],
     openGraph: {
-      title: article.title,
-      description: article.description.split('\n')[0].substring(0, 160) + '...',
+      title: post.title,
+      description: post.excerpt,
       type: 'article',
-      publishedTime: article.publishedDate,
-      authors: [article.author],
-      tags: article.tags,
+      publishedTime: post.publishedDate,
+      authors: [post.author],
+      tags: post.tags,
+      images: post.imageUrl ? [post.imageUrl] : undefined,
     },
   };
 }
 
 export async function generateStaticParams() {
-  return articles.map((article) => ({
-    slug: article.slug,
+  return blogPosts.map((post) => ({
+    slug: post.slug,
   }));
 }
 
-export default async function ArticlePage({ params }: { params: Params }) {
+export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const post = getBlogPostBySlug(slug);
 
-  if (!article) {
+  if (!post) {
     notFound();
   }
 
-  // Split description into paragraphs for better formatting
-  const descriptionParagraphs = article.description.split('\n\n').filter(p => p.trim());
+  // Split content into paragraphs for better formatting
+  const contentParagraphs = post.content.split('\n\n').filter(p => p.trim());
 
   return (
     <div className="min-h-screen bg-white">
@@ -76,6 +77,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
               <Link href="/#mission" className="text-slate-800 font-medium hover:text-blue-700 transition">Our Mission</Link>
               <Link href="/#activities" className="text-slate-800 font-medium hover:text-blue-700 transition">Events</Link>
               <Link href="/blog" className="text-blue-700 font-medium hover:text-blue-800 transition">Blog</Link>
+              <Link href="/publications" className="text-slate-800 font-medium hover:text-blue-700 transition">Publications</Link>
             </div>
             
             {/* Mobile Menu Button */}
@@ -102,135 +104,113 @@ export default async function ArticlePage({ params }: { params: Params }) {
             <svg className="w-4 h-4 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
             </svg>
-            <span className="text-slate-900">{article.title}</span>
+            <span className="text-slate-900">{post.title}</span>
           </div>
         </div>
       </nav>
 
       <main className="py-8 sm:py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Article Header */}
-          <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium capitalize">
-                {article.category}
-              </span>
-            </div>
-            
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-              {article.title}
-            </h1>
-            
-            {/* Author Info */}
-            <div className="bg-slate-50 rounded-xl p-6 mb-8">
-              <div className="flex items-start">
-                <div className="w-16 h-16 rounded-full bg-slate-200 flex items-center justify-center mr-4 flex-shrink-0 overflow-hidden">
-                  {article.authorPhoto ? (
-                    <Image
-                      src={article.authorPhoto}
-                      alt={article.author}
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <span className="text-slate-600 font-medium text-xl">
-                      {article.author.split(' ').map(name => name[0]).join('')}
-                    </span>
-                  )}
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">{article.author}</h3>
-                  {article.authorBio && (
-                    <p className="text-slate-700 leading-relaxed">{article.authorBio}</p>
-                  )}
+          <article className="max-w-4xl mx-auto">
+            {/* Article Header */}
+            <header className="mb-8 sm:mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium capitalize">
+                  {post.category}
+                </span>
+                <time className="text-slate-500 text-sm" dateTime={post.publishedDate}>
+                  {new Date(post.publishedDate).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </time>
+              </div>
+              
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                {post.title}
+              </h1>
+              
+              {/* Author Info */}
+              <div className="bg-slate-50 rounded-xl p-6 mb-8">
+                <div className="flex items-start">
+                  <div className="w-16 h-16 rounded-full bg-slate-200 flex items-center justify-center mr-4 flex-shrink-0 overflow-hidden">
+                    {post.authorPhoto ? (
+                      <Image
+                        src={post.authorPhoto}
+                        alt={post.author}
+                        width={64}
+                        height={64}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-slate-600 font-medium text-xl">
+                        {post.author.split(' ').map(name => name[0]).join('')}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-slate-900 mb-2">{post.author}</h3>
+                    {post.authorBio && (
+                      <p className="text-slate-700 leading-relaxed">{post.authorBio}</p>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {article.tags.map((tag) => (
-                <span key={tag} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm">
-                  {tag}
-                </span>
+              
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {post.tags.map((tag) => (
+                  <span key={tag} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </header>
+
+            {/* Featured Image */}
+            {post.imageUrl && (
+              <div className="mb-8 sm:mb-12">
+                <div className="relative w-full h-64 sm:h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-lg">
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Article Content */}
+            <div className="prose prose-lg prose-slate max-w-none">
+              {contentParagraphs.map((paragraph, index) => (
+                <p key={index} className="text-slate-700 mb-6 leading-relaxed text-lg">
+                  {paragraph}
+                </p>
               ))}
             </div>
-          </div>
-
-          <div className="max-w-6xl mx-auto">
-            <div className="lg:grid lg:grid-cols-2 lg:gap-12 space-y-8 lg:space-y-0">
-              {/* Article Content */}
-              <div className="lg:order-2">
-                <div className="prose prose-lg prose-slate max-w-none">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-6">Description</h2>
-                  {descriptionParagraphs.map((paragraph, index) => (
-                    <p key={index} className="text-slate-700 mb-4 leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+            
+            {/* Navigation and Sharing */}
+            <footer className="mt-12 pt-8 border-t border-slate-200">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <Link 
+                  href="/blog"
+                  className="inline-flex items-center text-slate-600 hover:text-blue-700 transition"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                  </svg>
+                  Back to Blog
+                </Link>
                 
-                {/* Download Button */}
-                <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-200">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-lg font-semibold text-slate-900 mb-2">Full Article</h3>
-                      <p className="text-slate-600">Download the complete thesis as PDF</p>
-                    </div>
-                    <a
-                      href={article.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center bg-blue-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-800 transition-all duration-200 shadow-md hover:shadow-lg"
-                    >
-                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                      </svg>
-                      Download PDF
-                    </a>
-                  </div>
-                </div>
+                <BlogActions 
+                  title={post.title}
+                  excerpt={post.excerpt}
+                />
               </div>
-
-              {/* PDF Viewer */}
-              <div className="lg:order-1">
-                <div className="sticky top-24">
-                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Preview</h3>
-                  <div className="bg-slate-100 rounded-xl overflow-hidden shadow-sm">
-                    <iframe
-                      src={`${article.pdfUrl}#view=FitH`}
-                      className="w-full h-96 sm:h-[600px] lg:h-[700px]"
-                      title={`Preview of ${article.title}`}
-                    />
-                  </div>
-                  <p className="text-sm text-slate-600 mt-3 text-center">
-                    PDF preview • <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-800">Open in new tab</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="max-w-4xl mx-auto mt-12 pt-8 border-t border-slate-200">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <Link 
-                href="/blog"
-                className="inline-flex items-center text-slate-600 hover:text-blue-700 transition"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-                Back to Blog
-              </Link>
-              
-              <ArticleActions 
-                title={article.title}
-                description={article.description.split('\n')[0]}
-              />
-            </div>
-          </div>
+            </footer>
+          </article>
         </div>
       </main>
 
@@ -264,6 +244,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
                 <li><Link href="/#mission" className="text-slate-300 hover:text-white transition">Our Mission</Link></li>
                 <li><Link href="/#activities" className="text-slate-300 hover:text-white transition">Events</Link></li>
                 <li><Link href="/blog" className="text-slate-300 hover:text-white transition">Blog</Link></li>
+                <li><Link href="/publications" className="text-slate-300 hover:text-white transition">Publications</Link></li>
               </ul>
             </div>
             

@@ -10,8 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const featuredPosts = blogPosts.filter(post => post.featured);
-  const otherPosts = blogPosts.filter(post => !post.featured);
+  const allPosts = blogPosts;
 
   return (
     <div className="min-h-screen bg-white">
@@ -86,71 +85,75 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Blog Content */}
-      {blogPosts.length === 0 ? (
-        <section className="py-16 sm:py-20 lg:py-24">
+      {/* All Posts */}
+      {allPosts.length > 0 && (
+        <section className="py-12 sm:py-16 lg:py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="w-24 h-24 mx-auto mb-8 bg-slate-100 rounded-full flex items-center justify-center">
-                <svg className="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                </svg>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Coming Soon</h2>
-              <p className="text-slate-700 mb-8 leading-relaxed">
-                Our team is preparing to share their personal thoughts and experiences. 
-                Stay tuned for informal insights, reflections, and behind-the-scenes stories 
-                from our journey exploring law and technology.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/publications"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-md hover:shadow-lg"
-                >
-                  View Publications
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </Link>
-                <Link 
-                  href="/#team"
-                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-900 text-slate-900 font-medium rounded-lg hover:bg-slate-900 hover:text-white transition-all duration-200"
-                >
-                  Meet Our Team
-                </Link>
-              </div>
+            <div className="mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">All Posts</h2>
+              <p className="text-slate-700">Browse all thoughts and reflections from our team</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {allPosts.map((post) => (
+                <article key={post.id} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 group">
+                  {post.imageUrl && (
+                    <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+                      <Image
+                        src={post.imageUrl}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                  
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium capitalize">
+                      {post.category}
+                    </span>
+                    <time className="text-slate-500 text-sm" dateTime={post.publishedDate}>
+                      {new Date(post.publishedDate).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short'
+                      })}
+                    </time>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight group-hover:text-blue-700 transition">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  
+                  <p className="text-slate-600 font-medium mb-3">{post.author}</p>
+                  
+                  <p className="text-slate-700 mb-4 leading-relaxed line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {post.tags.slice(0, 2).map((tag) => (
+                      <span key={tag} className="bg-slate-100 text-slate-700 px-2 py-1 rounded text-sm">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <Link 
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-blue-700 font-medium hover:text-blue-800 transition text-sm"
+                  >
+                    Read More
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                  </Link>
+                </article>
+              ))}
             </div>
           </div>
         </section>
-      ) : (
-        // This section will be used when blog posts are added
-        <div>
-          {/* Featured Posts */}
-          {featuredPosts.length > 0 && (
-            <section className="py-12 sm:py-16 lg:py-20">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Featured Posts</h2>
-                  <p className="text-slate-700">Personal highlights from our team members</p>
-                </div>
-                {/* Featured posts grid will go here */}
-              </div>
-            </section>
-          )}
-
-          {/* All Posts */}
-          {otherPosts.length > 0 && (
-            <section className="py-12 sm:py-16 lg:py-20 bg-slate-50">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">All Posts</h2>
-                  <p className="text-slate-700">Browse all thoughts and reflections from our team</p>
-                </div>
-                {/* All posts grid will go here */}
-              </div>
-            </section>
-          )}
-        </div>
       )}
 
       {/* Footer */}
