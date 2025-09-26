@@ -625,6 +625,25 @@ export default function Home() {
               </div>
             </div>
             
+            {/* Member Card 11 - Hanna Schmidt */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
+                <Image 
+                  src="/images/team/hanna.jpeg" 
+                  alt="Hanna Schmidt" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Hanna Schmidt</h3>
+                <p className="text-blue-700 font-medium mb-3">Legal Team</p>
+                <p className="text-slate-600">
+                  Law major at PPLE College at the University of Amsterdam, graduating in 2027. I am especially interested in the intersection between Law and Economics and the role technology can play in this field. Outside of academics, I enjoy running, cooking and exploring new cafes around Amsterdam.
+                </p>
+              </div>
+            </div>
+            
 
           </div>
           
