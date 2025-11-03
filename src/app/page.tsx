@@ -33,6 +33,7 @@ export default function Home() {
               <Link href="#about" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Learn about Futurist Law Lab">About</Link>
               <Link href="#mission" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Explore our mission">Our Mission</Link>
               <Link href="#activities" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Discover our events">Events</Link>
+              <Link href="/hackathon" className="text-blue-700 font-bold hover:text-blue-800 transition" aria-label="Join our Legal Hackathon">Hackathon</Link>
               <Link href="/blog" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="Read our blog articles">Blog</Link>
               <Link href="/publications" className="text-slate-800 font-medium hover:text-blue-700 transition" aria-label="View our academic publications">Publications</Link>
             </div>
@@ -54,6 +55,7 @@ export default function Home() {
               <Link href="#about" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Learn about Futurist Law Lab">About</Link>
               <Link href="#mission" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Explore our mission">Our Mission</Link>
               <Link href="#activities" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Discover our events">Events</Link>
+              <Link href="/hackathon" className="text-blue-700 font-bold hover:text-blue-800 transition py-2" aria-label="Join our Legal Hackathon">Hackathon</Link>
               <Link href="/blog" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="Read our blog articles">Blog</Link>
               <Link href="/publications" className="text-slate-800 hover:text-blue-700 transition py-2" aria-label="View our academic publications">Publications</Link>
             </div>
@@ -108,6 +110,16 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link 
+                  href="/hackathon" 
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  aria-label="Join our Legal Hackathon"
+                >
+                  <span>Join Our Hackathon</span>
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </Link>
                 <Link 
                   href="#mission" 
                   className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -282,6 +294,56 @@ export default function Home() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Hackathon Event Card */}
+          <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group border-2 border-blue-700">
+            <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center">
+              <div className="text-center p-6">
+                <div className="w-20 h-20 mx-auto mb-4 bg-blue-700 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <p className="text-blue-700 font-bold text-lg">Legal Hackathon</p>
+              </div>
+              <div className="absolute top-3 right-3 bg-blue-700 text-white px-2 py-1 rounded-full text-xs font-medium">
+                Upcoming
+              </div>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900">Legal Hackathon: Optimising the Law</h3>
+            <p className="text-sm sm:text-base text-slate-700 mb-3 sm:mb-4 leading-relaxed">
+              Join us for an exciting hackathon where legal innovation meets creative problem-solving. Together, we&apos;ll explore innovative approaches to optimize legal frameworks for the modern age.
+            </p>
+            <div className="flex items-center text-sm text-blue-700 font-medium mb-4">
+              <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Roeterseiland Campus, Amsterdam
+            </div>
+            <div className="flex gap-2">
+              <Link 
+                href="/hackathon" 
+                className="flex-1 inline-flex items-center justify-center px-4 py-2 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition text-sm"
+              >
+                Learn More
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </Link>
+              <a 
+                href="https://luma.com/4n3xt9mz" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center px-4 py-2 border-2 border-blue-700 text-blue-700 font-medium rounded-lg hover:bg-blue-700 hover:text-white transition text-sm"
+              >
+                Register
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
           <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group">
             <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm">
               <Image 
@@ -787,6 +849,7 @@ export default function Home() {
                 <li><a href="#about" className="text-slate-300 hover:text-white transition">About Us</a></li>
                 <li><a href="#mission" className="text-slate-300 hover:text-white transition">Our Mission</a></li>
                 <li><a href="#activities" className="text-slate-300 hover:text-white transition">Events</a></li>
+                <li><Link href="/hackathon" className="text-blue-400 hover:text-blue-300 transition font-medium">Hackathon</Link></li>
                 <li><Link href="/blog" className="text-slate-300 hover:text-white transition">Blog</Link></li>
                 <li><Link href="/publications" className="text-slate-300 hover:text-white transition">Publications</Link></li>
               </ul>
