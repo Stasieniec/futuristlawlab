@@ -87,6 +87,37 @@ export default function HackathonPage() {
         </div>
       </section>
 
+      {/* Registration Section */}
+      <section className="py-16 bg-white border-b border-slate-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center mb-8">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Register Now</h2>
+            <p className="text-lg text-slate-600 mb-6">
+              Secure your spot at the Legal Hackathon. Registration fee: €5
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
+              <iframe
+                src="https://lu.ma/embed-checkout/evt-r4TxGwJAe7gV9o8"
+                width="100%"
+                height="600"
+                frameBorder="0"
+                style={{ border: '1px solid #bfcbda88', borderRadius: '12px' }}
+                allowFullScreen
+                aria-hidden="false"
+                tabIndex={0}
+              ></iframe>
+            </div>
+            
+            <p className="text-center text-sm text-slate-500 mt-4">
+              Having trouble? <a href="https://luma.com/4n3xt9mz" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-800 font-medium">Open registration in new tab</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Event Details Section */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
