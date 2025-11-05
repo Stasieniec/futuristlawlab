@@ -87,39 +87,39 @@ export default function HackathonPage() {
         </div>
       </section>
 
-      {/* Registration Section */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      {/* Registration CTA Section */}
+      <section className="py-12 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Register Now</h2>
-            <p className="text-lg text-slate-600 mb-6">
-              Secure your spot at the Legal Hackathon. Registration fee: €5
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Secure Your Spot</h2>
+            <p className="text-xl mb-6 text-blue-100">
+              Registration fee: €5 • Limited spots available
             </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
-              <iframe
-                src="https://lu.ma/embed/event/evt-r4TxGwJAe7gV9o8"
-                width="100%"
-                height="700"
-                frameBorder="0"
-                style={{ border: '1px solid #bfcbda88', borderRadius: '12px' }}
-                allowFullScreen
-                aria-hidden="false"
-                tabIndex={0}
-              ></iframe>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="https://luma.com/4n3xt9mz" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold rounded-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg"
+              >
+                <span>Register Now</span>
+                <svg className="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </a>
+              <Link 
+                href="#details" 
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-blue-700 transition-all duration-200"
+              >
+                Learn More
+              </Link>
             </div>
-            
-            <p className="text-center text-sm text-slate-500 mt-4">
-              Having trouble? <a href="https://luma.com/4n3xt9mz" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-800 font-medium">Open registration in new tab</a>
-            </p>
           </div>
         </div>
       </section>
 
       {/* Event Details Section */}
-      <section className="py-16 bg-slate-50">
+      <section id="details" className="py-16 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-16">
