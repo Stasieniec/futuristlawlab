@@ -99,9 +99,9 @@ export default function HackathonPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">Date & Time</h3>
-                <p className="text-slate-600">Coming Soon</p>
-                <p className="text-sm text-slate-500 mt-1">Stay tuned for updates</p>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Date</h3>
+                <p className="text-slate-600">November 28, 2025</p>
+                <p className="text-sm text-slate-500 mt-1">Full schedule coming soon</p>
               </div>
 
               {/* Location Card */}
@@ -233,6 +233,85 @@ export default function HackathonPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <p className="text-slate-700"><strong>Anyone</strong> interested in the intersection of law, technology, and society</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Important Documents Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Important Documents</h2>
+              <p className="text-slate-600">Please review these documents before registering</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <Link 
+                href="/hackathon/terms"
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-blue-700"
+              >
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Terms &amp; Conditions</h3>
+                    <p className="text-slate-600 mb-3">
+                      Review the terms of participation, including eligibility, intellectual property rights, registration fees, and event policies.
+                    </p>
+                    <span className="inline-flex items-center text-blue-700 font-medium">
+                      Read Terms
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+
+              <Link 
+                href="/hackathon/code-of-conduct"
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-blue-700"
+              >
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Code of Conduct</h3>
+                    <p className="text-slate-600 mb-3">
+                      Learn about our commitment to creating a safe, inclusive, and respectful environment for all participants.
+                    </p>
+                    <span className="inline-flex items-center text-blue-700 font-medium">
+                      Read Code of Conduct
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            <div className="mt-6 bg-amber-50 border-l-4 border-amber-500 p-4 rounded">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <svg className="h-5 w-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <p className="text-sm text-amber-800">
+                    By registering for the hackathon, you agree to abide by our Terms &amp; Conditions and Code of Conduct. Registration fee: €5.
+                  </p>
                 </div>
               </div>
             </div>
