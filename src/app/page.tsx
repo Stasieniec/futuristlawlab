@@ -327,7 +327,7 @@ export default function Home() {
                 </svg>
               </Link>
               <a 
-                href="https://luma.com/4n3xt9mz" 
+                href="https://luma.com/nx4442y5" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center px-4 py-2 border-2 border-blue-700 text-blue-700 font-medium rounded-lg hover:bg-blue-700 hover:text-white transition text-sm"

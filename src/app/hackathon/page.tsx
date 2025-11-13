@@ -66,7 +66,7 @@ export default function HackathonPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <a 
-                href="https://luma.com/4n3xt9mz" 
+                href="https://luma.com/nx4442y5" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -97,7 +97,7 @@ export default function HackathonPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="https://luma.com/4n3xt9mz" 
+                href="https://luma.com/nx4442y5" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold rounded-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg"
@@ -358,7 +358,7 @@ export default function HackathonPage() {
             Don&apos;t miss this opportunity to be part of shaping the future of law. Register now to secure your spot!
           </p>
           <a 
-            href="https://luma.com/4n3xt9mz" 
+            href="https://luma.com/nx4442y5" 
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-medium rounded-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
