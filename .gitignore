@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# local documentation with sensitive info
+LOCAL_FIREBASE_CONFIG.md
+
 # vercel
 .vercel
 
