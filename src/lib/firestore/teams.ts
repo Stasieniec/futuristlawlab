@@ -62,7 +62,7 @@ export async function getTeamById(teamId: string): Promise<Team | null> {
         ...data,
         createdAt: data.createdAt?.toDate() || new Date(),
         updatedAt: data.updatedAt?.toDate() || new Date(),
-        members: data.members?.map((member: any) => ({
+        members: data.members?.map((member: TeamMember & { addedAt?: Date | { toDate: () => Date } }) => ({
           ...member,
           addedAt: member.addedAt instanceof Date ? member.addedAt : new Date(),
         })) || [],
@@ -95,7 +95,7 @@ export async function getTeamByEmail(email: string): Promise<Team | null> {
         ...data,
         createdAt: data.createdAt?.toDate() || new Date(),
         updatedAt: data.updatedAt?.toDate() || new Date(),
-        members: data.members?.map((member: any) => ({
+        members: data.members?.map((member: TeamMember & { addedAt?: Date | { toDate: () => Date } }) => ({
           ...member,
           addedAt: member.addedAt instanceof Date ? member.addedAt : new Date(),
         })) || [],
@@ -124,7 +124,7 @@ export async function getAllTeams(): Promise<Team[]> {
         ...data,
         createdAt: data.createdAt?.toDate() || new Date(),
         updatedAt: data.updatedAt?.toDate() || new Date(),
-        members: data.members?.map((member: any) => ({
+        members: data.members?.map((member: TeamMember & { addedAt?: Date | { toDate: () => Date } }) => ({
           ...member,
           addedAt: member.addedAt instanceof Date ? member.addedAt : new Date(),
         })) || [],

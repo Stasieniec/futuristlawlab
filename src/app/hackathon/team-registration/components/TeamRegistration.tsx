@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getTeamByEmail } from '@/lib/firestore/teams';
 import type { Team } from '@/types/team';
 import TeamForm from './TeamForm';
@@ -13,16 +13,7 @@ export default function TeamRegistration() {
   const [error, setError] = useState<string>('');
   const [step, setStep] = useState<'email' | 'create' | 'view'>('email');
 
-  // Load email from localStorage on mount
-  useEffect(() => {
-    const savedEmail = localStorage.getItem('hackathon_user_email');
-    if (savedEmail) {
-      setEmail(savedEmail);
-      handleEmailSubmit(savedEmail);
-    }
-  }, []);
-
-  const handleEmailSubmit = async (emailToCheck?: string) => {
+  const handleEmailSubmit = useCallback(async (emailToCheck?: string) => {
     const emailValue = emailToCheck || email;
     if (!emailValue || !emailValue.includes('@')) {
       setError('Please enter a valid email address');
@@ -50,7 +41,16 @@ export default function TeamRegistration() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [email]);
+
+  // Load email from localStorage on mount
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('hackathon_user_email');
+    if (savedEmail) {
+      setEmail(savedEmail);
+      handleEmailSubmit(savedEmail);
+    }
+  }, [handleEmailSubmit]);
 
   const handleTeamCreated = (newTeam: Team) => {
     setTeam(newTeam);

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { addTeamMember, removeTeamMember } from '@/lib/firestore/teams';
-import type { Team, TeamMember } from '@/types/team';
+import type { Team } from '@/types/team';
 
 interface MemberListProps {
   team: Team;
@@ -85,7 +85,7 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
 
       {/* Current Members */}
       <div className="space-y-3 mb-6">
-        {team.members.map((member, index) => (
+        {team.members.map((member) => (
           <div
             key={member.id}
             className="flex items-center justify-between p-4 bg-slate-50 rounded-lg border-2 border-slate-200 hover:border-blue-300 transition"
