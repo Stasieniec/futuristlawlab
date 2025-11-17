@@ -118,7 +118,7 @@ export default function TeamRegistration() {
           <button
             onClick={() => handleEmailSubmit()}
             disabled={loading || !email}
-            className="w-full px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer"
           >
             {loading ? (
               <span className="flex items-center justify-center">
@@ -165,8 +165,11 @@ export default function TeamRegistration() {
           </div>
           <button
             onClick={handleReset}
-            className="text-blue-700 hover:text-blue-800 text-sm font-medium"
+            className="inline-flex items-center px-4 py-2 border-2 border-blue-700 text-blue-700 font-medium text-sm rounded-lg hover:bg-blue-700 hover:text-white transition-all duration-200 cursor-pointer"
           >
+            <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+            </svg>
             Change Email
           </button>
         </div>
@@ -186,8 +189,11 @@ export default function TeamRegistration() {
           </div>
           <button
             onClick={handleReset}
-            className="text-blue-700 hover:text-blue-800 text-sm font-medium"
+            className="inline-flex items-center px-4 py-2 border-2 border-blue-700 text-blue-700 font-medium text-sm rounded-lg hover:bg-blue-700 hover:text-white transition-all duration-200 cursor-pointer"
           >
+            <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            </svg>
             Sign Out
           </button>
         </div>
