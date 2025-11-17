@@ -15,8 +15,8 @@ service cloud.firestore {
       allow update: if resource.data.locked == false
                     || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['locked', 'updatedAt']));
 
-      // No deletes from client
-      allow delete: if false;
+      // Allow deletes (admin panel is password-protected)
+      allow delete: if true;
     }
 
     // Config collection (admin only - no client access)
