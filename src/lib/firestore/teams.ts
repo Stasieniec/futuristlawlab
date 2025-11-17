@@ -77,27 +77,25 @@ export async function getTeamById(teamId: string): Promise<Team | null> {
 }
 
 /**
- * Get team by creator email
+ * Get team by user email (checks both creator and member)
  */
 export async function getTeamByEmail(email: string): Promise<Team | null> {
   try {
-    console.log('[DEBUG] getTeamByEmail called with:', email);
-    console.log('[DEBUG] db instance:', db);
-    console.log('[DEBUG] TEAMS_COLLECTION:', TEAMS_COLLECTION);
+    const normalizedEmail = email.toLowerCase().trim();
+    console.log('[DEBUG] getTeamByEmail called with:', normalizedEmail);
 
-    const q = query(
+    // First, check if user is the team creator
+    const creatorQuery = query(
       collection(db!, TEAMS_COLLECTION),
-      where('createdBy', '==', email.toLowerCase().trim())
+      where('createdBy', '==', normalizedEmail)
     );
-    console.log('[DEBUG] Query created, fetching docs...');
 
-    const querySnapshot = await getDocs(q);
-    console.log('[DEBUG] Query completed, empty:', querySnapshot.empty);
+    const creatorSnapshot = await getDocs(creatorQuery);
 
-    if (!querySnapshot.empty) {
-      const docSnap = querySnapshot.docs[0];
+    if (!creatorSnapshot.empty) {
+      const docSnap = creatorSnapshot.docs[0];
       const data = docSnap.data();
-      console.log('[DEBUG] Team found:', docSnap.id);
+      console.log('[DEBUG] Team found (user is creator):', docSnap.id);
       return {
         id: docSnap.id,
         ...data,
@@ -108,6 +106,21 @@ export async function getTeamByEmail(email: string): Promise<Team | null> {
           addedAt: member.addedAt instanceof Date ? member.addedAt : new Date(),
         })) || [],
       } as Team;
+    }
+
+    // If not creator, check if user is a member of any team
+    console.log('[DEBUG] Not creator, checking if user is a member...');
+    const allTeams = await getAllTeams();
+
+    for (const team of allTeams) {
+      const isMember = team.members.some(
+        (member) => member.email.toLowerCase().trim() === normalizedEmail
+      );
+
+      if (isMember) {
+        console.log('[DEBUG] Team found (user is member):', team.id);
+        return team;
+      }
     }
 
     console.log('[DEBUG] No team found for email');
