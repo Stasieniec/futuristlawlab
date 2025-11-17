@@ -64,7 +64,7 @@ export default function TermsPage() {
       {/* Content Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto prose prose-slate prose-lg">
+          <div className="max-w-4xl mx-auto prose prose-slate prose-lg [&_p]:text-slate-900 [&_li]:text-slate-900 [&_strong]:text-slate-900">
             
             <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">1. Scope and Acceptance</h2>
             <p>
@@ -167,7 +167,7 @@ export default function TermsPage() {
             </p>
 
             <div className="bg-blue-50 border-l-4 border-blue-700 p-6 my-8">
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-900">
                 <strong>Note:</strong> By registering for and participating in the Legal Hackathon: Optimising the Law, 
                 you acknowledge that you have read, understood, and agree to these Terms &amp; Conditions and the 
                 <Link href="/hackathon/code-of-conduct" className="text-blue-700 hover:text-blue-800 font-medium"> Code of Conduct</Link>.

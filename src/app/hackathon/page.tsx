@@ -63,32 +63,12 @@ export default function HackathonPage() {
             <p className="text-xl text-slate-700 mb-10 leading-relaxed max-w-3xl mx-auto">
               Join us for an exciting hackathon where legal innovation meets creative problem-solving. Together, we&apos;ll explore innovative approaches to optimize legal frameworks for the modern age.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <a 
-                href="https://luma.com/nx4442y5" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                <span>Register Now</span>
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </a>
-              <Link 
-                href="/#activities" 
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-slate-900 text-slate-900 font-medium rounded-lg hover:bg-slate-900 hover:text-white transition-all duration-200 transform hover:-translate-y-0.5"
-              >
-                View All Events
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Registration CTA Section */}
-      <section className="py-12 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
+      <section className="py-16 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Secure Your Spot</h2>

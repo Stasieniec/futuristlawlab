@@ -64,7 +64,7 @@ export default function CodeOfConductPage() {
       {/* Content Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto prose prose-slate prose-lg">
+          <div className="max-w-4xl mx-auto prose prose-slate prose-lg [&_p]:text-slate-900 [&_li]:text-slate-900 [&_strong]:text-slate-900">
             
             <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">1. Purpose</h2>
             <p>

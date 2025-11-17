@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Teams collection
+    match /teams/{teamId} {
+      // Anyone can read teams (for public view)
+      allow read: if true;
+
+      // Anyone can create a team
+      allow create: if true;
+
+      // Allow updates if:
+      // 1. Team is not locked (normal user edits), OR
+      // 2. Only the 'locked' field is being changed (admin toggling lock)
+      allow update: if resource.data.locked == false
+                    || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['locked', 'updatedAt']));
+
+      // No deletes from client
+      allow delete: if false;
+    }
+
+    // Config collection (admin only - no client access)
+    match /config/{document=**} {
+      allow read: if true;
+      allow write: if false; // Admin SDK only
+    }
+  }
+}
