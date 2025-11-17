@@ -13,17 +13,25 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase app (singleton pattern to prevent multiple initializations)
-let app: FirebaseApp | undefined;
-let db: Firestore | undefined;
-
-if (typeof window !== 'undefined') {
-  // Client-side initialization
+function initializeFirebase(): FirebaseApp {
   if (!getApps().length) {
-    app = initializeApp(firebaseConfig);
-  } else {
-    app = getApps()[0];
+    return initializeApp(firebaseConfig);
   }
-  db = getFirestore(app);
+  return getApps()[0];
 }
 
-export { db };
+// Get Firestore instance
+function getFirestoreDb(): Firestore {
+  const app = initializeFirebase();
+  return getFirestore(app);
+}
+
+// Export a getter function that initializes on first use
+let dbInstance: Firestore | null = null;
+
+export const db = typeof window !== 'undefined' ? (() => {
+  if (!dbInstance) {
+    dbInstance = getFirestoreDb();
+  }
+  return dbInstance;
+})() : (null as unknown as Firestore);

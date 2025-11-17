@@ -81,15 +81,23 @@ export async function getTeamById(teamId: string): Promise<Team | null> {
  */
 export async function getTeamByEmail(email: string): Promise<Team | null> {
   try {
+    console.log('[DEBUG] getTeamByEmail called with:', email);
+    console.log('[DEBUG] db instance:', db);
+    console.log('[DEBUG] TEAMS_COLLECTION:', TEAMS_COLLECTION);
+
     const q = query(
       collection(db!, TEAMS_COLLECTION),
       where('createdBy', '==', email.toLowerCase().trim())
     );
+    console.log('[DEBUG] Query created, fetching docs...');
+
     const querySnapshot = await getDocs(q);
+    console.log('[DEBUG] Query completed, empty:', querySnapshot.empty);
 
     if (!querySnapshot.empty) {
       const docSnap = querySnapshot.docs[0];
       const data = docSnap.data();
+      console.log('[DEBUG] Team found:', docSnap.id);
       return {
         id: docSnap.id,
         ...data,
@@ -102,9 +110,11 @@ export async function getTeamByEmail(email: string): Promise<Team | null> {
       } as Team;
     }
 
+    console.log('[DEBUG] No team found for email');
     return null;
   } catch (error) {
-    console.error('Error getting team by email:', error);
+    console.error('[ERROR] Error getting team by email:', error);
+    console.error('[ERROR] Error details:', JSON.stringify(error, null, 2));
     throw new Error('Failed to fetch team data.');
   }
 }
