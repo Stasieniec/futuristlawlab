@@ -13,8 +13,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase app (singleton pattern to prevent multiple initializations)
-let app: FirebaseApp;
-let db: Firestore;
+let app: FirebaseApp | undefined;
+let db: Firestore | undefined;
 
 if (typeof window !== 'undefined') {
   // Client-side initialization
@@ -27,4 +27,3 @@ if (typeof window !== 'undefined') {
 }
 
 export { db };
-export default app;
