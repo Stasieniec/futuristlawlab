@@ -39,7 +39,7 @@ export async function createTeam(formData: CreateTeamFormData): Promise<string> 
       updatedAt: serverTimestamp(),
     };
 
-    const docRef = await addDoc(collection(db, TEAMS_COLLECTION), teamData);
+    const docRef = await addDoc(collection(db!, TEAMS_COLLECTION), teamData);
     return docRef.id;
   } catch (error) {
     console.error('Error creating team:', error);
@@ -52,7 +52,7 @@ export async function createTeam(formData: CreateTeamFormData): Promise<string> 
  */
 export async function getTeamById(teamId: string): Promise<Team | null> {
   try {
-    const docRef = doc(db, TEAMS_COLLECTION, teamId);
+    const docRef = doc(db!, TEAMS_COLLECTION, teamId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -82,7 +82,7 @@ export async function getTeamById(teamId: string): Promise<Team | null> {
 export async function getTeamByEmail(email: string): Promise<Team | null> {
   try {
     const q = query(
-      collection(db, TEAMS_COLLECTION),
+      collection(db!, TEAMS_COLLECTION),
       where('createdBy', '==', email.toLowerCase().trim())
     );
     const querySnapshot = await getDocs(q);
@@ -114,7 +114,7 @@ export async function getTeamByEmail(email: string): Promise<Team | null> {
  */
 export async function getAllTeams(): Promise<Team[]> {
   try {
-    const q = query(collection(db, TEAMS_COLLECTION), orderBy('createdAt', 'desc'));
+    const q = query(collection(db!, TEAMS_COLLECTION), orderBy('createdAt', 'desc'));
     const querySnapshot = await getDocs(q);
 
     return querySnapshot.docs.map((docSnap) => {
@@ -141,7 +141,7 @@ export async function getAllTeams(): Promise<Team[]> {
  */
 export async function updateTeamName(teamId: string, newName: string): Promise<void> {
   try {
-    const docRef = doc(db, TEAMS_COLLECTION, teamId);
+    const docRef = doc(db!, TEAMS_COLLECTION, teamId);
     await updateDoc(docRef, {
       teamName: newName.trim(),
       updatedAt: serverTimestamp(),
@@ -175,7 +175,7 @@ export async function addTeamMember(
       addedAt: new Date(),
     };
 
-    const docRef = doc(db, TEAMS_COLLECTION, teamId);
+    const docRef = doc(db!, TEAMS_COLLECTION, teamId);
     await updateDoc(docRef, {
       members: [...team.members, newMember],
       updatedAt: serverTimestamp(),
@@ -196,7 +196,7 @@ export async function removeTeamMember(teamId: string, memberId: string): Promis
 
     const updatedMembers = team.members.filter((m) => m.id !== memberId);
 
-    const docRef = doc(db, TEAMS_COLLECTION, teamId);
+    const docRef = doc(db!, TEAMS_COLLECTION, teamId);
     await updateDoc(docRef, {
       members: updatedMembers,
       updatedAt: serverTimestamp(),
@@ -212,7 +212,7 @@ export async function removeTeamMember(teamId: string, memberId: string): Promis
  */
 export async function toggleTeamLock(teamId: string, locked: boolean): Promise<void> {
   try {
-    const docRef = doc(db, TEAMS_COLLECTION, teamId);
+    const docRef = doc(db!, TEAMS_COLLECTION, teamId);
     await updateDoc(docRef, {
       locked,
       updatedAt: serverTimestamp(),
@@ -228,7 +228,7 @@ export async function toggleTeamLock(teamId: string, locked: boolean): Promise<v
  */
 export async function deleteTeam(teamId: string): Promise<void> {
   try {
-    const docRef = doc(db, TEAMS_COLLECTION, teamId);
+    const docRef = doc(db!, TEAMS_COLLECTION, teamId);
     await deleteDoc(docRef);
   } catch (error) {
     console.error('Error deleting team:', error);
