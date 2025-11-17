@@ -22,7 +22,12 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
       return;
     }
 
-    if (newMember.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newMember.email)) {
+    if (!newMember.email.trim()) {
+      setError('Member email is required');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newMember.email)) {
       setError('Invalid email format');
       return;
     }
@@ -149,7 +154,7 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
 
                 <div>
                   <label className="block text-sm text-slate-900 font-medium mb-1">
-                    Email (optional)
+                    Email <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -158,6 +163,7 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
                     placeholder="email@example.com"
                     className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-700 transition text-slate-900"
                     disabled={loading}
+                    required
                   />
                 </div>
               </div>

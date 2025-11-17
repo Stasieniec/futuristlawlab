@@ -58,18 +58,20 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
       return false;
     }
 
-    // Validate all members have names
+    // Validate all members have names and emails
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     for (let i = 0; i < members.length; i++) {
-      if (members[i].email && !members[i].name.trim()) {
+      if (!members[i].name.trim()) {
         setError(`Member ${i + 1} name is required`);
         return false;
       }
-    }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    for (let i = 0; i < members.length; i++) {
-      if (members[i].email && !emailRegex.test(members[i].email)) {
+      if (!members[i].email.trim()) {
+        setError(`Member ${i + 1} email is required`);
+        return false;
+      }
+
+      if (!emailRegex.test(members[i].email)) {
         setError(`Invalid email format for member ${i + 1}`);
         return false;
       }
@@ -213,7 +215,7 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
                   </div>
                   <div>
                     <label className="block text-sm text-slate-900 font-medium mb-1">
-                      Email {index === 0 && <span className="text-red-500">*</span>}
+                      Email <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -222,7 +224,7 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
                       placeholder="email@example.com"
                       className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-blue-700 transition text-slate-900"
                       disabled={loading || index === 0}
-                      required={index === 0}
+                      required
                     />
                   </div>
                 </div>
