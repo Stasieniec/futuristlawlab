@@ -445,18 +445,7 @@ export default function HackathonPage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
-                <div className="relative w-full h-24">
-                  <Image
-                    src="/hackathon/IMG_2974-removebg-preview.png"
-                    alt="Partner"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+              <div className="bg-slate-700 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-600">
                 <div className="relative w-full h-24">
                   <Image
                     src="/hackathon/IMG_2978-removebg-preview.png"
@@ -467,7 +456,7 @@ export default function HackathonPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+              <div className="bg-slate-700 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-600">
                 <div className="relative w-full h-24">
                   <Image
                     src="/hackathon/IMG_3007-removebg-preview.png"
@@ -478,7 +467,7 @@ export default function HackathonPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+              <div className="bg-slate-700 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-600">
                 <div className="relative w-full h-24">
                   <Image
                     src="/hackathon/logowhite_lovable.svg"
@@ -489,7 +478,7 @@ export default function HackathonPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+              <div className="bg-slate-700 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-600">
                 <div className="relative w-full h-24">
                   <Image
                     src="/hackathon/WhatsApp_Image_2025-11-17_at_15.37.49-removebg-preview.png"
@@ -500,7 +489,7 @@ export default function HackathonPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+              <div className="bg-slate-700 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-600">
                 <div className="relative w-full h-24">
                   <Image
                     src="/hackathon/momen-logo.svg"
@@ -511,7 +500,7 @@ export default function HackathonPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+              <div className="bg-slate-700 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-600">
                 <div className="relative w-full h-24">
                   <Image
                     src="/hackathon/WhatsApp Image 2025-11-18 at 13.50.29 (2).jpeg"
@@ -522,7 +511,7 @@ export default function HackathonPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+              <div className="bg-slate-700 rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-600">
                 <div className="relative w-full h-24">
                   <Image
                     src="/hackathon/WhatsApp Image 2025-11-18 at 13.50.29 (3).jpeg"
