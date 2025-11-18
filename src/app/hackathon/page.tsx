@@ -470,7 +470,7 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/logowhite_lovable.svg"
+                    src="/hackathon/logoblack.svg"
                     alt="Lovable"
                     fill
                     className="object-contain"
