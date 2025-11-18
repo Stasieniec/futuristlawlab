@@ -18,7 +18,7 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
-  const MAX_MEMBERS = 5;
+  const MAX_MEMBERS = 4;
 
   const addMember = () => {
     if (members.length >= MAX_MEMBERS) {

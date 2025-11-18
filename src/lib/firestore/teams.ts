@@ -35,7 +35,7 @@ export async function createTeam(formData: CreateTeamFormData): Promise<string> 
         role: member.role,
         addedAt: new Date(),
       })),
-      maxMembers: 5, // Default max team size
+      maxMembers: 4, // Default max team size
       updatedAt: serverTimestamp(),
     };
 
