@@ -470,6 +470,17 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
+                    src="/hackathon/debrauw.jpeg"
+                    alt="De Brauw Blackstone Westbroek"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+                <div className="relative w-full h-24">
+                  <Image
                     src="/hackathon/moonlit.jpeg"
                     alt="Moonlit"
                     fill
