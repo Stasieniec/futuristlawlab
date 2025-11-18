@@ -191,62 +191,67 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
           )}
         </div>
 
-        {/* Team Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-slate-200">
-          <div>
-            {isEditingChallenge ? (
-              <div>
-                <label className="block text-sm text-slate-900 font-medium mb-2">Challenge</label>
-                <select
-                  value={newChallenge}
-                  onChange={(e) => setNewChallenge(e.target.value as ChallengeType)}
-                  className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-blue-700 transition text-slate-900"
-                  disabled={loading}
-                >
-                  {CHALLENGES.map((challenge) => (
-                    <option key={challenge.id} value={challenge.id}>
-                      {challenge.name}
-                    </option>
-                  ))}
-                </select>
-                <div className="flex gap-2 mt-2">
-                  <button
-                    onClick={handleUpdateChallenge}
+        {/* Challenge Section */}
+        <div className="pt-6 border-t border-slate-200">
+          <div className="flex items-start justify-between mb-6">
+            <div className="flex-1">
+              {isEditingChallenge ? (
+                <div>
+                  <label className="block text-sm text-slate-900 font-medium mb-2">Challenge</label>
+                  <select
+                    value={newChallenge}
+                    onChange={(e) => setNewChallenge(e.target.value as ChallengeType)}
+                    className="w-full max-w-md px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-blue-700 transition text-slate-900"
                     disabled={loading}
-                    className="px-3 py-1.5 bg-blue-700 text-white text-sm font-medium rounded-lg hover:bg-blue-800 transition disabled:opacity-50"
                   >
-                    {loading ? 'Saving...' : 'Save'}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setIsEditingChallenge(false);
-                      setNewChallenge(team.challenge);
-                      setError('');
-                    }}
-                    disabled={loading}
-                    className="px-3 py-1.5 border-2 border-slate-300 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-50 transition"
-                  >
-                    Cancel
-                  </button>
+                    {CHALLENGES.map((challenge) => (
+                      <option key={challenge.id} value={challenge.id}>
+                        {challenge.name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="flex gap-2 mt-3">
+                    <button
+                      onClick={handleUpdateChallenge}
+                      disabled={loading}
+                      className="px-4 py-2 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition disabled:opacity-50"
+                    >
+                      {loading ? 'Saving...' : 'Save'}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsEditingChallenge(false);
+                        setNewChallenge(team.challenge);
+                        setError('');
+                      }}
+                      disabled={loading}
+                      className="px-4 py-2 border-2 border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
+              ) : (
+                <div>
                   <p className="text-sm text-slate-900 font-medium mb-1">Challenge</p>
-                  <p className="text-lg font-bold text-blue-700">{teamChallenge?.name || 'Not selected'}</p>
+                  <p className="text-2xl font-bold text-blue-700">{teamChallenge?.name || 'Not selected'}</p>
                 </div>
-                {!team.locked && (
-                  <button
-                    onClick={() => setIsEditingChallenge(true)}
-                    className="ml-2 px-2 py-1 text-blue-700 hover:bg-blue-50 text-sm font-medium rounded-lg transition"
-                  >
-                    Edit
-                  </button>
-                )}
-              </div>
+              )}
+            </div>
+
+            {!isEditingChallenge && !team.locked && (
+              <button
+                onClick={() => setIsEditingChallenge(true)}
+                className="ml-4 px-4 py-2 text-blue-700 hover:bg-blue-50 font-medium rounded-lg transition"
+              >
+                Edit Challenge
+              </button>
             )}
           </div>
+        </div>
+
+        {/* Team Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-6 border-t border-slate-200">
           <div>
             <p className="text-sm text-slate-900 font-medium mb-1">Team Size</p>
             <p className="text-2xl font-bold text-slate-900">{team.members.length} / {team.maxMembers}</p>
