@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { addTeamMember, removeTeamMember } from '@/lib/firestore/teams';
+import { isEmailRegistered } from '@/lib/firestore/participants';
 import type { Team } from '@/types/team';
 
 interface MemberListProps {
@@ -36,6 +37,15 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
     setError('');
 
     try {
+      // Check if the member email is registered
+      const registered = await isEmailRegistered(newMember.email.trim());
+
+      if (!registered) {
+        setError('This email is not registered for the hackathon. All team members must be registered on Luma.');
+        setLoading(false);
+        return;
+      }
+
       await addTeamMember(team.id, {
         name: newMember.name.trim(),
         email: newMember.email.trim(),

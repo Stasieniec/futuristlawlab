@@ -177,6 +177,22 @@ export async function updateTeamName(teamId: string, newName: string): Promise<v
 }
 
 /**
+ * Update team challenge
+ */
+export async function updateTeamChallenge(teamId: string, challenge: string): Promise<void> {
+  try {
+    const docRef = doc(db!, TEAMS_COLLECTION, teamId);
+    await updateDoc(docRef, {
+      challenge,
+      updatedAt: serverTimestamp(),
+    });
+  } catch (error) {
+    console.error('Error updating team challenge:', error);
+    throw new Error('Failed to update team challenge.');
+  }
+}
+
+/**
  * Add a member to a team
  */
 export async function addTeamMember(
