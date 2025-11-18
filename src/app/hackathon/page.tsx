@@ -162,9 +162,37 @@ export default function HackathonPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Event Schedule</h2>
-              <p className="text-slate-600 text-lg">
+              <p className="text-slate-600 text-lg mb-6">
                 Roeterseiland Campus, Roetersstraat 11, 1018 WB Amsterdam
               </p>
+
+              {/* Google Maps Embed */}
+              <div className="max-w-3xl mx-auto">
+                <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg border-2 border-slate-200">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.8827193967477!2d4.909284776793394!3d52.36425564719736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609b70dd81d8f%3A0x1d49c4f89e9e8c0a!2sRoetersstraat%2011%2C%201018%20WB%20Amsterdam!5e0!3m2!1sen!2snl!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Event Location Map"
+                  ></iframe>
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Roetersstraat+11,+1018+WB+Amsterdam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center mt-4 text-blue-700 hover:text-blue-800 font-medium transition"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  Open in Google Maps
+                </a>
+              </div>
             </div>
 
             {/* Day 1 */}
