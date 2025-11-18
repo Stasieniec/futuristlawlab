@@ -210,6 +210,19 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
                       </option>
                     ))}
                   </select>
+
+                  {/* Show description for selected challenge */}
+                  {CHALLENGES.find(c => c.id === newChallenge) && (
+                    <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-700 rounded">
+                      <h4 className="font-semibold text-slate-900 mb-2">
+                        {CHALLENGES.find(c => c.id === newChallenge)?.name}
+                      </h4>
+                      <p className="text-sm text-slate-900">
+                        {CHALLENGES.find(c => c.id === newChallenge)?.description}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex gap-2 mt-3">
                     <button
                       onClick={handleUpdateChallenge}

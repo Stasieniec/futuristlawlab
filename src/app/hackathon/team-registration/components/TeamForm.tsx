@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { createTeam } from '@/lib/firestore/teams';
+import { isEmailRegistered } from '@/lib/firestore/participants';
 import type { Team, TeamMember, ChallengeType } from '@/types/team';
 import { CHALLENGES } from '@/types/team';
 
@@ -102,6 +103,25 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
     setLoading(true);
 
     try {
+      // Validate all member emails are registered on Luma
+      for (let i = 0; i < members.length; i++) {
+        const registered = await isEmailRegistered(members[i].email.trim());
+        if (!registered) {
+          setError(`${members[i].email} is not registered for the hackathon. All team members must be registered on Luma.`);
+          setLoading(false);
+          return;
+        }
+      }
+
+      // Check for duplicate emails
+      const emails = members.map(m => m.email.toLowerCase().trim());
+      const duplicates = emails.filter((email, index) => emails.indexOf(email) !== index);
+      if (duplicates.length > 0) {
+        setError('Duplicate email addresses found. Each team member must have a unique email.');
+        setLoading(false);
+        return;
+      }
+
       // Filter out empty members
       const validMembers = members.filter(m => m.name.trim() || m.email.trim());
 
