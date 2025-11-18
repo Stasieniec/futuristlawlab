@@ -25,6 +25,7 @@ export async function createTeam(formData: CreateTeamFormData): Promise<string> 
   try {
     const teamData = {
       teamName: formData.teamName,
+      challenge: formData.challenge,
       createdBy: formData.createdBy.toLowerCase().trim(),
       createdAt: serverTimestamp(),
       locked: false,

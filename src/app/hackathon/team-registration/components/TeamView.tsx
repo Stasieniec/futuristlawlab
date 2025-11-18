@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { updateTeamName, getTeamById } from '@/lib/firestore/teams';
 import type { Team } from '@/types/team';
+import { CHALLENGES } from '@/types/team';
 import MemberList from './MemberList';
 
 interface TeamViewProps {
@@ -17,6 +18,8 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  const teamChallenge = CHALLENGES.find(c => c.id === team.challenge);
 
   const handleUpdateTeamName = async () => {
     if (!newTeamName.trim()) {
@@ -160,6 +163,10 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
 
         {/* Team Stats */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-6 border-t border-slate-200">
+          <div>
+            <p className="text-sm text-slate-900 font-medium mb-1">Challenge</p>
+            <p className="text-lg font-bold text-blue-700">{teamChallenge?.name || 'Not selected'}</p>
+          </div>
           <div>
             <p className="text-sm text-slate-900 font-medium mb-1">Team Size</p>
             <p className="text-2xl font-bold text-slate-900">{team.members.length} / {team.maxMembers}</p>

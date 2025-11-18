@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { createTeam } from '@/lib/firestore/teams';
-import type { Team, TeamMember } from '@/types/team';
+import type { Team, TeamMember, ChallengeType } from '@/types/team';
+import { CHALLENGES } from '@/types/team';
 
 interface TeamFormProps {
   email: string;
@@ -11,6 +12,7 @@ interface TeamFormProps {
 
 export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
   const [teamName, setTeamName] = useState('');
+  const [challenge, setChallenge] = useState<ChallengeType | ''>('');
   const [members, setMembers] = useState<Omit<TeamMember, 'id' | 'addedAt'>[]>([
     { name: '', email: email, role: 'Team Lead' },
   ]);
@@ -19,6 +21,8 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
   const [success, setSuccess] = useState(false);
 
   const MAX_MEMBERS = 4;
+
+  const selectedChallenge = CHALLENGES.find(c => c.id === challenge);
 
   const addMember = () => {
     if (members.length >= MAX_MEMBERS) {
@@ -43,6 +47,12 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
     // Validate team name
     if (!teamName.trim()) {
       setError('Team name is required');
+      return false;
+    }
+
+    // Validate challenge selection
+    if (!challenge) {
+      setError('Please select a challenge');
       return false;
     }
 
@@ -97,6 +107,7 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
 
       const teamId = await createTeam({
         teamName: teamName.trim(),
+        challenge: challenge as ChallengeType,
         createdBy: email,
         initialMembers: validMembers,
       });
@@ -161,6 +172,35 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
             disabled={loading}
             required
           />
+        </div>
+
+        {/* Challenge Selection */}
+        <div className="mb-8">
+          <label htmlFor="challenge" className="block text-slate-900 font-medium mb-2">
+            Challenge <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="challenge"
+            value={challenge}
+            onChange={(e) => setChallenge(e.target.value as ChallengeType)}
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-blue-700 transition text-slate-900"
+            disabled={loading}
+            required
+          >
+            <option value="">Select a challenge...</option>
+            {CHALLENGES.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+
+          {selectedChallenge && (
+            <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-700 rounded">
+              <h4 className="font-semibold text-slate-900 mb-2">{selectedChallenge.name}</h4>
+              <p className="text-sm text-slate-900">{selectedChallenge.description}</p>
+            </div>
+          )}
         </div>
 
         {/* Team Members */}

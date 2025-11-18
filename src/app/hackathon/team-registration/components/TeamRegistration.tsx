@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { getTeamByEmail } from '@/lib/firestore/teams';
+import { isEmailRegistered } from '@/lib/firestore/participants';
 import type { Team } from '@/types/team';
 import TeamForm from './TeamForm';
 import TeamView from './TeamView';
@@ -24,6 +25,16 @@ export default function TeamRegistration() {
     setError('');
 
     try {
+      // First, check if email is registered as a participant
+      const registered = await isEmailRegistered(emailValue);
+
+      if (!registered) {
+        setError('This email is not registered for the hackathon. Please register on Luma first.');
+        setLoading(false);
+        return;
+      }
+
+      // Then check if they already have a team
       const existingTeam = await getTeamByEmail(emailValue);
 
       if (existingTeam) {
