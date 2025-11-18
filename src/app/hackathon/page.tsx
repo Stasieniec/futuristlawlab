@@ -128,8 +128,73 @@ export default function HackathonPage() {
         </div>
       </section>
 
+      {/* About the Hackathon & Participation */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm mb-12">
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">About the Hackathon</h2>
+              <div className="space-y-4 text-slate-700 leading-relaxed mb-8">
+                <p>
+                  The Legal Hackathon: Optimising the Law is an exciting event organized by Futurist Law Lab,
+                  bringing together law students, tech enthusiasts, and innovators to tackle real-world legal challenges
+                  through creative and technological solutions.
+                </p>
+                <p>
+                  Participants will work in teams to develop innovative solutions that optimize legal frameworks,
+                  making them more accessible, efficient, and responsive to the needs of modern society.
+                </p>
+              </div>
+
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Who Should Participate?</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-1">Law Students</h4>
+                    <p className="text-slate-600 text-sm">Interested in exploring how technology can improve legal processes</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-1">Tech Enthusiasts</h4>
+                    <p className="text-slate-600 text-sm">Curious about legal applications and regulatory challenges</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-1">Innovators</h4>
+                    <p className="text-slate-600 text-sm">Passionate about creating meaningful change in legal systems</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-1">Anyone Curious</h4>
+                    <p className="text-slate-600 text-sm">Interested in the intersection of law, technology, and society</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Schedule Section */}
-      <section id="schedule" className="py-16 bg-white">
+      <section id="schedule" className="py-16 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
@@ -370,71 +435,6 @@ export default function HackathonPage() {
         </div>
       </section>
 
-      {/* About the Hackathon & Participation */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">About the Hackathon</h2>
-              <div className="space-y-4 text-slate-700 leading-relaxed mb-8">
-                <p>
-                  The Legal Hackathon: Optimising the Law is an exciting event organized by Futurist Law Lab,
-                  bringing together law students, tech enthusiasts, and innovators to tackle real-world legal challenges
-                  through creative and technological solutions.
-                </p>
-                <p>
-                  Participants will work in teams to develop innovative solutions that optimize legal frameworks,
-                  making them more accessible, efficient, and responsive to the needs of modern society.
-                </p>
-              </div>
-
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Who Should Participate?</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <div>
-                    <h4 className="font-bold text-slate-900 mb-1">Law Students</h4>
-                    <p className="text-slate-600 text-sm">Interested in exploring how technology can improve legal processes</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <div>
-                    <h4 className="font-bold text-slate-900 mb-1">Tech Enthusiasts</h4>
-                    <p className="text-slate-600 text-sm">Curious about legal applications and regulatory challenges</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <div>
-                    <h4 className="font-bold text-slate-900 mb-1">Innovators</h4>
-                    <p className="text-slate-600 text-sm">Passionate about creating meaningful change in legal systems</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  <div>
-                    <h4 className="font-bold text-slate-900 mb-1">Anyone Curious</h4>
-                    <p className="text-slate-600 text-sm">Interested in the intersection of law, technology, and society</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Partners Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -448,8 +448,8 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/IMG_2978-removebg-preview.png"
-                    alt="Partner"
+                    src="/hackathon/houthoff.jpeg"
+                    alt="Houthoff"
                     fill
                     className="object-contain"
                   />
@@ -459,8 +459,8 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/IMG_3007-removebg-preview.png"
-                    alt="Partner"
+                    src="/hackathon/pinsent-masons.png"
+                    alt="Pinsent Masons"
                     fill
                     className="object-contain"
                   />
@@ -470,19 +470,19 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/logoblack.svg"
+                    src="/hackathon/moonlit.jpeg"
+                    alt="Moonlit"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+                <div className="relative w-full h-24">
+                  <Image
+                    src="/hackathon/lovable-black.svg"
                     alt="Lovable"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
-                <div className="relative w-full h-24">
-                  <Image
-                    src="/hackathon/WhatsApp_Image_2025-11-17_at_15.37.49-removebg-preview.png"
-                    alt="Partner"
                     fill
                     className="object-contain"
                   />
@@ -503,8 +503,8 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/WhatsApp Image 2025-11-18 at 13.50.29 (2).jpeg"
-                    alt="Partner"
+                    src="/hackathon/amsterdam-law-hub.jpeg"
+                    alt="Amsterdam Law Hub"
                     fill
                     className="object-contain"
                   />
@@ -514,8 +514,41 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/WhatsApp Image 2025-11-18 at 13.50.29 (3).jpeg"
-                    alt="Partner"
+                    src="/hackathon/amsterdam-university-fonds.png"
+                    alt="Amsterdam University Fonds"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+                <div className="relative w-full h-24">
+                  <Image
+                    src="/hackathon/sirach-ventures.png"
+                    alt="Sirach Ventures"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+                <div className="relative w-full h-24">
+                  <Image
+                    src="/hackathon/tdp.jpeg"
+                    alt="TDP"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
+                <div className="relative w-full h-24">
+                  <Image
+                    src="/hackathon/aim-pple.jpeg"
+                    alt="AIM PPLE"
                     fill
                     className="object-contain"
                   />
