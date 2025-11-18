@@ -2,11 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
 
 export default function HackathonPage() {
-  const [showTeamModal, setShowTeamModal] = useState(false);
-
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
@@ -120,41 +117,16 @@ export default function HackathonPage() {
                 </p>
               </div>
 
-              <button
-                onClick={() => setShowTeamModal(true)}
-                className="w-full px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              <Link
+                href="/hackathon/team-registration"
+                className="block w-full px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center"
               >
                 Team Formation
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Team Formation Modal */}
-      {showTeamModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowTeamModal(false)}>
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Coming Soon!</h3>
-              <p className="text-slate-600 mb-6">
-                Team formation will be available soon. Please register on Luma first to participate in the hackathon.
-              </p>
-              <button
-                onClick={() => setShowTeamModal(false)}
-                className="w-full px-6 py-3 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition"
-              >
-                Got it
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Schedule Section */}
       <section id="schedule" className="py-16 bg-white">

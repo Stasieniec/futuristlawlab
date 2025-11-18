@@ -33,6 +33,17 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
       return;
     }
 
+    // Check for duplicate email in team
+    const normalizedEmail = newMember.email.toLowerCase().trim();
+    const isDuplicate = team.members.some(
+      (member) => member.email.toLowerCase().trim() === normalizedEmail
+    );
+
+    if (isDuplicate) {
+      setError('This email is already a member of the team.');
+      return;
+    }
+
     setLoading(true);
     setError('');
 
