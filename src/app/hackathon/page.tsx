@@ -481,8 +481,8 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/lovable-light-png-removebg-preview.png"
-                    alt="Partner"
+                    src="/hackathon/logowhite_lovable.svg"
+                    alt="Lovable"
                     fill
                     className="object-contain"
                   />
@@ -503,8 +503,8 @@ export default function HackathonPage() {
               <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-slate-200">
                 <div className="relative w-full h-24">
                   <Image
-                    src="/hackathon/WhatsApp Image 2025-11-18 at 13.50.29.jpeg"
-                    alt="Partner"
+                    src="/hackathon/momen-logo.svg"
+                    alt="Momen"
                     fill
                     className="object-contain"
                   />
