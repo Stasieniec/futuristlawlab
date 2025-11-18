@@ -30,6 +30,9 @@ export default function TeamRegistration() {
 
       if (!registered) {
         setError('This email is not registered for the hackathon. Please register on Luma first.');
+        // Clear localStorage if invalid email
+        localStorage.removeItem('hackathon_user_email');
+        setEmail(''); // Clear the email input
         setLoading(false);
         return;
       }
@@ -44,11 +47,13 @@ export default function TeamRegistration() {
         setStep('create');
       }
 
-      // Save email to localStorage
+      // Save email to localStorage ONLY after successful validation
       localStorage.setItem('hackathon_user_email', emailValue);
     } catch (err) {
       console.error('Error checking email:', err);
       setError('Failed to check for existing team. Please try again.');
+      // Clear localStorage on error
+      localStorage.removeItem('hackathon_user_email');
     } finally {
       setLoading(false);
     }
