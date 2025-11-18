@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllTeams, toggleTeamLock, lockAllTeams, deleteTeam } from '@/lib/firestore/teams';
 import type { Team } from '@/types/team';
+import { CHALLENGES } from '@/types/team';
 
 export default function AdminPage() {
   const [password, setPassword] = useState('');
@@ -106,16 +107,20 @@ export default function AdminPage() {
 
   const exportToCSV = () => {
     const csvContent = [
-      ['Team Name', 'Team Lead', 'Team Lead Email', 'Members Count', 'Status', 'Created At', 'All Members'],
-      ...teams.map(team => [
-        team.teamName,
-        team.members.find(m => m.role === 'Team Lead')?.name || '',
-        team.createdBy,
-        team.members.length.toString(),
-        team.locked ? 'Locked' : 'Active',
-        new Date(team.createdAt).toLocaleDateString(),
-        team.members.map(m => `${m.name} (${m.email})`).join('; ')
-      ])
+      ['Team Name', 'Challenge', 'Team Lead', 'Team Lead Email', 'Members Count', 'Status', 'Created At', 'All Members'],
+      ...teams.map(team => {
+        const challengeName = CHALLENGES.find(c => c.id === team.challenge)?.name || 'Not selected';
+        return [
+          team.teamName,
+          challengeName,
+          team.members.find(m => m.role === 'Team Lead')?.name || '',
+          team.createdBy,
+          team.members.length.toString(),
+          team.locked ? 'Locked' : 'Active',
+          new Date(team.createdAt).toLocaleDateString(),
+          team.members.map(m => `${m.name} (${m.email})`).join('; ')
+        ];
+      })
     ];
 
     const csvString = csvContent.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
@@ -305,6 +310,7 @@ export default function AdminPage() {
                   <thead className="bg-slate-100 border-b-2 border-slate-200">
                     <tr>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Team Name</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Challenge</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Team Lead</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Members</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Status</th>
@@ -313,15 +319,22 @@ export default function AdminPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200">
-                    {teams.map((team) => (
-                      <tr key={team.id} className="hover:bg-slate-50 transition">
-                        <td className="px-6 py-4">
-                          <div className="font-semibold text-slate-900">{team.teamName}</div>
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="text-slate-900">{team.members.find(m => m.role === 'Team Lead')?.name || 'N/A'}</div>
-                          <div className="text-sm text-slate-900">{team.createdBy}</div>
-                        </td>
+                    {teams.map((team) => {
+                      const challengeName = CHALLENGES.find(c => c.id === team.challenge)?.name || 'Not selected';
+                      return (
+                        <tr key={team.id} className="hover:bg-slate-50 transition">
+                          <td className="px-6 py-4">
+                            <div className="font-semibold text-slate-900">{team.teamName}</div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <span className="inline-flex items-center bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-medium">
+                              {challengeName}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="text-slate-900">{team.members.find(m => m.role === 'Team Lead')?.name || 'N/A'}</div>
+                            <div className="text-sm text-slate-900">{team.createdBy}</div>
+                          </td>
                         <td className="px-6 py-4">
                           <div className="text-slate-900">{team.members.length} / {team.maxMembers}</div>
                           <div className="text-sm text-slate-900">{team.members.map(m => m.name).join(', ')}</div>
@@ -369,7 +382,8 @@ export default function AdminPage() {
                           </div>
                         </td>
                       </tr>
-                    ))}
+                    );
+                    })}
                   </tbody>
                 </table>
               </div>
