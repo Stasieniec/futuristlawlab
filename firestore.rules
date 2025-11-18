@@ -19,6 +19,15 @@ service cloud.firestore {
       allow delete: if true;
     }
 
+    // Registered participants collection
+    match /registered_participants/{participantId} {
+      // Anyone can read (needed for email validation)
+      allow read: if true;
+
+      // No client writes (managed through admin panel)
+      allow write: if false;
+    }
+
     // Config collection (admin only - no client access)
     match /config/{document=**} {
       allow read: if true;
