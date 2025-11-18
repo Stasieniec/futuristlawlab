@@ -52,7 +52,7 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
       const registered = await isEmailRegistered(newMember.email.trim());
 
       if (!registered) {
-        setError('This email is not registered for the hackathon. All team members must be registered on Luma.');
+        setError('This email is not registered for the hackathon. Please register on Luma first: https://luma.com/nx4442y5');
         setLoading(false);
         return;
       }

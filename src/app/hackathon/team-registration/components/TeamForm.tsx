@@ -107,7 +107,7 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
       for (let i = 0; i < members.length; i++) {
         const registered = await isEmailRegistered(members[i].email.trim());
         if (!registered) {
-          setError(`${members[i].email} is not registered for the hackathon. All team members must be registered on Luma.`);
+          setError(`${members[i].email} is not registered for the hackathon. Please register on Luma first: https://luma.com/nx4442y5`);
           setLoading(false);
           return;
         }
