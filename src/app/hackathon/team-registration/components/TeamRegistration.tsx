@@ -160,8 +160,8 @@ export default function TeamRegistration() {
               <ul className="text-sm text-slate-900 space-y-1 ml-7">
                 <li>• Maximum team size: 4 members</li>
                 <li>• You must be registered on Luma to participate</li>
-                <li>• One team per email address</li>
-                <li>• Teams may be locked closer to the event date</li>
+                <li>• Challenge and team members can be changed</li>
+                <li>• Contact any hackathon staff member to lock your team</li>
               </ul>
             </div>
           </div>
