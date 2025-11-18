@@ -1,8 +1,6 @@
 // Firestore operations for registered participant emails
 import {
   collection,
-  doc,
-  getDoc,
   getDocs,
   addDoc,
   deleteDoc,
