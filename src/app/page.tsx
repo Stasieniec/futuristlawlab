@@ -629,9 +629,9 @@ export default function Home() {
             {/* Member Card 8 - Stanislaw Wasilewski */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
-                <Image 
-                  src="/images/team/stanislaw.jpeg" 
-                  alt="Stanislaw Wasilewski" 
+                <Image
+                  src="/images/team/stanislaw.jpeg"
+                  alt="Stanislaw Wasilewski"
                   fill
                   className="object-cover"
                 />
@@ -644,13 +644,32 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
-            {/* Member Card 9 - Krzysztof Nowak */}
+
+            {/* Member Card 9 - Maxim Gusev */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
-                <Image 
-                  src="/images/team/krzysztof.jpeg" 
-                  alt="Krzysztof Nowak" 
+                <Image
+                  src="/images/team/maxim.jpeg"
+                  alt="Maxim Gusev"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Maxim Gusev</h3>
+                <p className="text-blue-700 font-medium mb-3">AI Team</p>
+                <p className="text-slate-600">
+                  Computer Scientist with an MSc from ETH Zurich, specializing in large-scale machine learning, language models, and distributed systems. Works on transformer architectures, model generalization, and high-performance training pipelines. Previously contributed to document understanding research published at ICDM and organized AI-focused innovation events. Passionate about advancing reliable, efficient AI systems and exploring their applications across science, law, and entrepreneurship.
+                </p>
+              </div>
+            </div>
+
+            {/* Member Card 10 - Krzysztof Nowak */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="relative h-80 w-full">
+                <Image
+                  src="/images/team/krzysztof.jpeg"
+                  alt="Krzysztof Nowak"
                   fill
                   className="object-cover"
                 />
@@ -663,13 +682,13 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
-            {/* Member Card 10 - Mauro Peirs */}
+
+            {/* Member Card 11 - Mauro Peirs */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
-                <Image 
-                  src="/images/team/mauro.jpeg" 
-                  alt="Mauro Peirs" 
+                <Image
+                  src="/images/team/mauro.jpeg"
+                  alt="Mauro Peirs"
                   fill
                   className="object-cover"
                 />
@@ -682,13 +701,13 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
-            {/* Member Card 11 - Hanna Schmidt */}
+
+            {/* Member Card 12 - Hanna Schmidt */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-80 w-full">
-                <Image 
-                  src="/images/team/hanna.jpeg" 
-                  alt="Hanna Schmidt" 
+                <Image
+                  src="/images/team/hanna.jpeg"
+                  alt="Hanna Schmidt"
                   fill
                   className="object-cover"
                 />
