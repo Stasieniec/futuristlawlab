@@ -24,8 +24,8 @@ service cloud.firestore {
       // Anyone can read (needed for email validation)
       allow read: if true;
 
-      // No client writes (managed through admin panel)
-      allow write: if false;
+      // Allow client writes for adding participants
+      allow write: if true;
     }
 
     // Config collection (admin only - no client access)
