@@ -254,16 +254,31 @@ export default function HackathonPage() {
                   Lunch & office tour at Pinsent Masons in Amsterdam
                 </p>
               </div>
-            </div>
 
-            {/* More Prizes Coming */}
-            <div className="mt-8 text-center">
-              <div className="bg-gradient-to-r from-blue-50 to-slate-50 rounded-2xl p-8 border-2 border-blue-200">
-                <svg className="w-12 h-12 text-blue-700 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">And More to Be Revealed!</h3>
-                <p className="text-slate-700">Stay tuned for additional exciting prizes</p>
+              {/* Prize 5 */}
+              <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border-2 border-blue-100">
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">$1080 Momen Pro Plan</h3>
+                <p className="text-slate-700">
+                  1-year Momen Pro-plan subscription
+                </p>
+              </div>
+
+              {/* More Prizes Coming */}
+              <div className="bg-gradient-to-r from-blue-50 to-slate-50 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border-2 border-blue-200">
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">And More to Be Revealed!</h3>
+                <p className="text-slate-700">
+                  Stay tuned for additional exciting prizes
+                </p>
               </div>
             </div>
           </div>
