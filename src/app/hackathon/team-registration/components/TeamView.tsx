@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { updateTeamName, updateTeamChallenge, getTeamById } from '@/lib/firestore/teams';
+import { updateTeamName, updateTeamChallenge, getTeamById, toggleTeamLock } from '@/lib/firestore/teams';
 import type { Team, ChallengeType } from '@/types/team';
 import { CHALLENGES } from '@/types/team';
 import MemberList from './MemberList';
@@ -20,6 +20,8 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [showLockConfirm, setShowLockConfirm] = useState(false);
+  const [lockLoading, setLockLoading] = useState(false);
 
   const teamChallenge = CHALLENGES.find(c => c.id === team.challenge);
 
@@ -93,6 +95,28 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
       }
     } catch (err) {
       console.error('Error refreshing team:', err);
+    }
+  };
+
+  const handleLockTeam = async () => {
+    setLockLoading(true);
+    setError('');
+
+    try {
+      await toggleTeamLock(team.id, true);
+      const updatedTeam = await getTeamById(team.id);
+      if (updatedTeam) {
+        setTeam(updatedTeam);
+        onTeamUpdated(updatedTeam);
+        setSuccess('Team locked successfully! Your team is now finalized.');
+        setShowLockConfirm(false);
+        setTimeout(() => setSuccess(''), 5000);
+      }
+    } catch (err) {
+      console.error('Error locking team:', err);
+      setError('Failed to lock team. Please try again.');
+    } finally {
+      setLockLoading(false);
     }
   };
 
@@ -310,6 +334,119 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
           onMembersUpdated={handleMembersUpdated}
         />
       </div>
+
+      {/* Lock Team Section */}
+      {!team.locked && (
+        <div className="bg-white rounded-xl shadow-lg p-8">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">Finalize Your Team</h3>
+          <p className="text-slate-600 mb-6">
+            Once you&apos;re happy with your team composition, lock it in to confirm your participation.
+          </p>
+
+          {/* Recommendation notice */}
+          <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded mb-6">
+            <div className="flex items-start">
+              <svg className="w-5 h-5 text-amber-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
+              </svg>
+              <div>
+                <p className="text-amber-800 text-sm font-semibold">Recommendation</p>
+                <p className="text-amber-700 text-sm">We recommend having at least one team member with a technical background (AI/Tech, programming experience) for the best hackathon experience.</p>
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setShowLockConfirm(true)}
+            className="w-full px-6 py-4 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd"></path>
+            </svg>
+            Lock In Team
+          </button>
+        </div>
+      )}
+
+      {/* Lock Confirmation Modal */}
+      {showLockConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-8">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Lock Your Team?</h3>
+              <p className="text-slate-600">
+                This action is <span className="font-semibold text-red-600">final and cannot be undone</span>. Once locked, you will not be able to:
+              </p>
+            </div>
+
+            <ul className="text-sm text-slate-700 space-y-2 mb-6 bg-slate-50 p-4 rounded-lg">
+              <li className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                </svg>
+                Change your team name
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                </svg>
+                Add or remove team members
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                </svg>
+                Change your selected challenge
+              </li>
+            </ul>
+
+            <div className="bg-blue-50 p-4 rounded-lg mb-6">
+              <p className="text-sm text-blue-800">
+                <span className="font-semibold">Team Summary:</span><br />
+                <span className="font-medium">{team.teamName}</span> with {team.members.length} member{team.members.length !== 1 ? 's' : ''}<br />
+                Challenge: {teamChallenge?.name || 'Not selected'}
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowLockConfirm(false)}
+                disabled={lockLoading}
+                className="flex-1 px-4 py-3 border-2 border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleLockTeam}
+                disabled={lockLoading}
+                className="flex-1 px-4 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {lockLoading ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Locking...
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd"></path>
+                    </svg>
+                    Yes, Lock My Team
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Help Info */}
       <div className="bg-blue-50 rounded-lg p-6">

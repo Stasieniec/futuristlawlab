@@ -12,17 +12,17 @@ export const CHALLENGES: Challenge[] = [
   {
     id: 'houthoff',
     name: 'Houthoff Challenge',
-    description: 'Placeholder description for the Houthoff Challenge. Details about the challenge objectives and requirements will be added here.'
+    description: 'Challenge details to be released soon. Stay tuned!'
   },
   {
     id: 'pinsent-masons',
     name: 'Pinsent Masons Challenge',
-    description: 'Placeholder description for the Pinsent Masons Challenge. Details about the challenge objectives and requirements will be added here.'
+    description: 'Challenge details to be released soon. Stay tuned!'
   },
   {
     id: 'moonlit',
     name: 'Moonlit Challenge',
-    description: 'Placeholder description for the Moonlit Challenge. Details about the challenge objectives and requirements will be added here.'
+    description: 'Challenge details to be released soon. Stay tuned!'
   }
 ];
 

@@ -333,7 +333,6 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
             Tips
           </h4>
           <ul className="text-sm text-slate-900 space-y-1 ml-6">
-            <li>• You can add more members later if you don&apos;t have everyone&apos;s info now</li>
             <li>• The team lead email is your registration email</li>
             <li>• All team members should be registered on Luma</li>
           </ul>
