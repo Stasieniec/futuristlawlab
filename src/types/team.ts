@@ -1,6 +1,6 @@
 // Team and Member type definitions for the hackathon team registration system
 
-export type ChallengeType = 'houthoff' | 'pinsent-masons' | 'moonlit';
+export type ChallengeType = 'houthoff' | 'pinsent-masons';
 
 export interface Challenge {
   id: ChallengeType;
@@ -17,11 +17,6 @@ export const CHALLENGES: Challenge[] = [
   {
     id: 'pinsent-masons',
     name: 'Pinsent Masons Challenge',
-    description: 'Challenge details to be released soon. Stay tuned!'
-  },
-  {
-    id: 'moonlit',
-    name: 'Moonlit Challenge',
     description: 'Challenge details to be released soon. Stay tuned!'
   }
 ];

@@ -159,6 +159,7 @@ export default function TeamRegistration() {
               </h3>
               <ul className="text-sm text-slate-900 space-y-1 ml-7">
                 <li>• Maximum team size: 4 members</li>
+                <li>• Ideally at least 1 team member has a technical background</li>
                 <li>• You must be registered on Luma to participate</li>
                 <li>• All team members should be registered on Luma</li>
                 <li>• The team lead email is your registration email</li>

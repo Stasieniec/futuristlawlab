@@ -460,7 +460,7 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
           <li>• Save this page URL to access your team later</li>
           <li>• All team members must be registered on Luma</li>
           <li>• Contact us if you encounter any issues</li>
-          {team.locked && <li>• Your team is locked. Contact organizers to make changes</li>}
+          {team.locked && <li>• Your team is locked and finalized</li>}
         </ul>
       </div>
     </div>
