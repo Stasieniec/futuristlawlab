@@ -30,7 +30,12 @@ const firebaseConfig = {
 
 // UPDATE THIS ARRAY WITH NEW PARTICIPANTS TO ADD
 const newParticipants = [
-  // New approved participants from 2025-11-27 CSV export
+  // New approved participants from 2025-11-28 CSV export
+  'alaaa.hussaini@gmail.com',
+  'weyhofensimon@gmail.com',
+  'theoruterwurtzen@gmail.com',
+  'daniel.brancus@gmail.com',
+  // Previous participants
   'i.brouwer@houthoff.com',
   'hannaschmidt28@gmx.de',
   'mark@sirachventures.com',
