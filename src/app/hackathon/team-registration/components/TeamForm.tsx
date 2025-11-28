@@ -21,7 +21,8 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
-  const MAX_MEMBERS = 4;
+  const MAX_MEMBERS = 5;
+  const DISPLAY_MAX_MEMBERS = 4;
 
   const selectedChallenge = CHALLENGES.find(c => c.id === challenge);
 
@@ -272,8 +273,21 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-semibold text-slate-900">Team Members</h3>
-            <span className="text-sm text-slate-600">{members.length} / {MAX_MEMBERS}</span>
+            <span className="text-sm text-slate-600">{members.length} / {DISPLAY_MAX_MEMBERS}</span>
           </div>
+
+          {members.length > DISPLAY_MAX_MEMBERS && (
+            <div className="mb-4 bg-amber-50 border-l-4 border-amber-500 p-4 rounded">
+              <div className="flex items-start">
+                <svg className="w-5 h-5 text-amber-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
+                </svg>
+                <p className="text-amber-800 text-sm font-medium">
+                  Your team has more than {DISPLAY_MAX_MEMBERS} members. Please confirm with the organizers that this is allowed before submitting.
+                </p>
+              </div>
+            </div>
+          )}
 
           <div className="space-y-4">
             {members.map((member, index) => (
@@ -341,10 +355,16 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
             <button
               type="button"
               onClick={addMember}
-              className="mt-4 w-full px-4 py-3 border-2 border-blue-700 text-blue-700 font-medium rounded-lg hover:bg-blue-50 transition-all duration-200"
+              className={`mt-4 w-full px-4 py-3 border-2 font-medium rounded-lg transition-all duration-200 ${
+                members.length >= DISPLAY_MAX_MEMBERS
+                  ? 'border-amber-500 text-amber-700 hover:bg-amber-50'
+                  : 'border-blue-700 text-blue-700 hover:bg-blue-50'
+              }`}
               disabled={loading}
             >
-              + Add Team Member
+              {members.length >= DISPLAY_MAX_MEMBERS
+                ? '+ Add 5th Member (requires organizer approval)'
+                : '+ Add Team Member'}
             </button>
           )}
         </div>

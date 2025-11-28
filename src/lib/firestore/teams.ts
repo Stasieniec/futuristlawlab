@@ -36,7 +36,7 @@ export async function createTeam(formData: CreateTeamFormData): Promise<string> 
         role: member.role,
         addedAt: new Date(),
       })),
-      maxMembers: 4, // Default max team size
+      maxMembers: 5, // Default max team size (display as 4, 5th requires approval)
       updatedAt: serverTimestamp(),
     };
 
@@ -199,12 +199,14 @@ export async function addTeamMember(
   teamId: string,
   member: Omit<TeamMember, 'id' | 'addedAt'>
 ): Promise<void> {
+  const MAX_MEMBERS = 5; // Actual max (display as 4, 5th requires approval)
+
   try {
     const team = await getTeamById(teamId);
     if (!team) throw new Error('Team not found');
 
-    if (team.members.length >= team.maxMembers) {
-      throw new Error(`Team is full (max ${team.maxMembers} members)`);
+    if (team.members.length >= MAX_MEMBERS) {
+      throw new Error(`Team is full (max ${MAX_MEMBERS} members)`);
     }
 
     const newMember: TeamMember = {

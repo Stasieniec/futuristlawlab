@@ -24,6 +24,7 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
   const [lockLoading, setLockLoading] = useState(false);
 
   const teamChallenge = CHALLENGES.find(c => c.id === team.challenge);
+  const DISPLAY_MAX_MEMBERS = 4;
 
   const handleUpdateTeamName = async () => {
     if (!newTeamName.trim()) {
@@ -161,6 +162,20 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
         </div>
       )}
 
+      {/* Over Max Members Warning */}
+      {team.members.length > DISPLAY_MAX_MEMBERS && (
+        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded">
+          <div className="flex items-start">
+            <svg className="w-5 h-5 text-amber-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
+            </svg>
+            <p className="text-amber-800 text-sm font-medium">
+              Your team has more than {DISPLAY_MAX_MEMBERS} members. Please confirm with the organizers that this is allowed before locking your team.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Team Name Card */}
       <div className="bg-white rounded-xl shadow-lg p-8">
         <div className="flex items-start justify-between mb-6">
@@ -291,7 +306,7 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-6 border-t border-slate-200">
           <div>
             <p className="text-sm text-slate-900 font-medium mb-1">Team Size</p>
-            <p className="text-2xl font-bold text-slate-900">{team.members.length} / {team.maxMembers}</p>
+            <p className="text-2xl font-bold text-slate-900">{team.members.length} / {DISPLAY_MAX_MEMBERS}</p>
           </div>
           <div>
             <p className="text-sm text-slate-900 font-medium mb-1">Status</p>
