@@ -251,16 +251,59 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
                   </select>
 
                   {/* Show description for selected challenge */}
-                  {CHALLENGES.find(c => c.id === newChallenge) && (
-                    <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-700 rounded">
-                      <h4 className="font-semibold text-slate-900 mb-2">
-                        {CHALLENGES.find(c => c.id === newChallenge)?.name}
-                      </h4>
-                      <p className="text-sm text-slate-900">
-                        {CHALLENGES.find(c => c.id === newChallenge)?.description}
-                      </p>
-                    </div>
-                  )}
+                  {(() => {
+                    const selectedChallenge = CHALLENGES.find(c => c.id === newChallenge);
+                    if (!selectedChallenge) return null;
+                    return (
+                      <div className="mt-4 p-6 bg-blue-50 border-l-4 border-blue-700 rounded-lg">
+                        <h4 className="font-bold text-slate-900 text-lg">{selectedChallenge.name}</h4>
+                        <p className="text-blue-700 font-medium mb-4">{selectedChallenge.subtitle}</p>
+                        <div className="text-sm text-slate-900 space-y-3 max-h-64 overflow-y-auto pr-2">
+                          {selectedChallenge.description.split('\n\n').map((paragraph, idx) => {
+                            const parts = paragraph.split(/(\*\*[^*]+\*\*)/g);
+                            return (
+                              <p key={idx}>
+                                {parts.map((part, partIdx) => {
+                                  if (part.startsWith('**') && part.endsWith('**')) {
+                                    return <strong key={partIdx}>{part.slice(2, -2)}</strong>;
+                                  }
+                                  const linkParts = part.split(/(https?:\/\/[^\s]+)/g);
+                                  return linkParts.map((linkPart, linkIdx) => {
+                                    if (linkPart.match(/^https?:\/\//)) {
+                                      return (
+                                        <a
+                                          key={`${partIdx}-${linkIdx}`}
+                                          href={linkPart}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-blue-700 hover:underline break-all"
+                                        >
+                                          {linkPart}
+                                        </a>
+                                      );
+                                    }
+                                    return linkPart;
+                                  });
+                                })}
+                              </p>
+                            );
+                          })}
+                        </div>
+                        {selectedChallenge.downloadUrl && (
+                          <a
+                            href={selectedChallenge.downloadUrl}
+                            download
+                            className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-blue-700 text-white font-medium text-sm rounded-lg hover:bg-blue-800 transition-all duration-200"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            {selectedChallenge.downloadLabel || 'Download File'}
+                          </a>
+                        )}
+                      </div>
+                    );
+                  })()}
 
                   <div className="flex gap-2 mt-3">
                     <button
@@ -284,9 +327,60 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
                   </div>
                 </div>
               ) : (
-                <div>
+                <div className="w-full">
                   <p className="text-sm text-slate-900 font-medium mb-1">Challenge</p>
-                  <p className="text-2xl font-bold text-blue-700">{teamChallenge?.name || 'Not selected'}</p>
+                  <p className="text-2xl font-bold text-blue-700 mb-4">{teamChallenge?.name || 'Not selected'}</p>
+
+                  {/* Show challenge details with download link */}
+                  {teamChallenge && (
+                    <div className="p-6 bg-blue-50 border-l-4 border-blue-700 rounded-lg">
+                      <h4 className="font-bold text-slate-900 text-lg">{teamChallenge.name}</h4>
+                      <p className="text-blue-700 font-medium mb-4">{teamChallenge.subtitle}</p>
+                      <div className="text-sm text-slate-900 space-y-3 max-h-64 overflow-y-auto pr-2">
+                        {teamChallenge.description.split('\n\n').map((paragraph, idx) => {
+                          const parts = paragraph.split(/(\*\*[^*]+\*\*)/g);
+                          return (
+                            <p key={idx}>
+                              {parts.map((part, partIdx) => {
+                                if (part.startsWith('**') && part.endsWith('**')) {
+                                  return <strong key={partIdx}>{part.slice(2, -2)}</strong>;
+                                }
+                                const linkParts = part.split(/(https?:\/\/[^\s]+)/g);
+                                return linkParts.map((linkPart, linkIdx) => {
+                                  if (linkPart.match(/^https?:\/\//)) {
+                                    return (
+                                      <a
+                                        key={`${partIdx}-${linkIdx}`}
+                                        href={linkPart}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-700 hover:underline break-all"
+                                      >
+                                        {linkPart}
+                                      </a>
+                                    );
+                                  }
+                                  return linkPart;
+                                });
+                              })}
+                            </p>
+                          );
+                        })}
+                      </div>
+                      {teamChallenge.downloadUrl && (
+                        <a
+                          href={teamChallenge.downloadUrl}
+                          download
+                          className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-blue-700 text-white font-medium text-sm rounded-lg hover:bg-blue-800 transition-all duration-200"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                          </svg>
+                          {teamChallenge.downloadLabel || 'Download File'}
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
