@@ -954,7 +954,7 @@ export default function AdminPage() {
           {activeTab === 'submissions' && (
             <>
               {/* Submissions Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 <div className="bg-white rounded-xl shadow-sm p-6 border-2 border-slate-200">
                   <p className="text-sm text-slate-900 font-medium mb-1">Total Submissions</p>
                   <p className="text-3xl font-bold text-slate-900">{submissions.length}</p>
@@ -965,7 +965,11 @@ export default function AdminPage() {
                 </div>
                 <div className="bg-white rounded-xl shadow-sm p-6 border-2 border-slate-200">
                   <p className="text-sm text-slate-900 font-medium mb-1">With Demo Video</p>
-                  <p className="text-3xl font-bold text-purple-700">{submissions.filter(s => s.demoVideoUrl).length}</p>
+                  <p className="text-3xl font-bold text-purple-700">{submissions.filter(s => (s.videos && s.videos.length > 0) || s.demoVideoUrl).length}</p>
+                </div>
+                <div className="bg-white rounded-xl shadow-sm p-6 border-2 border-slate-200">
+                  <p className="text-sm text-slate-900 font-medium mb-1">With Images</p>
+                  <p className="text-3xl font-bold text-green-700">{submissions.filter(s => s.images && s.images.length > 0).length}</p>
                 </div>
               </div>
 
@@ -1041,17 +1045,24 @@ export default function AdminPage() {
                                   </svg>
                                 </span>
                               )}
-                              {s.slidesUrl && (
-                                <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center" title="Slides">
+                              {((s.slides && s.slides.length > 0) || s.slidesUrl) && (
+                                <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center" title={`Slides${s.slides ? ` (${s.slides.length})` : ''}`}>
                                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd"></path>
                                   </svg>
                                 </span>
                               )}
-                              {s.demoVideoUrl && (
-                                <span className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center" title="Video">
+                              {((s.videos && s.videos.length > 0) || s.demoVideoUrl) && (
+                                <span className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center" title={`Videos${s.videos ? ` (${s.videos.length})` : ''}`}>
                                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                                  </svg>
+                                </span>
+                              )}
+                              {s.images && s.images.length > 0 && (
+                                <span className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center" title={`Images (${s.images.length})`}>
+                                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"></path>
                                   </svg>
                                 </span>
                               )}
@@ -1103,7 +1114,23 @@ export default function AdminPage() {
                                         Deployed Website
                                       </a>
                                     )}
-                                    {s.slidesUrl && (
+
+                                    {/* Slides - support both array and legacy single file */}
+                                    {s.slides && s.slides.length > 0 ? (
+                                      <div>
+                                        <p className="text-sm font-medium text-slate-700 mb-1">Slides ({s.slides.length})</p>
+                                        <div className="space-y-1 pl-2">
+                                          {s.slides.map((slide, idx) => (
+                                            <a key={idx} href={slide.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm">
+                                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd"></path>
+                                              </svg>
+                                              {slide.fileName}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    ) : s.slidesUrl && (
                                       <a href={s.slidesUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:text-blue-700">
                                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                           <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd"></path>
@@ -1111,7 +1138,23 @@ export default function AdminPage() {
                                         Presentation Slides ({s.slidesFileName})
                                       </a>
                                     )}
-                                    {s.demoVideoUrl && (
+
+                                    {/* Videos - support both array and legacy single file */}
+                                    {s.videos && s.videos.length > 0 ? (
+                                      <div>
+                                        <p className="text-sm font-medium text-slate-700 mb-1">Videos ({s.videos.length})</p>
+                                        <div className="space-y-1 pl-2">
+                                          {s.videos.map((video, idx) => (
+                                            <a key={idx} href={video.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-purple-600 hover:text-purple-700 text-sm">
+                                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                                              </svg>
+                                              {video.fileName}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    ) : s.demoVideoUrl && (
                                       <a href={s.demoVideoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-purple-600 hover:text-purple-700">
                                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                           <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
@@ -1119,7 +1162,25 @@ export default function AdminPage() {
                                         Demo Video ({s.demoVideoFileName})
                                       </a>
                                     )}
-                                    {!s.githubUrl && !s.deployedUrl && !s.slidesUrl && !s.demoVideoUrl && (
+
+                                    {/* Images */}
+                                    {s.images && s.images.length > 0 && (
+                                      <div>
+                                        <p className="text-sm font-medium text-slate-700 mb-1">Images ({s.images.length})</p>
+                                        <div className="space-y-1 pl-2">
+                                          {s.images.map((image, idx) => (
+                                            <a key={idx} href={image.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-600 hover:text-green-700 text-sm">
+                                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"></path>
+                                              </svg>
+                                              {image.fileName}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    )}
+
+                                    {!s.githubUrl && !s.deployedUrl && !s.slidesUrl && !s.demoVideoUrl && (!s.slides || s.slides.length === 0) && (!s.videos || s.videos.length === 0) && (!s.images || s.images.length === 0) && (
                                       <p className="text-slate-500 text-sm">No resources uploaded</p>
                                     )}
                                   </div>

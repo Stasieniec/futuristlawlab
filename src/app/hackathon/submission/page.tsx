@@ -4,16 +4,19 @@ import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getTeamByEmail } from '@/lib/firestore/teams';
-import { saveSubmission, getSubmissionByTeamId, uploadFile, type ProjectSubmission } from '@/lib/firestore/submissions';
+import { saveSubmission, getSubmissionByTeamId, uploadFile, type ProjectSubmission, type UploadedFile } from '@/lib/firestore/submissions';
 import type { Team } from '@/types/team';
 import { CHALLENGES } from '@/types/team';
 
-interface FileUpload {
-  file: File | null;
+interface FileItem {
+  file?: File;
   url: string;
   fileName: string;
+}
+
+interface FileUploadState {
+  files: FileItem[];
   uploading: boolean;
-  progress: number;
 }
 
 export default function SubmissionPage() {
@@ -30,8 +33,9 @@ export default function SubmissionPage() {
   const [projectDescription, setProjectDescription] = useState('');
   const [githubUrl, setGithubUrl] = useState('');
   const [deployedUrl, setDeployedUrl] = useState('');
-  const [slides, setSlides] = useState<FileUpload>({ file: null, url: '', fileName: '', uploading: false, progress: 0 });
-  const [demoVideo, setDemoVideo] = useState<FileUpload>({ file: null, url: '', fileName: '', uploading: false, progress: 0 });
+  const [slides, setSlides] = useState<FileUploadState>({ files: [], uploading: false });
+  const [videos, setVideos] = useState<FileUploadState>({ files: [], uploading: false });
+  const [images, setImages] = useState<FileUploadState>({ files: [], uploading: false });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -80,11 +84,21 @@ export default function SubmissionPage() {
         setProjectDescription(existing.projectDescription);
         setGithubUrl(existing.githubUrl || '');
         setDeployedUrl(existing.deployedUrl || '');
-        if (existing.slidesUrl) {
-          setSlides({ file: null, url: existing.slidesUrl, fileName: existing.slidesFileName || 'Uploaded slides', uploading: false, progress: 100 });
+        // Load existing files (new array format)
+        if (existing.slides && existing.slides.length > 0) {
+          setSlides({ files: existing.slides.map(s => ({ url: s.url, fileName: s.fileName })), uploading: false });
+        } else if (existing.slidesUrl) {
+          // Legacy single file format
+          setSlides({ files: [{ url: existing.slidesUrl, fileName: existing.slidesFileName || 'Uploaded slides' }], uploading: false });
         }
-        if (existing.demoVideoUrl) {
-          setDemoVideo({ file: null, url: existing.demoVideoUrl, fileName: existing.demoVideoFileName || 'Uploaded video', uploading: false, progress: 100 });
+        if (existing.videos && existing.videos.length > 0) {
+          setVideos({ files: existing.videos.map(v => ({ url: v.url, fileName: v.fileName })), uploading: false });
+        } else if (existing.demoVideoUrl) {
+          // Legacy single file format
+          setVideos({ files: [{ url: existing.demoVideoUrl, fileName: existing.demoVideoFileName || 'Uploaded video' }], uploading: false });
+        }
+        if (existing.images && existing.images.length > 0) {
+          setImages({ files: existing.images.map(i => ({ url: i.url, fileName: i.fileName })), uploading: false });
         }
       }
     } catch (err) {
@@ -97,38 +111,59 @@ export default function SubmissionPage() {
 
   const handleFileDrop = useCallback((
     e: React.DragEvent<HTMLDivElement>,
-    type: 'slides' | 'video'
+    type: 'slides' | 'video' | 'image'
   ) => {
     e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      if (type === 'slides') {
-        setSlides({ file, url: '', fileName: file.name, uploading: false, progress: 0 });
-      } else {
-        setDemoVideo({ file, url: '', fileName: file.name, uploading: false, progress: 0 });
-      }
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    if (droppedFiles.length === 0) return;
+
+    const newItems: FileItem[] = droppedFiles.map(file => ({
+      file,
+      url: '',
+      fileName: file.name,
+    }));
+
+    if (type === 'slides') {
+      setSlides(prev => ({ ...prev, files: [...prev.files, ...newItems] }));
+    } else if (type === 'video') {
+      setVideos(prev => ({ ...prev, files: [...prev.files, ...newItems] }));
+    } else {
+      setImages(prev => ({ ...prev, files: [...prev.files, ...newItems] }));
     }
   }, []);
 
   const handleFileSelect = (
     e: React.ChangeEvent<HTMLInputElement>,
-    type: 'slides' | 'video'
+    type: 'slides' | 'video' | 'image'
   ) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (type === 'slides') {
-        setSlides({ file, url: '', fileName: file.name, uploading: false, progress: 0 });
-      } else {
-        setDemoVideo({ file, url: '', fileName: file.name, uploading: false, progress: 0 });
-      }
+    const selectedFiles = Array.from(e.target.files || []);
+    if (selectedFiles.length === 0) return;
+
+    const newItems: FileItem[] = selectedFiles.map(file => ({
+      file,
+      url: '',
+      fileName: file.name,
+    }));
+
+    if (type === 'slides') {
+      setSlides(prev => ({ ...prev, files: [...prev.files, ...newItems] }));
+    } else if (type === 'video') {
+      setVideos(prev => ({ ...prev, files: [...prev.files, ...newItems] }));
+    } else {
+      setImages(prev => ({ ...prev, files: [...prev.files, ...newItems] }));
     }
+
+    // Reset input value to allow re-selecting the same file
+    e.target.value = '';
   };
 
-  const removeFile = (type: 'slides' | 'video') => {
+  const removeFile = (type: 'slides' | 'video' | 'image', index: number) => {
     if (type === 'slides') {
-      setSlides({ file: null, url: '', fileName: '', uploading: false, progress: 0 });
+      setSlides(prev => ({ ...prev, files: prev.files.filter((_, i) => i !== index) }));
+    } else if (type === 'video') {
+      setVideos(prev => ({ ...prev, files: prev.files.filter((_, i) => i !== index) }));
     } else {
-      setDemoVideo({ file: null, url: '', fileName: '', uploading: false, progress: 0 });
+      setImages(prev => ({ ...prev, files: prev.files.filter((_, i) => i !== index) }));
     }
   };
 
@@ -151,48 +186,76 @@ export default function SubmissionPage() {
 
     console.log('[SUBMIT] Starting submission process...');
     console.log('[SUBMIT] Team ID:', team.id);
-    console.log('[SUBMIT] Has slides file:', !!slides.file, slides.file?.name, slides.file?.size);
-    console.log('[SUBMIT] Has video file:', !!demoVideo.file, demoVideo.file?.name, demoVideo.file?.size);
+    console.log('[SUBMIT] Slides files:', slides.files.length);
+    console.log('[SUBMIT] Video files:', videos.files.length);
+    console.log('[SUBMIT] Image files:', images.files.length);
 
     try {
-      let slidesUrl = slides.url;
-      let slidesFileName = slides.fileName;
-      let demoVideoUrl = demoVideo.url;
-      let demoVideoFileName = demoVideo.fileName;
+      // Upload new slides files
+      const uploadedSlides: UploadedFile[] = [];
+      const newSlideFiles = slides.files.filter(f => f.file);
+      const existingSlides = slides.files.filter(f => !f.file && f.url);
 
-      // Upload slides if new file selected
-      if (slides.file) {
-        console.log('[SUBMIT] Starting slides upload...');
+      if (newSlideFiles.length > 0) {
         setSlides(prev => ({ ...prev, uploading: true }));
         try {
-          const result = await uploadFile(team.id, slides.file, 'slides');
-          console.log('[SUBMIT] Slides upload complete:', result);
-          slidesUrl = result.url;
-          slidesFileName = result.fileName;
-          setSlides(prev => ({ ...prev, uploading: false, url: result.url, progress: 100 }));
+          for (const item of newSlideFiles) {
+            if (item.file) {
+              const result = await uploadFile(team.id, item.file, 'slides');
+              uploadedSlides.push(result);
+            }
+          }
         } catch (uploadErr) {
-          console.error('[SUBMIT] Slides upload failed:', uploadErr);
           setSlides(prev => ({ ...prev, uploading: false }));
           throw uploadErr;
         }
+        setSlides(prev => ({ ...prev, uploading: false }));
       }
+      const allSlides = [...existingSlides.map(s => ({ url: s.url, fileName: s.fileName })), ...uploadedSlides];
 
-      // Upload video if new file selected
-      if (demoVideo.file) {
-        console.log('[SUBMIT] Starting video upload...');
-        setDemoVideo(prev => ({ ...prev, uploading: true }));
+      // Upload new video files
+      const uploadedVideos: UploadedFile[] = [];
+      const newVideoFiles = videos.files.filter(f => f.file);
+      const existingVideos = videos.files.filter(f => !f.file && f.url);
+
+      if (newVideoFiles.length > 0) {
+        setVideos(prev => ({ ...prev, uploading: true }));
         try {
-          const result = await uploadFile(team.id, demoVideo.file, 'video');
-          console.log('[SUBMIT] Video upload complete:', result);
-          demoVideoUrl = result.url;
-          demoVideoFileName = result.fileName;
-          setDemoVideo(prev => ({ ...prev, uploading: false, url: result.url, progress: 100 }));
+          for (const item of newVideoFiles) {
+            if (item.file) {
+              const result = await uploadFile(team.id, item.file, 'video');
+              uploadedVideos.push(result);
+            }
+          }
         } catch (uploadErr) {
-          console.error('[SUBMIT] Video upload failed:', uploadErr);
-          setDemoVideo(prev => ({ ...prev, uploading: false }));
+          setVideos(prev => ({ ...prev, uploading: false }));
           throw uploadErr;
         }
+        setVideos(prev => ({ ...prev, uploading: false }));
       }
+      const allVideos = [...existingVideos.map(v => ({ url: v.url, fileName: v.fileName })), ...uploadedVideos];
+
+      // Upload new image files
+      const uploadedImages: UploadedFile[] = [];
+      const newImageFiles = images.files.filter(f => f.file);
+      const existingImages = images.files.filter(f => !f.file && f.url);
+
+      if (newImageFiles.length > 0) {
+        setImages(prev => ({ ...prev, uploading: true }));
+        try {
+          for (const item of newImageFiles) {
+            if (item.file) {
+              const result = await uploadFile(team.id, item.file, 'image');
+              uploadedImages.push(result);
+            }
+          }
+        } catch (uploadErr) {
+          setImages(prev => ({ ...prev, uploading: false }));
+          throw uploadErr;
+        }
+        setImages(prev => ({ ...prev, uploading: false }));
+      }
+      const allImages = [...existingImages.map(i => ({ url: i.url, fileName: i.fileName })), ...uploadedImages];
 
       const challengeName = CHALLENGES.find(c => c.id === team.challenge)?.name || team.challenge;
 
@@ -205,11 +268,15 @@ export default function SubmissionPage() {
         projectDescription: projectDescription.trim(),
         githubUrl: githubUrl.trim() || undefined,
         deployedUrl: deployedUrl.trim() || undefined,
-        slidesUrl: slidesUrl || undefined,
-        slidesFileName: slidesFileName || undefined,
-        demoVideoUrl: demoVideoUrl || undefined,
-        demoVideoFileName: demoVideoFileName || undefined,
+        slides: allSlides.length > 0 ? allSlides : undefined,
+        videos: allVideos.length > 0 ? allVideos : undefined,
+        images: allImages.length > 0 ? allImages : undefined,
       });
+
+      // Update local state with uploaded files
+      setSlides({ files: allSlides.map(s => ({ url: s.url, fileName: s.fileName })), uploading: false });
+      setVideos({ files: allVideos.map(v => ({ url: v.url, fileName: v.fileName })), uploading: false });
+      setImages({ files: allImages.map(i => ({ url: i.url, fileName: i.fileName })), uploading: false });
 
       setSuccess(true);
       setExistingSubmission({
@@ -221,16 +288,16 @@ export default function SubmissionPage() {
         projectDescription: projectDescription.trim(),
         githubUrl: githubUrl.trim(),
         deployedUrl: deployedUrl.trim(),
-        slidesUrl,
-        slidesFileName,
-        demoVideoUrl,
-        demoVideoFileName,
+        slides: allSlides,
+        videos: allVideos,
+        images: allImages,
       });
     } catch (err) {
       console.error('Error submitting:', err);
       // Reset uploading states on error
       setSlides(prev => ({ ...prev, uploading: false }));
-      setDemoVideo(prev => ({ ...prev, uploading: false }));
+      setVideos(prev => ({ ...prev, uploading: false }));
+      setImages(prev => ({ ...prev, uploading: false }));
 
       // Provide more descriptive error message
       const errorMessage = err instanceof Error ? err.message : 'Failed to submit. Please try again.';
@@ -252,8 +319,9 @@ export default function SubmissionPage() {
     setProjectDescription('');
     setGithubUrl('');
     setDeployedUrl('');
-    setSlides({ file: null, url: '', fileName: '', uploading: false, progress: 0 });
-    setDemoVideo({ file: null, url: '', fileName: '', uploading: false, progress: 0 });
+    setSlides({ files: [], uploading: false });
+    setVideos({ files: [], uploading: false });
+    setImages({ files: [], uploading: false });
     setSuccess(false);
     setError('');
   };
@@ -501,125 +569,248 @@ export default function SubmissionPage() {
               />
             </div>
 
+            {/* Judging Materials Notice */}
+            <div className="bg-amber-50 rounded-xl p-6 border border-amber-200">
+              <div className="flex items-start gap-3">
+                <svg className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"></path>
+                </svg>
+                <div>
+                  <h3 className="font-semibold text-amber-800 mb-1">Materials for Judging</h3>
+                  <p className="text-amber-700 text-sm">
+                    The files you upload below will be reviewed by our judges to evaluate your project. Please ensure all materials clearly demonstrate your solution, its functionality, and its potential impact.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Presentation Slides */}
             <div className="bg-white rounded-xl shadow-sm p-6 border-2 border-slate-200">
               <label className="block text-lg font-semibold text-slate-900 mb-2">
                 Presentation Slides
               </label>
               <p className="text-slate-600 text-sm mb-4">
-                Upload your presentation slides (PDF, PowerPoint, or similar). Max 100MB.
+                Upload your presentation slides (PDF, PowerPoint, or similar). You can upload multiple files. Please keep file sizes reasonable.
               </p>
 
-              {slides.url || slides.file ? (
-                <div className="flex items-center justify-between bg-slate-50 p-4 rounded-lg border border-slate-200">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-5 h-5 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd"></path>
+              {/* List of uploaded/selected files */}
+              {slides.files.length > 0 && (
+                <div className="space-y-2 mb-4">
+                  {slides.files.map((item, index) => (
+                    <div key={index} className="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-200">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <svg className="w-4 h-4 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd"></path>
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="font-medium text-slate-900 text-sm">{item.fileName}</p>
+                          {item.file && !item.url && <p className="text-xs text-amber-600">Ready to upload</p>}
+                          {item.url && <p className="text-xs text-green-600">Uploaded</p>}
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => removeFile('slides', index)}
+                        className="text-red-600 hover:text-red-700 font-medium text-sm"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                  {slides.uploading && (
+                    <p className="text-sm text-blue-600 flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                    </div>
-                    <div>
-                      <p className="font-medium text-slate-900">{slides.fileName}</p>
-                      {slides.uploading && <p className="text-sm text-blue-600">Uploading...</p>}
-                      {slides.url && <p className="text-sm text-green-600">Uploaded successfully</p>}
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => removeFile('slides')}
-                    className="text-red-600 hover:text-red-700 font-medium text-sm"
-                  >
-                    Remove
-                  </button>
-                </div>
-              ) : (
-                <div
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={(e) => handleFileDrop(e, 'slides')}
-                  className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-blue-500 transition cursor-pointer"
-                >
-                  <input
-                    type="file"
-                    id="slides"
-                    onChange={(e) => handleFileSelect(e, 'slides')}
-                    accept=".pdf,.ppt,.pptx,.key"
-                    className="hidden"
-                  />
-                  <label htmlFor="slides" className="cursor-pointer">
-                    <svg className="w-12 h-12 text-slate-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                    </svg>
-                    <p className="text-slate-600 font-medium">
-                      Drag and drop your slides here, or <span className="text-blue-700">browse</span>
+                      Uploading...
                     </p>
-                    <p className="text-slate-500 text-sm mt-1">PDF, PPT, PPTX, or Keynote</p>
-                  </label>
+                  )}
                 </div>
               )}
+
+              {/* Drop zone for adding more files */}
+              <div
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => handleFileDrop(e, 'slides')}
+                className="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-blue-500 transition cursor-pointer"
+              >
+                <input
+                  type="file"
+                  id="slides"
+                  onChange={(e) => handleFileSelect(e, 'slides')}
+                  accept=".pdf,.ppt,.pptx,.key"
+                  className="hidden"
+                  multiple
+                />
+                <label htmlFor="slides" className="cursor-pointer">
+                  <svg className="w-10 h-10 text-slate-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                  </svg>
+                  <p className="text-slate-600 font-medium">
+                    {slides.files.length > 0 ? 'Add more slides' : 'Drag and drop your slides here'}, or <span className="text-blue-700">browse</span>
+                  </p>
+                  <p className="text-slate-500 text-sm mt-1">PDF, PPT, PPTX, or Keynote</p>
+                </label>
+              </div>
             </div>
 
-            {/* Demo Video */}
+            {/* Demo Videos */}
             <div className="bg-white rounded-xl shadow-sm p-6 border-2 border-slate-200">
               <label className="block text-lg font-semibold text-slate-900 mb-2">
-                Demo Video
+                Demo Videos
               </label>
-              <p className="text-slate-600 text-sm mb-4">
-                Upload a demo video of your project, if applicable. Max 100MB.
+              <p className="text-slate-600 text-sm mb-2">
+                Upload demo videos of your project. You can upload multiple videos. Please keep file sizes reasonable.
+              </p>
+              <p className="text-blue-700 text-sm mb-4 bg-blue-50 px-3 py-2 rounded-lg">
+                <strong>Tip:</strong> We highly recommend including a short 30–40 second video walkthrough of your product. A concise demo helps judges quickly understand your solution and can significantly strengthen your submission.
               </p>
 
-              {demoVideo.url || demoVideo.file ? (
-                <div className="flex items-center justify-between bg-slate-50 p-4 rounded-lg border border-slate-200">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-5 h-5 text-purple-700" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+              {/* List of uploaded/selected files */}
+              {videos.files.length > 0 && (
+                <div className="space-y-2 mb-4">
+                  {videos.files.map((item, index) => (
+                    <div key={index} className="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-200">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <svg className="w-4 h-4 text-purple-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="font-medium text-slate-900 text-sm">{item.fileName}</p>
+                          {item.file && !item.url && <p className="text-xs text-amber-600">Ready to upload</p>}
+                          {item.url && <p className="text-xs text-green-600">Uploaded</p>}
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => removeFile('video', index)}
+                        className="text-red-600 hover:text-red-700 font-medium text-sm"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                  {videos.uploading && (
+                    <p className="text-sm text-purple-600 flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                    </div>
-                    <div>
-                      <p className="font-medium text-slate-900">{demoVideo.fileName}</p>
-                      {demoVideo.uploading && <p className="text-sm text-purple-600">Uploading...</p>}
-                      {demoVideo.url && <p className="text-sm text-green-600">Uploaded successfully</p>}
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => removeFile('video')}
-                    className="text-red-600 hover:text-red-700 font-medium text-sm"
-                  >
-                    Remove
-                  </button>
-                </div>
-              ) : (
-                <div
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={(e) => handleFileDrop(e, 'video')}
-                  className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-purple-500 transition cursor-pointer"
-                >
-                  <input
-                    type="file"
-                    id="demoVideo"
-                    onChange={(e) => handleFileSelect(e, 'video')}
-                    accept="video/*"
-                    className="hidden"
-                  />
-                  <label htmlFor="demoVideo" className="cursor-pointer">
-                    <svg className="w-12 h-12 text-slate-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                    <p className="text-slate-600 font-medium">
-                      Drag and drop your video here, or <span className="text-purple-700">browse</span>
+                      Uploading...
                     </p>
-                    <p className="text-slate-500 text-sm mt-1">MP4, MOV, AVI, or WebM</p>
-                  </label>
+                  )}
                 </div>
               )}
+
+              {/* Drop zone for adding more files */}
+              <div
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => handleFileDrop(e, 'video')}
+                className="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-purple-500 transition cursor-pointer"
+              >
+                <input
+                  type="file"
+                  id="demoVideo"
+                  onChange={(e) => handleFileSelect(e, 'video')}
+                  accept="video/*"
+                  className="hidden"
+                  multiple
+                />
+                <label htmlFor="demoVideo" className="cursor-pointer">
+                  <svg className="w-10 h-10 text-slate-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                  </svg>
+                  <p className="text-slate-600 font-medium">
+                    {videos.files.length > 0 ? 'Add more videos' : 'Drag and drop your videos here'}, or <span className="text-purple-700">browse</span>
+                  </p>
+                  <p className="text-slate-500 text-sm mt-1">MP4, MOV, AVI, or WebM</p>
+                </label>
+              </div>
+            </div>
+
+            {/* Images / Screenshots */}
+            <div className="bg-white rounded-xl shadow-sm p-6 border-2 border-slate-200">
+              <label className="block text-lg font-semibold text-slate-900 mb-2">
+                Images / Screenshots
+              </label>
+              <p className="text-slate-600 text-sm mb-4">
+                Upload screenshots or images of your project. You can upload multiple images. Please keep file sizes reasonable.
+              </p>
+
+              {/* List of uploaded/selected files */}
+              {images.files.length > 0 && (
+                <div className="space-y-2 mb-4">
+                  {images.files.map((item, index) => (
+                    <div key={index} className="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-200">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                          <svg className="w-4 h-4 text-green-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"></path>
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="font-medium text-slate-900 text-sm">{item.fileName}</p>
+                          {item.file && !item.url && <p className="text-xs text-amber-600">Ready to upload</p>}
+                          {item.url && <p className="text-xs text-green-600">Uploaded</p>}
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => removeFile('image', index)}
+                        className="text-red-600 hover:text-red-700 font-medium text-sm"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                  {images.uploading && (
+                    <p className="text-sm text-green-600 flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Uploading...
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Drop zone for adding more files */}
+              <div
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => handleFileDrop(e, 'image')}
+                className="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-green-500 transition cursor-pointer"
+              >
+                <input
+                  type="file"
+                  id="images"
+                  onChange={(e) => handleFileSelect(e, 'image')}
+                  accept="image/*"
+                  className="hidden"
+                  multiple
+                />
+                <label htmlFor="images" className="cursor-pointer">
+                  <svg className="w-10 h-10 text-slate-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <p className="text-slate-600 font-medium">
+                    {images.files.length > 0 ? 'Add more images' : 'Drag and drop your images here'}, or <span className="text-green-700">browse</span>
+                  </p>
+                  <p className="text-slate-500 text-sm mt-1">PNG, JPG, GIF, or WebP</p>
+                </label>
+              </div>
             </div>
 
             {/* Submit Button */}
             <div className="flex gap-4">
               <button
                 type="submit"
-                disabled={submitting || slides.uploading || demoVideo.uploading}
+                disabled={submitting || slides.uploading || videos.uploading || images.uploading}
                 className="flex-1 px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? (
@@ -628,7 +819,7 @@ export default function SubmissionPage() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    {slides.uploading || demoVideo.uploading ? 'Uploading files...' : 'Submitting...'}
+                    {slides.uploading || videos.uploading || images.uploading ? 'Uploading files...' : 'Submitting...'}
                   </span>
                 ) : existingSubmission ? (
                   'Update Submission'

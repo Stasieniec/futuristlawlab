@@ -18,6 +18,11 @@ import { db, storage } from '../firebase';
 
 const SUBMISSIONS_COLLECTION = 'submissions';
 
+export interface UploadedFile {
+  url: string;
+  fileName: string;
+}
+
 export interface ProjectSubmission {
   teamId: string;
   teamName: string;
@@ -28,7 +33,11 @@ export interface ProjectSubmission {
   projectDescription: string;
   githubUrl?: string;
   deployedUrl?: string;
-  // File URLs (stored in Firebase Storage)
+  // File URLs (stored in Firebase Storage) - supports multiple files
+  slides?: UploadedFile[];
+  videos?: UploadedFile[];
+  images?: UploadedFile[];
+  // Legacy single file fields (for backwards compatibility)
   slidesUrl?: string;
   slidesFileName?: string;
   demoVideoUrl?: string;
@@ -49,12 +58,11 @@ export interface UploadProgress {
 export async function uploadFile(
   teamId: string,
   file: File,
-  type: 'slides' | 'video'
-): Promise<{ url: string; fileName: string }> {
+  type: 'slides' | 'video' | 'image'
+): Promise<UploadedFile> {
   console.log(`[UPLOAD] Starting upload for ${type}`);
   console.log(`[UPLOAD] File: ${file.name}, Size: ${file.size} bytes, Type: ${file.type}`);
   console.log(`[UPLOAD] Team ID: ${teamId}`);
-  console.log(`[UPLOAD] Storage instance:`, storage);
 
   try {
     if (!storage) {
@@ -63,15 +71,13 @@ export async function uploadFile(
     }
 
     const extension = file.name.split('.').pop();
-    const fileName = `${type}_${Date.now()}.${extension}`;
+    const fileName = `${type}_${Date.now()}_${Math.random().toString(36).substring(7)}.${extension}`;
     const filePath = `submissions/${teamId}/${fileName}`;
     console.log(`[UPLOAD] Creating storage ref for path: ${filePath}`);
     const storageRef = ref(storage, filePath);
-    console.log(`[UPLOAD] Storage ref created:`, storageRef);
 
     console.log(`[UPLOAD] Starting uploadBytes...`);
-    const uploadResult = await uploadBytes(storageRef, file);
-    console.log(`[UPLOAD] uploadBytes complete:`, uploadResult);
+    await uploadBytes(storageRef, file);
 
     console.log(`[UPLOAD] Getting download URL...`);
     const url = await getDownloadURL(storageRef);
@@ -80,8 +86,6 @@ export async function uploadFile(
     return { url, fileName: file.name };
   } catch (error: unknown) {
     console.error(`[UPLOAD] Error uploading ${type}:`, error);
-    console.error(`[UPLOAD] Error type:`, typeof error);
-    console.error(`[UPLOAD] Error constructor:`, error?.constructor?.name);
 
     // Check for specific Firebase Storage errors
     const errorMessage = error instanceof Error ? error.message : String(error);
@@ -97,6 +101,22 @@ export async function uploadFile(
 
     throw new Error(`Failed to upload ${type}. ${errorMessage}`);
   }
+}
+
+/**
+ * Upload multiple files to Firebase Storage
+ */
+export async function uploadMultipleFiles(
+  teamId: string,
+  files: File[],
+  type: 'slides' | 'video' | 'image'
+): Promise<UploadedFile[]> {
+  const results: UploadedFile[] = [];
+  for (const file of files) {
+    const result = await uploadFile(teamId, file, type);
+    results.push(result);
+  }
+  return results;
 }
 
 /**
@@ -136,6 +156,11 @@ export async function saveSubmission(
     // Only add optional fields if they have values
     if (submission.githubUrl) submissionData.githubUrl = submission.githubUrl;
     if (submission.deployedUrl) submissionData.deployedUrl = submission.deployedUrl;
+    // New array-based file fields
+    if (submission.slides && submission.slides.length > 0) submissionData.slides = submission.slides;
+    if (submission.videos && submission.videos.length > 0) submissionData.videos = submission.videos;
+    if (submission.images && submission.images.length > 0) submissionData.images = submission.images;
+    // Legacy single file fields (for backwards compatibility)
     if (submission.slidesUrl) submissionData.slidesUrl = submission.slidesUrl;
     if (submission.slidesFileName) submissionData.slidesFileName = submission.slidesFileName;
     if (submission.demoVideoUrl) submissionData.demoVideoUrl = submission.demoVideoUrl;

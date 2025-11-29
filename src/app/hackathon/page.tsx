@@ -63,37 +63,6 @@ export default function HackathonPage() {
         </div>
       </section>
 
-      {/* Registration CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Secure Your Spot</h2>
-            <p className="text-xl mb-6 text-blue-100">
-              Registration fee: €5 • Limited spots available
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://luma.com/nx4442y5"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold rounded-lg hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-lg"
-              >
-                <span>Register Now</span>
-                <svg className="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-              </a>
-              <Link
-                href="#schedule"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-blue-700 transition-all duration-200"
-              >
-                View Schedule
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Project Submission Section */}
       <section className="py-8 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -198,6 +167,30 @@ export default function HackathonPage() {
                 </div>
                 <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+              </div>
+            </a>
+
+            <a
+              href="https://docs.google.com/forms/d/11Ltd6M75mALheBokmPT1DZSHJThRNXJlNA6oFDPZXmk/viewform?edit_requested=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full p-6 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Lovable Feedback Survey</h3>
+                    <p className="text-pink-100">We kindly ask you to share your experience with Lovable</p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                 </svg>
               </div>
             </a>
