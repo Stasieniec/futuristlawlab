@@ -33,5 +33,12 @@ service cloud.firestore {
       allow read: if true;
       allow write: if false; // Admin SDK only
     }
+
+    // Hackathon feedback collection
+    match /hackathon-feedback/{email} {
+      // Anyone can read and write feedback
+      allow read: if true;
+      allow write: if true;
+    }
   }
 }

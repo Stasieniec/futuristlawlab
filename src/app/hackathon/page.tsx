@@ -120,6 +120,28 @@ export default function HackathonPage() {
               </div>
             </Link>
 
+            <Link
+              href="/hackathon/feedback"
+              className="block w-full p-6 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Hackathon Feedback</h3>
+                    <p className="text-emerald-100">Share your experience and help us improve</p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </Link>
+
             <div className="block w-full p-6 bg-white border-2 border-blue-200 rounded-xl shadow-sm">
               <a
                 href="https://docs.google.com/spreadsheets/d/1fSU46y527spXRUJYD4qdKXn0VhBu6dU2L5_hyTToBIA/edit?gid=0#gid=0"
