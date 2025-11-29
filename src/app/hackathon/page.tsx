@@ -97,7 +97,7 @@ export default function HackathonPage() {
       {/* Project Submission Section */}
       <section className="py-8 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto space-y-4">
             <Link
               href="/hackathon/submission"
               className="block w-full p-6 bg-gradient-to-r from-blue-700 to-blue-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
@@ -119,6 +119,30 @@ export default function HackathonPage() {
                 </svg>
               </div>
             </Link>
+
+            <a
+              href="https://docs.google.com/spreadsheets/d/1fSU46y527spXRUJYD4qdKXn0VhBu6dU2L5_hyTToBIA/edit?gid=0#gid=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full p-6 bg-white border-2 border-blue-200 rounded-xl shadow-sm hover:shadow-lg hover:border-blue-400 transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">Amsterdam Law Hub Pitching Consultation</h3>
+                    <p className="text-slate-600">Sign up for a pitching consultation slot</p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </div>
+            </a>
           </div>
         </div>
       </section>
