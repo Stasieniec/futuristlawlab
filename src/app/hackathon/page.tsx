@@ -120,13 +120,13 @@ export default function HackathonPage() {
               </div>
             </Link>
 
-            <a
-              href="https://docs.google.com/spreadsheets/d/1fSU46y527spXRUJYD4qdKXn0VhBu6dU2L5_hyTToBIA/edit?gid=0#gid=0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full p-6 bg-white border-2 border-blue-200 rounded-xl shadow-sm hover:shadow-lg hover:border-blue-400 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <div className="flex items-center justify-between">
+            <div className="block w-full p-6 bg-white border-2 border-blue-200 rounded-xl shadow-sm">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1fSU46y527spXRUJYD4qdKXn0VhBu6dU2L5_hyTToBIA/edit?gid=0#gid=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between hover:opacity-80 transition"
+              >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                     <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,8 +141,21 @@ export default function HackathonPage() {
                 <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                 </svg>
+              </a>
+              <div className="mt-3 pt-3 border-t border-slate-200">
+                <a
+                  href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGJiNGU2Y2QtOTc3OC00ZGYzLWI0MDItOThhNGRhNzY0OWYx%40thread.v2/0?context=%7b%22Tid%22%3a%223973589b-9e40-4eb5-800e-b0b6383d1621%22%2c%22Oid%22%3a%22f563c165-c5f8-4c63-8e18-a92554a2690a%22%7d"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-purple-600 hover:text-purple-800 font-medium transition"
+                >
+                  <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                  </svg>
+                  Join Teams Meeting
+                </a>
               </div>
-            </a>
+            </div>
 
             <a
               href="/hackathon/Houthoff-Challenge_Domain-Names.xlsx"
