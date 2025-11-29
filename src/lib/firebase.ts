@@ -1,6 +1,7 @@
 // Firebase configuration and initialization
 import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { getFirestore, Firestore } from 'firebase/firestore';
+import { getStorage, FirebaseStorage } from 'firebase/storage';
 
 // Firebase configuration from environment variables
 const firebaseConfig = {
@@ -26,8 +27,17 @@ function getFirestoreDb(): Firestore {
   return getFirestore(app);
 }
 
+// Get Storage instance
+function getStorageInstance(): FirebaseStorage {
+  const app = initializeFirebase();
+  const bucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+  // For custom buckets, we need to specify the bucket URL
+  return getStorage(app, `gs://${bucketName}`);
+}
+
 // Export a getter function that initializes on first use
 let dbInstance: Firestore | null = null;
+let storageInstance: FirebaseStorage | null = null;
 
 export const db = typeof window !== 'undefined' ? (() => {
   if (!dbInstance) {
@@ -35,3 +45,10 @@ export const db = typeof window !== 'undefined' ? (() => {
   }
   return dbInstance;
 })() : (null as unknown as Firestore);
+
+export const storage = typeof window !== 'undefined' ? (() => {
+  if (!storageInstance) {
+    storageInstance = getStorageInstance();
+  }
+  return storageInstance;
+})() : (null as unknown as FirebaseStorage);

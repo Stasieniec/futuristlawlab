@@ -40,5 +40,13 @@ service cloud.firestore {
       allow read: if true;
       allow write: if true;
     }
+
+    // Project submissions collection
+    match /submissions/{teamId} {
+      // Anyone can read (for admin view)
+      allow read: if true;
+      // Anyone can create/update submissions
+      allow write: if true;
+    }
   }
 }

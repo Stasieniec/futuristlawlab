@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["http://localhost:3000", "http://localhost:3001", "https://futuristlawlab.com", "https://www.futuristlawlab.com", "https://futuristlawlab.vercel.app"],
+    "method": ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
+    "responseHeader": ["Content-Type", "Content-Length", "Content-Disposition", "Authorization", "X-Requested-With", "x-goog-resumable", "x-goog-content-length-range"],
+    "maxAgeSeconds": 3600
+  }
+]
