@@ -18,7 +18,12 @@ export interface HackathonFeedback {
   // Q1: How did you find out
   howFoundOut: string;
   howFoundOutOther?: string;
-  // Q2: Overall experience (1-5)
+  // Q2: Do you speak Dutch
+  speaksDutch: 'yes' | 'no';
+  // Q3: Study level (optional - only if student)
+  studyLevel?: 'bachelors' | 'masters' | 'phd' | 'not_student' | 'other';
+  studyLevelOther?: string;
+  // Q4: Overall experience (1-5)
   overallExperience: number;
   // Q3: What enjoyed most
   enjoyedMost: string;
@@ -56,6 +61,7 @@ export async function saveFeedback(feedback: HackathonFeedback): Promise<void> {
       email: normalizedEmail,
       name: feedback.name,
       howFoundOut: feedback.howFoundOut,
+      speaksDutch: feedback.speaksDutch,
       overallExperience: feedback.overallExperience,
       enjoyedMost: feedback.enjoyedMost,
       improvements: feedback.improvements,
@@ -70,6 +76,8 @@ export async function saveFeedback(feedback: HackathonFeedback): Promise<void> {
 
     // Only add optional fields if they have values
     if (feedback.howFoundOutOther) cleanedFeedback.howFoundOutOther = feedback.howFoundOutOther;
+    if (feedback.studyLevel) cleanedFeedback.studyLevel = feedback.studyLevel;
+    if (feedback.studyLevelOther) cleanedFeedback.studyLevelOther = feedback.studyLevelOther;
     if (feedback.mentorshipFeedback) cleanedFeedback.mentorshipFeedback = feedback.mentorshipFeedback;
     if (feedback.resourcesFeedback) cleanedFeedback.resourcesFeedback = feedback.resourcesFeedback;
     if (feedback.logisticsFeedback) cleanedFeedback.logisticsFeedback = feedback.logisticsFeedback;

@@ -35,20 +35,24 @@ function getStorageInstance(): FirebaseStorage {
   return getStorage(app, `gs://${bucketName}`);
 }
 
-// Export a getter function that initializes on first use
+// Initialize on first use - works in both browser and server
 let dbInstance: Firestore | null = null;
 let storageInstance: FirebaseStorage | null = null;
 
-export const db = typeof window !== 'undefined' ? (() => {
+// Firestore works in both browser and Node.js
+export const db: Firestore = (() => {
   if (!dbInstance) {
     dbInstance = getFirestoreDb();
   }
   return dbInstance;
-})() : (null as unknown as Firestore);
+})();
 
-export const storage = typeof window !== 'undefined' ? (() => {
-  if (!storageInstance) {
-    storageInstance = getStorageInstance();
-  }
-  return storageInstance;
-})() : (null as unknown as FirebaseStorage);
+// Storage only works in browser
+export const storage: FirebaseStorage = typeof window !== 'undefined'
+  ? (() => {
+      if (!storageInstance) {
+        storageInstance = getStorageInstance();
+      }
+      return storageInstance;
+    })()
+  : (null as unknown as FirebaseStorage);

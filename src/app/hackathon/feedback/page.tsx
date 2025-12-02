@@ -10,6 +10,9 @@ type FormData = {
   name: string;
   howFoundOut: string;
   howFoundOutOther: string;
+  speaksDutch: 'yes' | 'no' | '';
+  studyLevel: 'bachelors' | 'masters' | 'phd' | 'not_student' | 'other' | '';
+  studyLevelOther: string;
   overallExperience: number;
   enjoyedMost: string;
   improvements: string;
@@ -30,6 +33,9 @@ const initialFormData: FormData = {
   name: '',
   howFoundOut: '',
   howFoundOutOther: '',
+  speaksDutch: '',
+  studyLevel: '',
+  studyLevelOther: '',
   overallExperience: 0,
   enjoyedMost: '',
   improvements: '',
@@ -78,6 +84,11 @@ export default function FeedbackPage() {
     if (formData.howFoundOut === 'Other' && !formData.howFoundOutOther.trim()) {
       return 'Please specify how you found out about the hackathon';
     }
+    if (!formData.speaksDutch) return 'Please indicate if you speak Dutch';
+    if (!formData.studyLevel) return 'Please select your study level';
+    if (formData.studyLevel === 'other' && !formData.studyLevelOther.trim()) {
+      return 'Please specify your study level';
+    }
     if (!formData.overallExperience) return 'Please rate your overall experience';
     if (!formData.enjoyedMost.trim()) return 'Please share what you enjoyed most';
     if (!formData.improvements.trim()) return 'Please share what could be improved';
@@ -116,6 +127,9 @@ export default function FeedbackPage() {
         name: formData.name,
         howFoundOut: formData.howFoundOut,
         howFoundOutOther: formData.howFoundOut === 'Other' ? formData.howFoundOutOther : undefined,
+        speaksDutch: formData.speaksDutch as 'yes' | 'no',
+        studyLevel: formData.studyLevel ? formData.studyLevel as 'bachelors' | 'masters' | 'phd' | 'not_student' | 'other' : undefined,
+        studyLevelOther: formData.studyLevel === 'other' ? formData.studyLevelOther : undefined,
         overallExperience: formData.overallExperience,
         enjoyedMost: formData.enjoyedMost,
         improvements: formData.improvements,
@@ -337,10 +351,77 @@ export default function FeedbackPage() {
                 )}
               </div>
 
-              {/* Q2: Overall Experience */}
+              {/* Q2: Do you speak Dutch */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-3">
-                  2. How would you rate your overall experience? <span className="text-red-500">*</span>
+                  2. Do you speak Dutch? <span className="text-red-500">*</span>
+                </label>
+                <div className="flex gap-3">
+                  {[
+                    { value: 'yes', label: 'Yes' },
+                    { value: 'no', label: 'No' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, speaksDutch: option.value as 'yes' | 'no' })}
+                      className={`flex-1 px-4 py-3 rounded-lg font-medium transition ${
+                        formData.speaksDutch === option.value
+                          ? 'bg-blue-700 text-white'
+                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      }`}
+                      disabled={loading}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Q3: Study Level */}
+              <div>
+                <label className="block text-sm font-medium text-slate-900 mb-3">
+                  3. If you&apos;re a student, what level do you study at? <span className="text-red-500">*</span>
+                </label>
+                <div className="grid sm:grid-cols-2 gap-2">
+                  {[
+                    { value: 'bachelors', label: "Bachelor's" },
+                    { value: 'masters', label: "Master's" },
+                    { value: 'phd', label: 'PhD' },
+                    { value: 'not_student', label: 'Not a student' },
+                    { value: 'other', label: 'Other' },
+                  ].map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, studyLevel: option.value as 'bachelors' | 'masters' | 'phd' | 'not_student' | 'other' })}
+                      className={`px-4 py-3 rounded-lg font-medium text-left transition ${
+                        formData.studyLevel === option.value
+                          ? 'bg-blue-700 text-white'
+                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      }`}
+                      disabled={loading}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+                {formData.studyLevel === 'other' && (
+                  <input
+                    type="text"
+                    value={formData.studyLevelOther}
+                    onChange={(e) => setFormData({ ...formData, studyLevelOther: e.target.value })}
+                    className="mt-3 w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-blue-700 transition text-slate-900"
+                    placeholder="Please specify..."
+                    disabled={loading}
+                  />
+                )}
+              </div>
+
+              {/* Q4: Overall Experience */}
+              <div>
+                <label className="block text-sm font-medium text-slate-900 mb-3">
+                  4. How would you rate your overall experience? <span className="text-red-500">*</span>
                 </label>
                 <RatingScale
                   value={formData.overallExperience}
@@ -350,10 +431,10 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              {/* Q3: What enjoyed most */}
+              {/* Q5: What enjoyed most */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-2">
-                  3. What did you enjoy most about the Hackathon? <span className="text-red-500">*</span>
+                  5. What did you enjoy most about the Hackathon? <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   value={formData.enjoyedMost}
@@ -364,10 +445,10 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              {/* Q4: Improvements */}
+              {/* Q6: Improvements */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-2">
-                  4. What aspects of the Hackathon could be improved? <span className="text-red-500">*</span>
+                  6. What aspects of the Hackathon could be improved? <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   value={formData.improvements}
@@ -378,10 +459,10 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              {/* Q5: Mentorship */}
+              {/* Q7: Mentorship */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-3">
-                  5. How helpful did you find the mentorship? <span className="text-red-500">*</span>
+                  7. How helpful did you find the mentorship? <span className="text-red-500">*</span>
                 </label>
                 <RatingScale
                   value={formData.mentorshipRating}
@@ -399,10 +480,10 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              {/* Q6: Resources and Support */}
+              {/* Q8: Resources and Support */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-3">
-                  6. How satisfied were you with the resources and support? <span className="text-red-500">*</span>
+                  8. How satisfied were you with the resources and support? <span className="text-red-500">*</span>
                 </label>
                 <RatingScale
                   value={formData.resourcesRating}
@@ -420,10 +501,10 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              {/* Q7: Logistics */}
+              {/* Q9: Logistics */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-3">
-                  7. How would you rate the logistics and organisation? <span className="text-red-500">*</span>
+                  9. How would you rate the logistics and organisation? <span className="text-red-500">*</span>
                 </label>
                 <RatingScale
                   value={formData.logisticsRating}
@@ -441,10 +522,10 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              {/* Q8: Networking */}
+              {/* Q10: Networking */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-3">
-                  8. How valuable did you find the networking opportunities? <span className="text-red-500">*</span>
+                  10. How valuable did you find the networking opportunities? <span className="text-red-500">*</span>
                 </label>
                 <RatingScale
                   value={formData.networkingRating}
@@ -467,10 +548,10 @@ export default function FeedbackPage() {
                 </div>
               </div>
 
-              {/* Q9: Would participate again */}
+              {/* Q11: Would participate again */}
               <div>
                 <label className="block text-sm font-medium text-slate-900 mb-3">
-                  9. Would you participate in a future Legal Hackathon? <span className="text-red-500">*</span>
+                  11. Would you participate in a future Legal Hackathon? <span className="text-red-500">*</span>
                 </label>
                 <div className="flex gap-3">
                   {[

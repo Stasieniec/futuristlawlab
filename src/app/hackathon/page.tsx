@@ -44,11 +44,11 @@ export default function HackathonPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full text-blue-700 text-sm font-medium mb-8">
+            <div className="inline-flex items-center gap-2 bg-green-100 px-4 py-2 rounded-full text-green-700 text-sm font-medium mb-8">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path>
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
               </svg>
-              November 28-29, 2025
+              Event Completed - November 28-29, 2025
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
@@ -57,39 +57,23 @@ export default function HackathonPage() {
             </h1>
 
             <p className="text-xl text-slate-700 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Join us for an exciting hackathon where legal innovation meets creative problem-solving. Together, we&apos;ll explore innovative approaches to optimize legal frameworks for the modern age.
+              We hosted an exciting hackathon where legal innovation met creative problem-solving. Together, participants explored innovative approaches to optimize legal frameworks for the modern age.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Project Submission Section */}
-      <section className="py-8 bg-slate-50">
+      {/* Post-Event Resources Section */}
+      <section className="py-12 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto space-y-4">
-            <Link
-              href="/hackathon/submission"
-              className="block w-full p-6 bg-gradient-to-r from-blue-700 to-blue-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white">Project Submission</h3>
-                    <p className="text-blue-100">Submit your hackathon project here</p>
-                  </div>
-                </div>
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </div>
-            </Link>
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-slate-900 mb-3">Event Resources</h2>
+              <p className="text-slate-600">Share your feedback and access photos from the hackathon</p>
+            </div>
 
-            <Link
+            <div className="space-y-4">
+              <Link
               href="/hackathon/feedback"
               className="block w-full p-6 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
             >
@@ -111,65 +95,27 @@ export default function HackathonPage() {
               </div>
             </Link>
 
-            <div className="block w-full p-6 bg-white border-2 border-blue-200 rounded-xl shadow-sm">
-              <a
-                href="https://docs.google.com/spreadsheets/d/1fSU46y527spXRUJYD4qdKXn0VhBu6dU2L5_hyTToBIA/edit?gid=0#gid=0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between hover:opacity-80 transition"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">Amsterdam Law Hub Pitching Consultation</h3>
-                    <p className="text-slate-600">Sign up for a pitching consultation slot</p>
-                  </div>
-                </div>
-                <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                </svg>
-              </a>
-              <div className="mt-3 pt-3 border-t border-slate-200">
-                <a
-                  href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGJiNGU2Y2QtOTc3OC00ZGYzLWI0MDItOThhNGRhNzY0OWYx%40thread.v2/0?context=%7b%22Tid%22%3a%223973589b-9e40-4eb5-800e-b0b6383d1621%22%2c%22Oid%22%3a%22f563c165-c5f8-4c63-8e18-a92554a2690a%22%7d"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-sm text-purple-600 hover:text-purple-800 font-medium transition"
-                >
-                  <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                  </svg>
-                  Join Teams Meeting
-                </a>
-              </div>
-            </div>
-
-            <a
-              href="/hackathon/Houthoff-Challenge_Domain-Names.xlsx"
-              download
-              className="block w-full p-6 bg-white border-2 border-blue-200 rounded-xl shadow-sm hover:shadow-lg hover:border-blue-400 transition-all duration-200 hover:-translate-y-0.5"
+            <Link
+              href="/hackathon/photos"
+              className="block w-full p-6 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900">Houthoff Challenge Data</h3>
-                    <p className="text-slate-600">Download the sample domain names (Excel)</p>
+                    <h3 className="text-xl font-bold text-white">Hackathon Photos</h3>
+                    <p className="text-purple-100">View photos from the event (feedback required)</p>
                   </div>
                 </div>
-                <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                 </svg>
               </div>
-            </a>
+            </Link>
 
             <a
               href="https://docs.google.com/forms/d/11Ltd6M75mALheBokmPT1DZSHJThRNXJlNA6oFDPZXmk/viewform?edit_requested=true"
@@ -194,39 +140,6 @@ export default function HackathonPage() {
                 </svg>
               </div>
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Formation Section */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border-2 border-blue-100">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg>
-                </div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-3">Team Formation</h2>
-                <p className="text-slate-600 mb-6">
-                  Create or join a team to participate in the hackathon challenges. Teams can have up to 4 members.
-                </p>
-              </div>
-
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
-                <p className="text-blue-800 text-sm">
-                  <strong>Important:</strong> You must register on Luma before you can create or join a team. Registration is required for participation.
-                </p>
-              </div>
-
-              <Link
-                href="/hackathon/team-registration"
-                className="block w-full px-8 py-4 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center"
-              >
-                Team Formation
-              </Link>
             </div>
           </div>
         </div>
@@ -240,17 +153,17 @@ export default function HackathonPage() {
               <h2 className="text-3xl font-bold text-slate-900 mb-6">About the Hackathon</h2>
               <div className="space-y-4 text-slate-700 leading-relaxed mb-8">
                 <p>
-                  The Legal Hackathon: Optimising the Law is an exciting event organized by Futurist Law Lab,
+                  The Legal Hackathon: Optimising the Law was an exciting event organized by Futurist Law Lab,
                   bringing together law students, tech enthusiasts, and innovators to tackle real-world legal challenges
                   through creative and technological solutions.
                 </p>
                 <p>
-                  Participants will work in teams to develop innovative solutions that optimize legal frameworks,
+                  Participants worked in teams to develop innovative solutions that optimize legal frameworks,
                   making them more accessible, efficient, and responsive to the needs of modern society.
                 </p>
               </div>
 
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Who Should Participate?</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Who Participated?</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex items-start">
                   <svg className="w-6 h-6 text-blue-700 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -258,7 +171,7 @@ export default function HackathonPage() {
                   </svg>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-1">Law Students</h4>
-                    <p className="text-slate-600 text-sm">Interested in exploring how technology can improve legal processes</p>
+                    <p className="text-slate-600 text-sm">Explored how technology can improve legal processes</p>
                   </div>
                 </div>
 
@@ -268,7 +181,7 @@ export default function HackathonPage() {
                   </svg>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-1">Tech Enthusiasts</h4>
-                    <p className="text-slate-600 text-sm">Curious about legal applications and regulatory challenges</p>
+                    <p className="text-slate-600 text-sm">Dove into legal applications and regulatory challenges</p>
                   </div>
                 </div>
 
@@ -278,7 +191,7 @@ export default function HackathonPage() {
                   </svg>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-1">Innovators</h4>
-                    <p className="text-slate-600 text-sm">Passionate about creating meaningful change in legal systems</p>
+                    <p className="text-slate-600 text-sm">Created meaningful change in legal systems</p>
                   </div>
                 </div>
 
@@ -287,8 +200,8 @@ export default function HackathonPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <div>
-                    <h4 className="font-bold text-slate-900 mb-1">Anyone Curious</h4>
-                    <p className="text-slate-600 text-sm">Interested in the intersection of law, technology, and society</p>
+                    <h4 className="font-bold text-slate-900 mb-1">Curious Minds</h4>
+                    <p className="text-slate-600 text-sm">Engaged with the intersection of law, technology, and society</p>
                   </div>
                 </div>
               </div>
@@ -637,7 +550,7 @@ export default function HackathonPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Partners</h2>
-              <p className="text-slate-600">This event is made possible by our amazing partners</p>
+              <p className="text-slate-600">This event was made possible by our amazing partners</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
