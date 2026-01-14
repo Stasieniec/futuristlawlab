@@ -57,7 +57,7 @@ export default function JoinUsPage() {
             </h1>
 
             <p className="text-xl text-slate-700 mb-10 leading-relaxed max-w-3xl mx-auto">
-              We've partnered with AISO to build an interdisciplinary team at the intersection of law, AI, and technology. Are you ready to shape the future?
+              We&apos;ve partnered with AISO to build an interdisciplinary team at the intersection of law, AI, and technology. Are you ready to shape the future?
             </p>
 
             <a
@@ -167,7 +167,7 @@ export default function JoinUsPage() {
                     <svg className="w-5 h-5 text-blue-700 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <span className="text-slate-700">Collaborate with industry partners within Amsterdam's AI ecosystem and beyond</span>
+                    <span className="text-slate-700">Collaborate with industry partners within Amsterdam&apos;s AI ecosystem and beyond</span>
                   </li>
                   <li className="flex items-start">
                     <svg className="w-5 h-5 text-blue-700 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -273,7 +273,7 @@ export default function JoinUsPage() {
                   </div>
                   
                   <div className="bg-slate-50 rounded-lg p-4">
-                    <h4 className="font-bold text-slate-900 mb-2">3. Supporting AISO's internal restructuring</h4>
+                    <h4 className="font-bold text-slate-900 mb-2">3. Supporting AISO&apos;s internal restructuring</h4>
                     <p className="text-slate-700 text-sm">
                       AISO is planning a legal and organisational restructuring next academic year. The Legal Team will assist with research, drafting and general preparation.
                     </p>
@@ -384,7 +384,7 @@ export default function JoinUsPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Make an Impact?</h2>
             <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Whether you're passionate about AI technology or legal frameworks, we have a place for you. Apply now to join our interdisciplinary team and help shape the future of law and technology.
+              Whether you&apos;re passionate about AI technology or legal frameworks, we have a place for you. Apply now to join our interdisciplinary team and help shape the future of law and technology.
             </p>
             <a
               href="https://form.typeform.com/to/FuntjC0F"
