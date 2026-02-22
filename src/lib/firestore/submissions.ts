@@ -60,28 +60,19 @@ export async function uploadFile(
   file: File,
   type: 'slides' | 'video' | 'image'
 ): Promise<UploadedFile> {
-  console.log(`[UPLOAD] Starting upload for ${type}`);
-  console.log(`[UPLOAD] File: ${file.name}, Size: ${file.size} bytes, Type: ${file.type}`);
-  console.log(`[UPLOAD] Team ID: ${teamId}`);
-
   try {
     if (!storage) {
-      console.error('[UPLOAD] Storage is null or undefined!');
       throw new Error('Storage not initialized. Please contact the organizers.');
     }
 
     const extension = file.name.split('.').pop();
     const fileName = `${type}_${Date.now()}_${Math.random().toString(36).substring(7)}.${extension}`;
     const filePath = `submissions/${teamId}/${fileName}`;
-    console.log(`[UPLOAD] Creating storage ref for path: ${filePath}`);
     const storageRef = ref(storage, filePath);
 
-    console.log(`[UPLOAD] Starting uploadBytes...`);
     await uploadBytes(storageRef, file);
 
-    console.log(`[UPLOAD] Getting download URL...`);
     const url = await getDownloadURL(storageRef);
-    console.log(`[UPLOAD] Got download URL: ${url}`);
 
     return { url, fileName: file.name };
   } catch (error: unknown) {
