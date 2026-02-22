@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: '/images/og-image.svg',
+        url: '/preview_logo.png',
         width: 1200,
         height: 630,
         alt: 'Futurist Law Lab - Future-Proofing Legal Frameworks',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Futurist Law Lab",
     description: "A student initiative based in Amsterdam engaging youth to shape the future of law in the age of technological advancement.",
-    images: ['/images/twitter-image.svg'],
+    images: ['/preview_logo.png'],
     creator: "@futuristlawlab",
   },
   verification: {
@@ -82,7 +82,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
-        
+
         {/* Structured Data for Organization */}
         <Script
           id="organization-schema"
@@ -108,7 +108,7 @@ export default function RootLayout({
             })
           }}
         />
-        
+
         {/* Structured Data for NGO */}
         <Script
           id="ngo-schema"
@@ -133,7 +133,7 @@ export default function RootLayout({
             })
           }}
         />
-        
+
       </body>
     </html>
   );

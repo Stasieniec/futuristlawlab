@@ -33,8 +33,8 @@ export default function PublicationsPage() {
               </span>
             </h1>
             <p className="text-lg text-slate-700 mb-8 leading-relaxed">
-              Academic publications and bachelor theses from our members examining 
-              the intersection of law and technology. From smart contracts to AI regulation, 
+              Academic publications and bachelor theses from our members examining
+              the intersection of law and technology. From smart contracts to AI regulation,
               our research contributes to scholarly discourse on the future of legal frameworks.
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function PublicationsPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Publications</h2>
             <p className="text-slate-700">Academic work from our team members</p>
           </div>
-          
+
           <div className="space-y-8">
             {allPublications.map((publication) => (
               <article key={publication.id} className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-100">
@@ -59,13 +59,13 @@ export default function PublicationsPage() {
                         {publication.category}
                       </span>
                     </div>
-                    
+
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 leading-tight">
                       <Link href={`/publications/${publication.slug}`} className="hover:text-blue-700 transition">
                         {publication.title}
                       </Link>
                     </h3>
-                    
+
                     <div className="flex items-center mb-6">
                       <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center mr-4 overflow-hidden">
                         {publication.authorPhoto ? (
@@ -87,11 +87,11 @@ export default function PublicationsPage() {
                         <p className="text-sm text-slate-600">Author</p>
                       </div>
                     </div>
-                    
+
                     <p className="text-slate-700 mb-6 leading-relaxed">
                       {publication.description.split('\n')[0]}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2 mb-6">
                       {publication.tags.slice(0, 4).map((tag) => (
                         <span key={tag} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-lg text-sm">
@@ -102,8 +102,8 @@ export default function PublicationsPage() {
                         <span className="text-slate-500 text-sm">+{publication.tags.length - 4} more</span>
                       )}
                     </div>
-                    
-                    <Link 
+
+                    <Link
                       href={`/publications/${publication.slug}`}
                       className="inline-flex items-center text-blue-700 font-medium hover:text-blue-800 transition"
                     >
@@ -113,7 +113,7 @@ export default function PublicationsPage() {
                       </svg>
                     </Link>
                   </div>
-                  
+
                   <div className="lg:w-1/3 bg-gradient-to-br from-blue-50 to-slate-50 p-6 sm:p-8 lg:p-12 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 mx-auto mb-4 bg-blue-700 rounded-2xl flex items-center justify-center">

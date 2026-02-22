@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       publishedTime: post.publishedDate,
       authors: [post.author],
       tags: post.tags,
-      images: post.imageUrl ? [post.imageUrl] : undefined,
+      images: post.imageUrl ? [post.imageUrl] : ['/preview_logo.png'],
     },
   };
 }
@@ -85,18 +85,18 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                   {post.category}
                 </span>
                 <time className="text-slate-500 text-sm" dateTime={post.publishedDate}>
-                  {new Date(post.publishedDate).toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
+                  {new Date(post.publishedDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
                   })}
                 </time>
               </div>
-              
+
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 {post.title}
               </h1>
-              
+
               {/* Author Info */}
               <div className="bg-slate-50 rounded-xl p-6 mb-8">
                 <div className="flex items-start">
@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                   </div>
                 </div>
               </div>
-              
+
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-8">
                 {post.tags.map((tag) => (
@@ -156,11 +156,11 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                 </p>
               ))}
             </div>
-            
+
             {/* Navigation and Sharing */}
             <footer className="mt-12 pt-8 border-t border-slate-200">
               <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <Link 
+                <Link
                   href="/blog"
                   className="inline-flex items-center text-slate-600 hover:text-blue-700 transition"
                 >
@@ -169,8 +169,8 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                   </svg>
                   Back to Blog
                 </Link>
-                
-                <BlogActions 
+
+                <BlogActions
                   title={post.title}
                   excerpt={post.excerpt}
                 />

@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       publishedTime: publication.publishedDate,
       authors: [publication.author],
       tags: publication.tags,
+      images: ['/preview_logo.png'],
     },
   };
 }
@@ -83,11 +84,11 @@ export default async function PublicationPage({ params }: { params: Params }) {
                 {publication.category}
               </span>
             </div>
-            
+
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               {publication.title}
             </h1>
-            
+
             {/* Author Info */}
             <div className="bg-slate-50 rounded-xl p-6 mb-8">
               <div className="flex items-start">
@@ -114,7 +115,7 @@ export default async function PublicationPage({ params }: { params: Params }) {
                 </div>
               </div>
             </div>
-            
+
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-8">
               {publication.tags.map((tag) => (
@@ -137,7 +138,7 @@ export default async function PublicationPage({ params }: { params: Params }) {
                     </p>
                   ))}
                 </div>
-                
+
                 {/* Download Button */}
                 <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-200">
                   <div className="flex items-center justify-between">
@@ -182,7 +183,7 @@ export default async function PublicationPage({ params }: { params: Params }) {
           {/* Navigation */}
           <div className="max-w-4xl mx-auto mt-12 pt-8 border-t border-slate-200">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <Link 
+              <Link
                 href="/publications"
                 className="inline-flex items-center text-slate-600 hover:text-blue-700 transition"
               >
@@ -191,8 +192,8 @@ export default async function PublicationPage({ params }: { params: Params }) {
                 </svg>
                 Back to Publications
               </Link>
-              
-              <ArticleActions 
+
+              <ArticleActions
                 title={publication.title}
                 description={publication.description.split('\n')[0]}
               />
