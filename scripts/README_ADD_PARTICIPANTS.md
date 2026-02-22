@@ -1,18 +1,54 @@
-# Adding New Hackathon Participants
+# Importing Hackathon Participants
 
-This guide explains how to add new approved participants from Luma CSV exports to Firebase.
+This guide explains how to import approved participants from Luma CSV exports into Firebase.
 
 ## Quick Start
 
-1. **Extract new emails** from CSV comparison
-2. **Update the script** with new emails
-3. **Run the script**
+1. Place the new Luma CSV export in `public/hackathon/`
+2. Update the CSV file path in `scripts/import-participants.ts`
+3. Run the script
 
 ## Detailed Steps
 
-### Step 1: Compare CSV Files
+### Step 1: Export from Luma
 
-When you receive a new Luma export CSV:
+Download the latest guest list CSV from Luma and place it in the `public/hackathon/` directory.
+
+### Step 2: Update the Script
+
+Edit `scripts/import-participants.ts` and update the `csvPath` variable (line 81) to point to your new CSV file:
+
+```typescript
+const csvPath = path.join(process.cwd(), 'public', 'hackathon', 'your-new-export.csv');
+```
+
+### Step 3: Run the Script
+
+```bash
+npx tsx scripts/import-participants.ts
+```
+
+You should see output like:
+```
+Firebase config loaded: { projectId: '...', authDomain: '...' }
+Starting participant import...
+Parsing CSV...
+Found 50 participants
+✓ Added: Jane Doe (jane@example.com)
+✓ Added: John Smith (john@example.com)
+...
+
+=== Import Summary ===
+Total rows: 50
+Added: 48
+Skipped: 2
+Errors: 0
+Import complete!
+```
+
+## Comparing CSV Exports
+
+To find only newly approved participants between two CSV exports:
 
 ```bash
 python3 << 'EOF'
@@ -45,33 +81,9 @@ print(f"\nTotal: {len(new_approved)}")
 EOF
 ```
 
-### Step 2: Update the Script
-
-Edit `scripts/add-participants.mjs` and update the `newParticipants` array with the emails from Step 1.
-
-### Step 3: Run the Script
-
-```bash
-node scripts/add-participants.mjs
-```
-
-You should see output like:
-```
-🚀 Starting to add participants...
-📧 Total to process: 15
-
-✓ Added: example1@email.com
-✓ Added: example2@email.com
-⊘ Skipped: existing@email.com (already exists)
-
-✅ Summary:
-✓ Successfully added: 14
-⊘ Skipped (already exist): 1
-```
-
 ## Verification
 
-Test that new emails work:
+Test that newly imported emails work:
 
 1. Go to https://futuristlawlab.com/hackathon/team-registration
 2. Try creating a team with one of the newly added emails
@@ -85,6 +97,6 @@ npm install dotenv
 ```
 
 **Participants not being validated on website**
-- Check Firebase Console to ensure emails were added
+- Check Firebase Console to ensure emails were added to the `registered_participants` collection
 - Emails must be lowercase in Firebase
 - Check browser console for any Firebase errors

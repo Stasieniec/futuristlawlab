@@ -26,28 +26,47 @@ This project is built with:
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Vercel](https://vercel.com/) - Deployment platform
 
-## Getting Started
+## Setup for New Contributors
 
-First, clone the repository:
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or later recommended)
+
+### Clone and Install
 
 ```bash
 git clone https://github.com/yourusername/futuristlawlab.git
 cd futuristlawlab
-```
-
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Run the development server:
+### Environment Variables
+
+Copy the example environment file and fill in the Firebase credentials:
+
+```bash
+cp .env.example .env.local
+```
+
+Ask a team lead for the Firebase project credentials to populate the `NEXT_PUBLIC_FIREBASE_*` values in `.env.local`.
+
+### Running the Dev Server
 
 ```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Common Tasks
+
+- **Add a nav link**: edit `src/lib/navigation.ts`
+- **Add a team member**: edit `src/app/data/team.ts`
+- **Add a blog post**: edit `src/app/data/blog.ts`
+- **Add a publication**: edit `src/app/data/publications.ts`
+- **Change shared constants** (e.g. MAX_MEMBERS, email validation): edit `src/lib/constants.ts`
+
+For detailed architecture documentation, see [CLAUDE.md](./CLAUDE.md).
 
 ## Deployment
 

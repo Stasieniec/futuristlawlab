@@ -31,14 +31,33 @@ src/
 │   ├── api/hackathon/      # API routes
 │   ├── blog/               # Blog with dynamic [slug] routes
 │   ├── hackathon/          # Hackathon features
-│   │   ├── team-registration/  # Team registration system
+│   │   ├── team-registration/
 │   │   │   └── components/     # TeamRegistration, TeamForm, TeamView, MemberList
-│   │   └── admin/          # Password-protected admin dashboard
+│   │   ├── admin/
+│   │   │   └── components/     # AdminLogin, TeamsTab, FeedbackTab, SubmissionsTab
+│   │   ├── submission/
+│   │   │   └── components/     # SubmissionForm, FileUploadField
+│   │   └── ...
 │   ├── publications/       # Publications section
-│   └── data/               # Static data (blog.ts, articles.ts, publications.ts)
+│   ├── join-us/            # Join us page
+│   └── data/               # Static data (blog.ts, publications.ts, team.ts)
+├── components/             # Shared reusable components
+│   ├── Header.tsx          # Site header/navigation (all variants)
+│   ├── Footer.tsx          # Site footer (full/compact variants)
+│   ├── home/               # Home page section components
+│   │   ├── HeroSection.tsx, AboutSection.tsx, EventsSection.tsx
+│   │   ├── MissionSection.tsx, TeamSection.tsx, ResearchHighlight.tsx
+│   ├── hackathon/          # Hackathon page section components
+│   │   ├── HackathonHero.tsx, EventResources.tsx, AboutHackathon.tsx
+│   │   ├── PrizesSection.tsx, ScheduleSection.tsx, PartnersSection.tsx, DocumentsSection.tsx
+│   └── ui/                 # Small reusable UI components
+│       ├── AlertBanner.tsx
+│       └── LoadingSpinner.tsx
 ├── lib/                    # Utilities
+│   ├── constants.ts        # Shared constants (MAX_MEMBERS, email validation)
+│   ├── navigation.ts       # Navigation link definitions
 │   ├── firebase.ts         # Firebase singleton initialization
-│   └── firestore/          # Firestore operations (teams.ts, participants.ts)
+│   └── firestore/          # Firestore operations (teams.ts, participants.ts, etc.)
 └── types/                  # TypeScript interfaces (Team, TeamMember, Challenge)
 
 scripts/                    # Automation (bulk participant import)
@@ -66,3 +85,11 @@ scripts/                    # Automation (bulk participant import)
 Copy `.env.example` to `.env.local` and configure:
 - `NEXT_PUBLIC_FIREBASE_*` - Firebase project configuration
 - `NEXT_PUBLIC_ADMIN_PASSWORD` - Admin panel access
+
+## Key Files for New Contributors
+
+- **To add a nav link**: edit `src/lib/navigation.ts`
+- **To add a team member**: edit `src/app/data/team.ts`
+- **To add a blog post**: edit `src/app/data/blog.ts`
+- **To add a publication**: edit `src/app/data/publications.ts`
+- **To change shared constants** (e.g. MAX_MEMBERS, email validation regex): edit `src/lib/constants.ts`
