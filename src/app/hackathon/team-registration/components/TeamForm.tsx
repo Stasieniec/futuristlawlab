@@ -5,6 +5,7 @@ import { createTeam } from '@/lib/firestore/teams';
 import { isEmailRegistered } from '@/lib/firestore/participants';
 import type { Team, TeamMember, ChallengeType } from '@/types/team';
 import { CHALLENGES } from '@/types/team';
+import { MAX_MEMBERS, DISPLAY_MAX_MEMBERS, isValidEmail } from '@/lib/constants';
 
 interface TeamFormProps {
   email: string;
@@ -20,9 +21,6 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-
-  const MAX_MEMBERS = 5;
-  const DISPLAY_MAX_MEMBERS = 4;
 
   const selectedChallenge = CHALLENGES.find(c => c.id === challenge);
 
@@ -71,7 +69,6 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
     }
 
     // Validate all members have names and emails
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     for (let i = 0; i < members.length; i++) {
       if (!members[i].name.trim()) {
         setError(`Member ${i + 1} name is required`);
@@ -83,7 +80,7 @@ export default function TeamForm({ email, onTeamCreated }: TeamFormProps) {
         return false;
       }
 
-      if (!emailRegex.test(members[i].email)) {
+      if (!isValidEmail(members[i].email)) {
         setError(`Invalid email format for member ${i + 1}`);
         return false;
       }

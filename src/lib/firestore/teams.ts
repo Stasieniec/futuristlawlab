@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import type { Team, TeamMember, CreateTeamFormData } from '@/types/team';
+import { MAX_MEMBERS } from '@/lib/constants';
 
 // Collection reference
 const TEAMS_COLLECTION = 'teams';
@@ -83,7 +84,6 @@ export async function getTeamById(teamId: string): Promise<Team | null> {
 export async function getTeamByEmail(email: string): Promise<Team | null> {
   try {
     const normalizedEmail = email.toLowerCase().trim();
-    console.log('[DEBUG] getTeamByEmail called with:', normalizedEmail);
 
     // First, check if user is the team creator
     const creatorQuery = query(
@@ -96,7 +96,6 @@ export async function getTeamByEmail(email: string): Promise<Team | null> {
     if (!creatorSnapshot.empty) {
       const docSnap = creatorSnapshot.docs[0];
       const data = docSnap.data();
-      console.log('[DEBUG] Team found (user is creator):', docSnap.id);
       return {
         id: docSnap.id,
         ...data,
@@ -110,7 +109,6 @@ export async function getTeamByEmail(email: string): Promise<Team | null> {
     }
 
     // If not creator, check if user is a member of any team
-    console.log('[DEBUG] Not creator, checking if user is a member...');
     const allTeams = await getAllTeams();
 
     for (const team of allTeams) {
@@ -119,12 +117,10 @@ export async function getTeamByEmail(email: string): Promise<Team | null> {
       );
 
       if (isMember) {
-        console.log('[DEBUG] Team found (user is member):', team.id);
         return team;
       }
     }
 
-    console.log('[DEBUG] No team found for email');
     return null;
   } catch (error) {
     console.error('[ERROR] Error getting team by email:', error);
@@ -199,8 +195,6 @@ export async function addTeamMember(
   teamId: string,
   member: Omit<TeamMember, 'id' | 'addedAt'>
 ): Promise<void> {
-  const MAX_MEMBERS = 5; // Actual max (display as 4, 5th requires approval)
-
   try {
     const team = await getTeamById(teamId);
     if (!team) throw new Error('Team not found');

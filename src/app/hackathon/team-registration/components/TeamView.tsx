@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { updateTeamName, updateTeamChallenge, getTeamById, toggleTeamLock } from '@/lib/firestore/teams';
 import type { Team, ChallengeType } from '@/types/team';
 import { CHALLENGES } from '@/types/team';
+import { DISPLAY_MAX_MEMBERS } from '@/lib/constants';
 import MemberList from './MemberList';
 
 interface TeamViewProps {
@@ -24,7 +25,6 @@ export default function TeamView({ team: initialTeam, onTeamUpdated }: TeamViewP
   const [lockLoading, setLockLoading] = useState(false);
 
   const teamChallenge = CHALLENGES.find(c => c.id === team.challenge);
-  const DISPLAY_MAX_MEMBERS = 4;
 
   const handleUpdateTeamName = async () => {
     if (!newTeamName.trim()) {

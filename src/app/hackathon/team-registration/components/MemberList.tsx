@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { addTeamMember, removeTeamMember } from '@/lib/firestore/teams';
 import { isEmailRegistered } from '@/lib/firestore/participants';
 import type { Team } from '@/types/team';
+import { MAX_MEMBERS, DISPLAY_MAX_MEMBERS, isValidEmail } from '@/lib/constants';
 
 interface MemberListProps {
   team: Team;
@@ -28,7 +29,7 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newMember.email)) {
+    if (!isValidEmail(newMember.email)) {
       setError('Invalid email format');
       return;
     }
@@ -93,8 +94,6 @@ export default function MemberList({ team, onMembersUpdated }: MemberListProps) 
     }
   };
 
-  const MAX_MEMBERS = 5;
-  const DISPLAY_MAX_MEMBERS = 4;
   const canAddMembers = !team.locked && team.members.length < MAX_MEMBERS;
   const canRemoveMembers = !team.locked;
   const isAtDisplayMax = team.members.length >= DISPLAY_MAX_MEMBERS;

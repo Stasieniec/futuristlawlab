@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { saveFeedback, hasFeedback } from '@/lib/firestore/feedback';
+import { isValidEmail } from '@/lib/constants';
+import Header from '@/components/Header';
 
 type FormData = {
   email: string;
@@ -78,7 +79,7 @@ export default function FeedbackPage() {
 
   const validateForm = (): string | null => {
     if (!formData.email.trim()) return 'Email is required';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return 'Invalid email format';
+    if (!isValidEmail(formData.email)) return 'Invalid email format';
     if (!formData.name.trim()) return 'Name is required';
     if (!formData.howFoundOut) return 'Please select how you found out about the hackathon';
     if (formData.howFoundOut === 'Other' && !formData.howFoundOutOther.trim()) {
@@ -239,25 +240,7 @@ export default function FeedbackPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 bg-white/95 backdrop-blur-sm z-50 shadow-sm border-b border-slate-200">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex justify-between items-center">
-            <Link href="/" className="flex items-center">
-              <div className="w-10 h-10 relative mr-3">
-                <Image
-                  src="/images/logo.jpeg"
-                  alt="Futurist Law Lab Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <div className="font-bold text-2xl text-blue-700">Futurist Law Lab</div>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header variant="minimal" />
 
       {/* Form Section */}
       <section className="py-12 bg-gradient-to-b from-blue-50 to-white">
