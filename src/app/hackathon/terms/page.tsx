@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | Legal Hackathon | Futurist Law Lab',
@@ -10,32 +11,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header/Navigation */}
-      <header className="sticky top-0 bg-white/95 backdrop-blur-sm z-50 shadow-sm border-b border-slate-200">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex justify-between items-center">
-            <Link href="/" className="flex items-center">
-              <div className="w-10 h-10 relative mr-3">
-                <Image 
-                  src="/images/logo.jpeg" 
-                  alt="Futurist Law Lab Logo" 
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <div className="font-bold text-2xl text-blue-700">Futurist Law Lab</div>
-            </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <Link href="/#about" className="text-slate-800 font-medium hover:text-blue-700 transition">About</Link>
-              <Link href="/hackathon" className="text-blue-700 font-bold hover:text-blue-800 transition">Hackathon</Link>
-              <Link href="/blog" className="text-slate-800 font-medium hover:text-blue-700 transition">Blog</Link>
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Header variant="hackathon" />
 
       {/* Hero Section */}
       <section className="relative py-16 md:py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
@@ -177,27 +153,7 @@ export default function TermsPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Link href="/" className="inline-flex items-center mb-4">
-              <div className="w-10 h-10 relative mr-3">
-                <Image 
-                  src="/images/logo.jpeg" 
-                  alt="Futurist Law Lab Logo" 
-                  fill
-                  className="object-contain invert"
-                />
-              </div>
-              <div className="font-bold text-xl text-white">Futurist Law Lab</div>
-            </Link>
-            <p className="text-slate-400 text-sm mt-8">
-              &copy; {new Date().getFullYear()} Futurist Law Lab. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

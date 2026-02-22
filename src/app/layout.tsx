@@ -134,29 +134,6 @@ export default function RootLayout({
           }}
         />
         
-        {/* Mobile Menu JavaScript */}
-        <Script id="mobile-menu-script" strategy="afterInteractive">
-          {`
-            document.addEventListener('DOMContentLoaded', function() {
-              const btn = document.querySelector('.mobile-menu-button');
-              const menu = document.querySelector('.mobile-menu');
-              
-              if (btn && menu) {
-                btn.addEventListener('click', () => {
-                  menu.classList.toggle('hidden');
-                });
-                
-                // Close menu when clicking on a link
-                const links = menu.querySelectorAll('a');
-                links.forEach(link => {
-                  link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                  });
-                });
-              }
-            });
-          `}
-        </Script>
       </body>
     </html>
   );
