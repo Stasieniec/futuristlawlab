@@ -1,4 +1,4 @@
-# Team Registration System - Implementation Summary
+# Team Registration System - Implementation Summary 
 
 ## ✅ What Has Been Built
 
