@@ -16,7 +16,65 @@ export default function EventsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {/* Hackathon Event Card */}
+          
+
+          <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group">
+            <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center">
+              <Image
+                src="/images/AI_ambassador_program_workshop.jpg"
+                alt="AI Ambassador Program Workshop"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute top-3 right-3 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                Completed
+              </div>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900">AI Ambassador Program Workshop</h3>
+            <p className="text-sm sm:text-base text-slate-700 mb-3 sm:mb-4 leading-relaxed">
+              We hosted a workshop on the EU AI Act for the AI Impact Ambassador Programme at the University of Amsterdam, covering its risk-based approach and implications for academia, innovation, rights, and accountability, while engaging students in critical discussion on responsible AI governance.
+            </p>
+            <div className="flex items-center text-sm text-blue-700 font-medium mb-2">
+              <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              February 11, 2026
+            </div>
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group">
+            <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center">
+              <Image
+                src="/images/uva_workshop_04_december_2026.jpg"
+                alt="UvA workshop 04 December"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute top-3 right-3 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                Completed
+              </div>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900">AI Regulation Panel Discussion</h3>
+            <p className="text-sm sm:text-base text-slate-700 mb-3 sm:mb-4 leading-relaxed">
+              We hosted a panel with University of Amsterdam professors on the future of AI regulation in the EU. Moderated by Julia Botti Lirio, the discussion covered the EU AI Act, data privacy, and democratic implications, with insights from Daniel Mügge, Joris van Hoboken, and Fernando van der Vlist.
+
+            </p>
+            <div className="flex items-center text-sm text-blue-700 font-medium mb-2">
+              <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              December 04, 2025
+            </div>
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+          </article>
+
+
+        {/* Hackathon Event Card */}
           <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 sm:p-6 group">
             <div className="rounded-xl overflow-hidden h-48 sm:h-56 lg:h-64 mb-4 sm:mb-6 relative shadow-sm bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center">
               <div className="text-center p-6">

@@ -75,7 +75,7 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://futuristlawlab.com" />
         <meta name="theme-color" content="#0d9488" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
