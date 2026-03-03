@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { teamMembers } from '@/app/data/team';
+import { alumni } from '@/app/data/alumni';
 
 export default function TeamSection() {
   return (
@@ -12,6 +13,7 @@ export default function TeamSection() {
             <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
               The passionate students behind Futurist Law Lab working to shape the future of legal frameworks.
             </p>
+            
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -24,6 +26,27 @@ export default function TeamSection() {
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-1">{member.name}</h3>
                   <p className="text-blue-700 font-medium mb-3">{member.role}</p>
                   <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className='mt-12 text-center'>
+            <h3 id="alumni-heading" className='text-xl sm:2xl lg:3xl font-bold text-blue-700 mb-4 sm:mb-6'>
+              Our Alumni
+            </h3>  
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {alumni.map((alumni) => (
+              <div key={alumni.name} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="relative h-64 sm:h-72 lg:h-80 w-full">
+                  <Image src={alumni.photo} alt={alumni.name} fill className="object-cover" />
+                </div>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-1">{alumni.name}</h3>
+                  <p className="text-blue-700 font-medium mb-3">{alumni.role}</p>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{alumni.bio}</p>
                 </div>
               </div>
             ))}

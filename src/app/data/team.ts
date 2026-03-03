@@ -57,27 +57,9 @@ export const teamMembers: TeamMemberInfo[] = [
     bio: 'AI Developer with a BSc in Artificial Intelligence from Vrije Universiteit Amsterdam. Specializes in machine learning, natural language processing, and computer vision. Works as an AI Engineer at TasteRay implementing and fine-tuning Large Language Models. Previously served as a Teaching Assistant for Machine Learning and Python at VU Amsterdam and co-founded a web development company. Passionate about building intelligent systems that enhance human capabilities while exploring the ethical dimensions of technology.',
   },
   {
-    name: 'Maxim Gusev',
-    role: 'AI Team',
-    photo: '/images/team/maxim.jpeg',
-    bio: 'Computer Scientist with an MSc from ETH Zurich, specializing in large-scale machine learning, language models, and distributed systems. Works on transformer architectures, model generalization, and high-performance training pipelines. Previously contributed to document understanding research published at ICDM and organized AI-focused innovation events. Passionate about advancing reliable, efficient AI systems and exploring their applications across science, law, and entrepreneurship.',
-  },
-  {
-    name: 'Krzysztof Nowak',
-    role: 'AI Team',
-    photo: '/images/team/krzysztof.jpeg',
-    bio: 'Third-year Artificial Intelligence student at Vrije Universiteit Amsterdam, currently on exchange at the Hong Kong University of Science and Technology. Conducting thesis internship at the Institute for Cancer Research, developing ML models for cancer diagnosis. Previous experience includes AI projects for Novo Nordisk and leading development of an intelligent healthcare assistant at Ancora Health. Passionate about the intersections of AI, neuroscience, medicine, and business.',
-  },
-  {
-    name: 'Mauro Peirs',
-    role: 'Social Media',
-    photo: '/images/team/mauro.jpeg',
-    bio: 'At 17, Mauro is the youngest member of Futurist Law Lab. He combines his passion for AI law with his artistic side, finding inspiration in both technology and creative expression. He manages social media, bridging the gap between complex legal discussions and engaging digital storytelling. Believes that the way we communicate ideas is just as important as the ideas themselves.',
-  },
-  {
     name: 'Hanna Schmidt',
     role: 'Legal Team',
     photo: '/images/team/hanna.jpeg',
     bio: 'Law major at PPLE College at the University of Amsterdam, graduating in 2027. I am especially interested in the intersection between Law and Economics and the role technology can play in this field. Outside of academics, I enjoy running, cooking and exploring new cafes around Amsterdam.',
-  },
+  }
 ];
