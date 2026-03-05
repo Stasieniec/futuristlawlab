@@ -61,5 +61,23 @@ export const teamMembers: TeamMemberInfo[] = [
     role: 'Legal Team',
     photo: '/images/team/hanna.jpeg',
     bio: 'Law major at PPLE College at the University of Amsterdam, graduating in 2027. I am especially interested in the intersection between Law and Economics and the role technology can play in this field. Outside of academics, I enjoy running, cooking and exploring new cafes around Amsterdam.',
+  },
+  {
+    name: 'Eryn Teye',
+    role: 'AI Team',
+    photo: '/images/team/eryn.jpeg',
+    bio: 'Eryn is currently a first year student in Masters Artificial Intelligence at the VU. After completing a minor in Technology, Law, and Ethics during her Bachelors in AI, she discovered her passion for the intersection of AI and regulation. Her experience teaching technical subjects spans from secondary to undergraduate level. She spends her free time baking and watching movies.'  
+  },
+  {
+    name: 'Hugo Katzer',
+    role: 'AI Team',
+    photo: '/images/team/hugo.jpeg',
+    bio: "Polish Master's student in Artificial Intelligence at Vrije Universiteit Amsterdam, with an undergraduate background in Computer Science. Experienced in IT operations, security compliance, and process automation. Passionate about applying AI to healthcare and exploring how intelligent systems can improve patient outcomes and medical decision-making. Outside of academics, he is an avid Brazilian Jiu-Jitsu practitioner."  
+  },
+  {
+    name: 'Beshoy Guirges',
+    role: 'AI Team',
+    photo: '/images/team/beshoy.jpeg',
+    bio: 'First-year AI MSc student at VU Amsterdam after an AI BSc. Machine Learning researcher in healthcare, working on real-world problems and publishing in peer-reviewed journals. Tech bro since infancy. Will always remind you that Italian cuisine clears everything else, and that no wine on earth beats an Italian one. AI, research, espresso, and "just one more experiment".'  
   }
 ];
