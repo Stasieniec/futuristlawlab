@@ -8,6 +8,7 @@ import EventsSection from '@/components/home/EventsSection';
 import MissionSection from '@/components/home/MissionSection';
 import TeamSection from '@/components/home/TeamSection';
 import ResearchHighlight from '@/components/home/ResearchHighlight';
+import NewsletterSection from '@/components/home/NewsletterSection';
 
 export const metadata: Metadata = {
   title: 'Home | Futurist Law Lab',
@@ -30,6 +31,8 @@ export default function Home() {
       <TeamSection />
 
       <ResearchHighlight />
+
+      <NewsletterSection />
 
       <Footer variant="full" />
 
