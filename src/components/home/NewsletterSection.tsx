@@ -10,6 +10,12 @@ export default function NewsletterSection() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const handler = () => setIsOpen(true);
+    window.addEventListener('open-newsletter', handler);
+    return () => window.removeEventListener('open-newsletter', handler);
+  }, []);
+
+  useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
     } else {
@@ -55,7 +61,7 @@ export default function NewsletterSection() {
 
   return (
     <>
-      <section className="py-16 sm:py-20 bg-blue-700">
+      <section id="newsletter" className="py-16 sm:py-20 bg-blue-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-2xl mx-auto">
             <div className="bg-blue-600 py-2 px-4 rounded-full text-blue-100 text-sm font-medium inline-block mb-6">

@@ -26,13 +26,13 @@ export default function Home() {
 
       <EventsSection />
 
+      <NewsletterSection />
+
       <MissionSection />
 
       <TeamSection />
 
       <ResearchHighlight />
-
-      <NewsletterSection />
 
       <Footer variant="full" />
 

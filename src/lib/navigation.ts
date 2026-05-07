@@ -14,6 +14,7 @@ export const HOME_NAV_LINKS: NavLink[] = [
   { href: '#activities', label: 'Events', ariaLabel: 'Discover our events' },
   { href: '/blog', label: 'Blog', ariaLabel: 'Read our blog articles' },
   { href: '/publications', label: 'Publications', ariaLabel: 'View our academic publications' },
+  { href: '#newsletter', label: 'Newsletter', ariaLabel: 'Sign up for our newsletter' },
   { href: '/join-us', label: 'Join Us', ariaLabel: 'Join our team' },
 ];
 
@@ -24,6 +25,7 @@ export const MAIN_NAV_LINKS: NavLink[] = [
   { href: '/#activities', label: 'Events' },
   { href: '/blog', label: 'Blog' },
   { href: '/publications', label: 'Publications' },
+  { href: '/#newsletter', label: 'Newsletter' },
 ];
 
 // Hackathon subpage navigation — for code-of-conduct, terms
