@@ -8,7 +8,12 @@ export interface AlumniInfo {
 }
 
 export const alumni: AlumniInfo[] = [
-
+    {
+    name: 'Julia Lirio',
+    role: 'Legal Team',
+    photo: '/images/team/julia.jpeg',
+    bio: 'Brazilian/Italian PPLE student with a major in Law and a minor in Law and Economics. Interested in how Law should effectively regulate technology in our increasingly digitalized world and its relation to human rights and security. Analyzes how political groups lobby for or resist regulations like the EU AI Act. Enjoys playing volleyball, going to the movies, and reading in her free time.',
+  },
   {
     name: 'Maxim Gusev',
     role: 'AI Team',

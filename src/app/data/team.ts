@@ -45,12 +45,6 @@ export const teamMembers: TeamMemberInfo[] = [
     bio: "Half German and Brazilian PPLE student with electives in Law and Economics and Global AI. Particularly interested in the intersection between Law and Technology and its application in both Europe and Brazil. Values bringing together diverse perspectives to assess issues in today's globalized world. Enjoys drawing, photography, and art in general.",
   },
   {
-    name: 'Julia Lirio',
-    role: 'Legal Team',
-    photo: '/images/team/julia.jpeg',
-    bio: 'Brazilian/Italian PPLE student with a major in Law and a minor in Law and Economics. Interested in how Law should effectively regulate technology in our increasingly digitalized world and its relation to human rights and security. Analyzes how political groups lobby for or resist regulations like the EU AI Act. Enjoys playing volleyball, going to the movies, and reading in her free time.',
-  },
-  {
     name: 'Stanislaw Wasilewski',
     role: 'AI Team',
     photo: '/images/team/stanislaw.jpeg',
