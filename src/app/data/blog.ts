@@ -79,7 +79,8 @@ Coming back from Cambridge, we are left with a lot to build on. Seeing a team gr
     publishedDate: '2026-07-08',
     category: 'events',
     tags: ['Hackathon', 'Hack the Law', 'Cambridge', 'AI and Law', 'Legal Innovation'],
-    featured: false
+    featured: false,
+    imageUrl: '/images/cambridge_hack_the_law.jpeg'
   }
 ];
 
