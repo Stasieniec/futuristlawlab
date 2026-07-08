@@ -60,6 +60,26 @@ Interested in joining the conversation? Find out when our next workshop is takin
     tags: ['VU Workshop', 'Interdisciplinary Learning', 'AI Students', 'Legal Education', 'Team Reflection'],
     featured: false,
     imageUrl: '/images/vu_workshop.jpeg'
+  },
+  {
+    id: '3',
+    slug: 'amsterdam-to-cambridge-hack-the-law',
+    title: 'From Amsterdam to Cambridge: Our Hackathon Winners Take on Hack the Law',
+    author: 'Eryn Teye',
+    authorPhoto: '/images/team/eryn.jpeg',
+    authorBio: 'Eryn is currently a first year student in Masters Artificial Intelligence at the VU. After completing a minor in Technology, Law, and Ethics during her Bachelors in AI, she discovered her passion for the intersection of AI and regulation. Her experience teaching technical subjects spans from secondary to undergraduate level. She spends her free time baking and watching movies.',
+    excerpt: 'Our FLL team travelled to the University of Cambridge’s Hack the Law, where the winners of our own Legal Hackathon went on to win the Anthropic prize for Best Solution. A full-circle moment for the whole team.',
+    content: `From 26-28 June, Laura, Šárka, Matthew, Tadeáš, and Eryn represented FLL at the University of Cambridge's Hack the Law; a three-day hackathon and conference exploring the intersection of AI and law. Our FLL team served as local mentors sponsoring Cambridge competitors Britt, Naomi, Felicity, and Milena, the winning team from our own FLL hackathon last year. Throughout the weekend, our members supported the team as they iterated on their solution, providing valuable input on conceptual hurdles and pitch revisions. They went on to win the Anthropic prize for Best Solution with their tool "Allegator", an AI powered litigation tool for stress testing case theory! Watching them tackle a brand-new challenge with the same energy and teamwork we first saw at our own hackathon in Amsterdam was a full-circle moment for our whole team.
+
+While the students were building their solutions, our FLL members also had the chance to sit in on Hack the Law's accompanying conference, themed this year around trusting AI in high-stakes legal domains. The day brought together lawyers from leading firms, legal technology builders, academics, and regulators, each offering a different perspective on where AI in law is heading and what it will take to get there responsibly. It was a valuable opportunity to step back from the hackathon floor and hear how the same questions our students were tackling in their projects are also live, significant questions for the legal profession as a whole.
+
+It is clear that AI and law is at a real turning point, and being in a room full of people asking the same hard questions from so many different angles was energising. Some of our best conversations over the weekend happened between conference sessions and during team breakfasts, with academics all wrestling with what responsible AI adoption in legal practice actually looks like.
+
+Coming back from Cambridge, we are left with a lot to build on. Seeing a team grow from our university event all the way to winning on an international stage is exactly the type of impact FLL hopes to make in the AI and law sector. If this sounds like something for you as a student interested in AI and law, be on the lookout for more information about our next Legal Hackathon here in Amsterdam!`,
+    publishedDate: '2026-07-08',
+    category: 'events',
+    tags: ['Hackathon', 'Hack the Law', 'Cambridge', 'AI and Law', 'Legal Innovation'],
+    featured: false
   }
 ];
 
